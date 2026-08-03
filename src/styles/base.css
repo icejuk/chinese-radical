@@ -1,0 +1,434 @@
+/* reset + องค์ประกอบพื้นฐานที่ใช้ซ้ำทั้งแอป */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: 15px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  overscroll-behavior-y: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+}
+
+input {
+  font: inherit;
+}
+
+/* แตะแล้วไม่ต้องมีกล่องไฮไลต์สีฟ้าของ iOS แต่ยังต้องเห็น focus ตอนใช้คีย์บอร์ด */
+button,
+input,
+[role='button'] {
+  -webkit-tap-highlight-color: transparent;
+}
+
+:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ---------- ตัวอักษรจีน / พินอิน ---------- */
+.zh {
+  font-family: var(--font-zh);
+}
+
+/* พินอินเป็นตัวหลักที่ผู้เรียนอ่าน — ฮั่นจื่อเป็นตัวรองเสมอ */
+.py {
+  color: var(--brand-ink);
+  font-weight: 700;
+}
+
+/* ---------- การ์ด ---------- */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  box-shadow: var(--sh-sm);
+}
+
+.card-pad {
+  padding: 16px;
+}
+
+/* ---------- ปุ่ม ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 44px;
+  padding: 10px 16px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r-sm);
+  background: var(--surface);
+  color: var(--ink-2);
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform var(--dur) var(--ease), background var(--dur) var(--ease);
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+.btn:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.btn-primary {
+  border-color: transparent;
+  background: var(--brand-grad);
+  color: #fff;
+  box-shadow: var(--sh-brand);
+}
+
+.btn-ok {
+  border-color: var(--ok-line);
+  background: var(--ok-soft);
+  color: var(--ok);
+}
+
+.btn-ok.solid {
+  border-color: transparent;
+  background: var(--ok);
+  color: #fff;
+}
+
+.btn-err {
+  border-color: var(--err-line);
+  background: var(--err-soft);
+  color: var(--err);
+}
+
+.btn-err.solid {
+  border-color: transparent;
+  background: var(--err);
+  color: #fff;
+}
+
+.btn-block {
+  width: 100%;
+}
+
+.btn-lg {
+  min-height: 50px;
+  font-size: 15px;
+}
+
+/* ปุ่มฟังเสียง — เต็มความกว้าง กดที่ไหนก็ได้ ไม่ต้องเล็งวงกลมเล็กๆ */
+.btn-speak {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  min-height: 60px;
+  padding: 12px 16px;
+  border: 1px solid var(--brand-line);
+  border-radius: var(--r-md);
+  background: var(--brand-soft);
+  color: var(--brand);
+  font-family: inherit;
+  cursor: pointer;
+  transition: transform var(--dur) var(--ease), background var(--dur) var(--ease);
+}
+
+.btn-speak-ico {
+  font-size: 26px;
+  line-height: 1;
+}
+
+.btn-speak-text {
+  font-size: 14px;
+  font-weight: 800;
+}
+
+/* ตัวใหญ่: หน้าที่ "การฟัง" คือโจทย์ทั้งข้อ (โหมดฟัง / ฟังแปลไทย) */
+.btn-speak.xl {
+  flex-direction: column;
+  gap: 8px;
+  min-height: 148px;
+}
+
+.btn-speak.xl .btn-speak-ico {
+  font-size: 46px;
+}
+
+.btn-speak.xl .btn-speak-text {
+  font-size: 13px;
+  font-weight: 700;
+  opacity: 0.85;
+}
+
+.btn-speak:active {
+  transform: scale(0.985);
+  background: var(--brand-line);
+}
+
+/* โจทย์ทั้งก้อน = ปุ่มฟังเสียง (แตะคำแปล/ตัวจีน/ไอคอน ได้หมด) */
+.tap-speak {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  width: 100%;
+  padding: 14px 12px 10px;
+  border: 1px solid var(--brand-line);
+  border-radius: var(--r-md);
+  background: var(--brand-soft);
+  color: inherit;
+  text-align: center;
+  cursor: pointer;
+  transition: transform var(--dur) var(--ease), background var(--dur) var(--ease);
+}
+
+.tap-speak:active {
+  transform: scale(0.985);
+  background: var(--brand-line);
+}
+
+.tap-speak-ico {
+  margin-top: 4px;
+  font-size: 22px;
+  line-height: 1;
+  opacity: 0.75;
+}
+
+.tap-speak.playing {
+  animation: pulse 900ms var(--ease) infinite;
+}
+
+.btn-speak.playing {
+  animation: pulse 900ms var(--ease) infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(193, 59, 49, 0.35);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(193, 59, 49, 0);
+  }
+}
+
+/* ---------- ชิป / segmented ---------- */
+.chips {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding: 2px 0 4px;
+  scroll-snap-type: x proximity;
+}
+
+.chips::-webkit-scrollbar {
+  display: none;
+}
+
+/* แถวชิปเมนูกลุ่ม (มือถือ) — เว้นใต้แถวให้ห่างจากเนื้อหา */
+.group-chips {
+  margin-bottom: 8px;
+}
+
+.chip {
+  flex: 0 0 auto;
+  scroll-snap-align: center;
+  min-height: 38px;
+  padding: 8px 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-pill);
+  background: var(--surface);
+  color: var(--ink-2);
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background var(--dur) var(--ease), color var(--dur) var(--ease);
+}
+
+.chip[aria-selected='true'] {
+  border-color: transparent;
+  background: var(--brand-grad);
+  color: #fff;
+  box-shadow: var(--sh-brand);
+}
+
+/* ชิปเลขบท — สี่เหลี่ยมจัตุรัสเล็ก */
+.chip-num {
+  flex: 0 0 auto;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+  background: var(--surface);
+  color: var(--ink-2);
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.chip-num[aria-selected='true'] {
+  border-color: transparent;
+  background: var(--brand-grad);
+  color: #fff;
+  box-shadow: var(--sh-brand);
+}
+
+/* ---------- ช่องพิมพ์ ---------- */
+.input {
+  width: 100%;
+  min-height: 48px;
+  padding: 12px 14px;
+  border: 2px solid var(--line);
+  border-radius: var(--r-sm);
+  background: var(--surface);
+  color: var(--ink);
+  /* ≥16px บังคับ ไม่งั้น iOS ซูมเองตอนโฟกัส */
+  font-size: 17px;
+  text-align: center;
+  outline: none;
+  transition: border-color var(--dur) var(--ease);
+}
+
+.input:focus {
+  border-color: var(--brand);
+}
+
+.input.mono {
+  font-family: var(--font-mono);
+  letter-spacing: 1px;
+}
+
+/* ช่องพิมพ์ไทยห้ามใช้ mono/letter-spacing — สระกับวรรณยุกต์จะลอยเพี้ยน */
+.input.thai {
+  font-family: inherit;
+  letter-spacing: 0;
+  font-weight: 600;
+}
+
+.input.ok {
+  border-color: var(--ok);
+  background: var(--ok-soft);
+}
+
+.input.bad {
+  border-color: var(--err);
+  background: var(--err-soft);
+  animation: shake 260ms var(--ease);
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  75% {
+    transform: translateX(5px);
+  }
+}
+
+/* ---------- ข้อความประกอบ ---------- */
+.muted {
+  color: var(--ink-3);
+  font-size: 13px;
+}
+
+.section-title {
+  margin: 2px 0 10px;
+  color: var(--ink-3);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.fb {
+  min-height: 22px;
+  font-size: 13px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.fb.ok {
+  color: var(--ok);
+}
+
+.fb.bad {
+  color: var(--err);
+}
+
+/* ---------- แถบความคืบหน้า ---------- */
+.progress {
+  height: 4px;
+  border-radius: 2px;
+  background: var(--surface-3);
+  overflow: hidden;
+}
+
+.progress > i {
+  display: block;
+  height: 100%;
+  border-radius: 2px;
+  background: var(--brand-grad);
+  transition: width 400ms var(--ease);
+}
+
+/* ---------- แถบคะแนน ---------- */
+.score {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 10px 14px;
+}
+
+.score b {
+  display: block;
+  font-size: 18px;
+  line-height: 1.1;
+}
+
+.score span {
+  font-size: 10px;
+  color: var(--ink-3);
+  font-weight: 700;
+}
+
+.score .c b {
+  color: var(--ok);
+}
+
+.score .w b {
+  color: var(--err);
+}
+
+.score .t b {
+  color: var(--warn);
+}

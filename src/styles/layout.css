@@ -1,0 +1,204 @@
+/* โครงหน้า: มือถือ = header บาง + tab bar ล่าง (นิ้วโป้งถึง) / จอกว้าง = sidebar ซ้าย */
+.app {
+  min-height: 100dvh;
+  padding-bottom: calc(var(--tabbar-h) + var(--sab));
+}
+
+/* ---------- header ---------- */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: calc(var(--header-h) + var(--sat));
+  padding: var(--sat) calc(14px + var(--sar)) 0 calc(14px + var(--sal));
+  background: color-mix(in srgb, var(--surface) 86%, transparent);
+  backdrop-filter: saturate(180%) blur(12px);
+  border-bottom: 1px solid var(--line);
+}
+
+.header-logo {
+  width: 26px;
+  height: 26px;
+  flex: 0 0 auto;
+}
+
+.header-title {
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 0.2px;
+}
+
+.header-sub {
+  margin-left: auto;
+  color: var(--ink-3);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* ---------- เนื้อหา ---------- */
+.content {
+  max-width: var(--wrap);
+  margin: 0 auto;
+  padding: 12px calc(14px + var(--sar)) 20px calc(14px + var(--sal));
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* ---------- tab bar ล่าง (มือถือ) ---------- */
+.tabbar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 30;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  height: calc(var(--tabbar-h) + var(--sab));
+  padding-bottom: var(--sab);
+  background: color-mix(in srgb, var(--surface) 92%, transparent);
+  backdrop-filter: saturate(180%) blur(12px);
+  border-top: 1px solid var(--line);
+}
+
+.tabbar button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  border: 0;
+  background: none;
+  color: var(--ink-3);
+  font-size: 10.5px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: color var(--dur) var(--ease);
+}
+
+.tabbar button i {
+  font-size: 21px;
+  font-style: normal;
+  line-height: 1;
+}
+
+.tabbar button[aria-current='page'] {
+  color: var(--brand);
+}
+
+/* ---------- sidebar (จอกว้าง) ---------- */
+.sidebar {
+  display: none;
+}
+
+@media (min-width: 900px) {
+  .app {
+    display: grid;
+    grid-template-columns: 248px minmax(0, 1fr);
+    padding-bottom: 0;
+  }
+
+  .tabbar {
+    display: none;
+  }
+
+  .sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    position: sticky;
+    top: 0;
+    align-self: start;
+    height: 100dvh;
+    padding: 18px 14px;
+    border-right: 1px solid var(--line);
+    background: var(--surface);
+    overflow-y: auto;
+  }
+
+  .sidebar-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 4px 8px 16px;
+  }
+
+  .sidebar-brand img {
+    width: 30px;
+    height: 30px;
+  }
+
+  .sidebar-brand div {
+    font-size: 15px;
+    font-weight: 800;
+  }
+
+  .sidebar-brand small {
+    display: block;
+    color: var(--ink-3);
+    font-size: 11px;
+    font-weight: 600;
+  }
+
+  .sidebar-group {
+    margin-top: 10px;
+    padding: 0 8px 4px;
+    color: var(--ink-3);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+  }
+
+  .sidebar a,
+  .sidebar button {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 40px;
+    padding: 8px 10px;
+    border: 0;
+    border-radius: var(--r-sm);
+    background: none;
+    color: var(--ink-2);
+    font-size: 14px;
+    font-weight: 700;
+    text-align: left;
+    cursor: pointer;
+  }
+
+  .sidebar button:hover {
+    background: var(--surface-2);
+  }
+
+  .sidebar button[aria-current='page'] {
+    background: var(--brand-soft);
+    color: var(--brand-ink);
+  }
+
+  .header {
+    display: none;
+  }
+
+  /* sidebar ลิสต์แบบฝึกให้อยู่แล้ว — ชิปชุดเดียวกันด้านบนจะซ้ำซ้อน */
+  .group-chips {
+    display: none;
+  }
+
+  .content {
+    padding-top: 24px;
+    padding-bottom: 48px;
+  }
+
+  /* หน้าที่เป็นตารางกว้าง (คลังคำ/พินอิน) ให้ใช้พื้นที่จอเต็มกว่าหน้าแบบฝึก */
+  .content.wide {
+    max-width: 1040px;
+  }
+}

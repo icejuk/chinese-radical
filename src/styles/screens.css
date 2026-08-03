@@ -1,0 +1,506 @@
+/* สไตล์เฉพาะหน้าจอของแอปนี้
+   หลักที่ต่างจาก chinese-study: ตัวจีนคือพระเอก → ตัวใหญ่ได้เต็มที่
+   แต่ทุกที่ที่โชว์ตัวจีนต้องมีพินอิน + ไทยกำกับ (สีพินอินใช้ --brand-ink จาก base.css)
+   ทุกบล็อกต้องไม่ล้นที่ 375px → ใช้ minmax(0,1fr) กับ grid ทุกอัน ห้ามใส่ min-width ตายตัว */
+
+/* ---------- หน้าราก ---------- */
+.rad-grid {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+@media (min-width: 620px) {
+  .rad-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  /* การ์ดที่กางอยู่กินเต็มแถว — เนื้อหาข้างในกว้างกว่าครึ่งจอ */
+  .rad-card.open {
+    grid-column: 1 / -1;
+  }
+}
+
+.rad-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 12px 14px;
+  border: 0;
+  border-radius: var(--r-md);
+  background: none;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.rad-glyph {
+  flex: 0 0 auto;
+  width: 54px;
+  color: var(--ink);
+  font-size: 40px;
+  line-height: 1.1;
+  text-align: center;
+}
+
+.rad-meta {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.rad-th {
+  font-size: 15px;
+}
+
+.rad-sub {
+  font-size: 12px;
+}
+
+.rad-caret {
+  margin-left: auto;
+  color: var(--ink-3);
+}
+
+.rad-body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 0 14px 14px;
+}
+
+.rad-story {
+  margin: 0;
+  padding: 12px 14px;
+  border-radius: var(--r-sm);
+  background: var(--brand-soft);
+  color: var(--ink);
+  font-size: 14.5px;
+  line-height: 1.65;
+}
+
+.rad-strokes,
+.write-ref {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.rad-kids .chips {
+  flex-wrap: wrap;
+}
+
+/* ชิปที่มีตัวจีนใหญ่ + คำอ่านเล็ก (ใช้ทั้งหน้าราก หน้าค้นหา) */
+.chip-zh {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: auto;
+  padding: 8px 12px;
+}
+
+.chip-zh .zh {
+  font-size: 22px;
+  line-height: 1.2;
+}
+
+.chip-sub {
+  color: var(--ink-3);
+  font-size: 11.5px;
+  font-weight: 600;
+}
+
+/* ---------- กรอบลำดับขีด ---------- */
+.strokepad {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  max-width: 100%;
+}
+
+/* 米字格 — เส้นตารางช่วยกะสัดส่วน วาดด้วย gradient ไม่ใช้ไฟล์รูป (ต้องทำงาน offline) */
+.strokepad-grid {
+  position: relative;
+  max-width: 100%;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r-sm);
+  background:
+    linear-gradient(to right, transparent calc(50% - 0.5px), var(--line) calc(50% - 0.5px), var(--line) calc(50% + 0.5px), transparent calc(50% + 0.5px)),
+    linear-gradient(to bottom, transparent calc(50% - 0.5px), var(--line) calc(50% - 0.5px), var(--line) calc(50% + 0.5px), transparent calc(50% + 0.5px)),
+    linear-gradient(to bottom right, transparent calc(50% - 0.5px), var(--surface-3) calc(50% - 0.5px), var(--surface-3) calc(50% + 0.5px), transparent calc(50% + 0.5px)),
+    linear-gradient(to bottom left, transparent calc(50% - 0.5px), var(--surface-3) calc(50% - 0.5px), var(--surface-3) calc(50% + 0.5px), transparent calc(50% + 0.5px));
+  background-color: var(--surface);
+}
+
+.strokepad-box svg {
+  display: block;
+  touch-action: none; /* ไม่ให้หน้าเลื่อนตามนิ้วขณะลากเขียน */
+}
+
+.strokepad-ctrl {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.strokepad-count,
+.write-count {
+  font-size: 12.5px;
+}
+
+.strokepad-progress {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.strokepad-progress b {
+  color: var(--brand-ink);
+  font-size: 18px;
+}
+
+.strokepad-miss {
+  color: var(--err);
+}
+
+.stroke-none {
+  padding: 10px;
+  font-size: 13px;
+  text-align: center;
+}
+
+/* ---------- หน้าแตกตัวอักษร ---------- */
+.bd-results {
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.bd-main {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.bd-hero {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.bd-glyph {
+  flex: 0 0 auto;
+  color: var(--ink);
+  font-size: 84px;
+  line-height: 1;
+}
+
+.bd-info {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.bd-py {
+  font-size: 22px;
+}
+
+.bd-th {
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.bd-hint {
+  padding: 12px 14px;
+  border-left: 3px solid var(--brand);
+  border-radius: var(--r-sm);
+  background: var(--brand-soft);
+  font-size: 14.5px;
+  line-height: 1.65;
+}
+
+/* แผนภาพแตกส่วน — เรียงแนวนอนบนจอกว้าง ตกลงเป็นคอลัมน์บนมือถือ */
+.tree-root {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* มือถือ: ส่วนประกอบเรียงลงมาทีละอัน (2 คอลัมน์ที่ 375px แคบเกิน ข้อความชนแท็ก "บอกเสียง")
+   จอกว้างขึ้นค่อยให้ไหลข้างกันได้ */
+.tree-node {
+  display: flex;
+  min-width: 0;
+  flex: 1 1 100%;
+  flex-direction: column;
+  gap: 8px;
+}
+
+@media (min-width: 520px) {
+  .tree-node {
+    flex: 1 1 200px;
+  }
+}
+
+.tree-chip {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+  background: var(--surface-2);
+  color: inherit;
+  text-align: left;
+  cursor: default;
+}
+
+.tree-chip.can-drill {
+  border-color: var(--brand-line);
+  background: var(--surface);
+  cursor: pointer;
+}
+
+.tree-chip.is-sound {
+  border-style: dashed;
+  opacity: 0.85;
+}
+
+.tree-glyph {
+  flex: 0 0 auto;
+  color: var(--ink);
+  font-size: 34px;
+  line-height: 1.1;
+}
+
+.tree-gloss {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+}
+
+.tree-th {
+  font-size: 13px;
+  font-weight: 700;
+  overflow-wrap: anywhere; /* ความหมายไทยยาวๆ ต้องตัดบรรทัดได้ ไม่ดันแท็กออกนอกการ์ด */
+}
+
+.tree-tag {
+  flex: 0 0 auto;
+  margin-left: auto;
+  padding: 2px 8px;
+  border-radius: var(--r-pill);
+  background: var(--surface-3);
+  color: var(--ink-3);
+  font-size: 10.5px;
+  font-weight: 700;
+}
+
+/* ลูกของกิ่ง — เยื้องเข้ามาพร้อมเส้นบอกลำดับชั้น */
+.tree-kids {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-left: 14px;
+  padding-left: 12px;
+  border-left: 2px dotted var(--line-strong);
+}
+
+.bd-words {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.bd-word {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-pill);
+  background: var(--surface-2);
+  font-size: 13px;
+}
+
+.bd-word .zh {
+  font-size: 18px;
+}
+
+/* ---------- ควิซ ---------- */
+.quiz {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  text-align: center;
+}
+
+.quiz-glyph {
+  color: var(--ink);
+  font-size: 88px;
+  line-height: 1.05;
+}
+
+.quiz-prompt {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.quiz-sub {
+  font-size: 13px;
+}
+
+.quiz-opts {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.quiz-opt {
+  justify-content: flex-start;
+  gap: 10px;
+  text-align: left;
+}
+
+.quiz-opt-glyph {
+  flex: 0 0 auto;
+  width: 40px;
+  font-size: 28px;
+  line-height: 1.1;
+  text-align: center;
+}
+
+.quiz-opt-label {
+  min-width: 0;
+  font-weight: 700;
+}
+
+.quiz-opt.ok {
+  border-color: var(--ok-line);
+  background: var(--ok-soft);
+  color: var(--ok);
+}
+
+.quiz-opt.bad {
+  border-color: var(--err-line);
+  background: var(--err-soft);
+  color: var(--err);
+}
+
+.quiz-opt.dim {
+  opacity: 0.5;
+}
+
+.quiz-explain {
+  margin-top: 6px;
+  color: var(--ink-2);
+  font-size: 13.5px;
+  font-weight: 500;
+  line-height: 1.6;
+  text-align: left;
+}
+
+/* ---------- ฝึกเขียน ---------- */
+.write {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.write-prompt {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.write-py {
+  font-size: 26px;
+}
+
+.write-th {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.write-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.write-ref-glyph {
+  color: var(--ink-2);
+  font-size: 56px;
+  line-height: 1;
+}
+
+/* ---------- คลังตัวอักษร ---------- */
+.chars-star {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.chars-star input {
+  width: 20px;
+  height: 20px;
+  accent-color: var(--brand);
+}
+
+.chars-grid {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));
+}
+
+.chars-cell {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 10px 6px;
+  color: inherit;
+  cursor: pointer;
+}
+
+.chars-glyph {
+  color: var(--ink);
+  font-size: 34px;
+  line-height: 1.1;
+}
+
+.chars-th {
+  font-size: 12px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.chars-parts {
+  font-family: var(--font-zh);
+  font-size: 12px;
+}
+
+.chars-srs {
+  color: var(--ink-3);
+  font-size: 10.5px;
+  font-weight: 700;
+}
+
+.chars-star-mark {
+  position: absolute;
+  top: 4px;
+  right: 6px;
+  font-size: 11px;
+}

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="字根">
+  <defs>
+    <linearGradient id="jade" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#17786a" />
+      <stop offset="1" stop-color="#2ba08c" />
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="112" fill="url(#jade)" />
+  <!-- ตัว 木 (ต้นไม้ = ราก) วาดด้วยเส้นเอง ไม่พึ่งฟอนต์ เพราะไอคอนต้องหน้าตาเหมือนกันทุกเครื่อง -->
+  <g stroke="#f6f5f3" stroke-width="26" stroke-linecap="round" fill="none">
+    <path d="M120 190 H392" />
+    <path d="M256 120 V392" />
+    <path d="M256 232 L150 372" />
+    <path d="M256 232 L362 372" />
+  </g>
+</svg>

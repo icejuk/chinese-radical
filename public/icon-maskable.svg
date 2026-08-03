@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="字根">
+  <defs>
+    <linearGradient id="jadeM" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#17786a" />
+      <stop offset="1" stop-color="#2ba08c" />
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" fill="url(#jadeM)" />
+  <!-- maskable: เนื้อหาอยู่ในวงกลมปลอดภัยกลางภาพ เผื่อระบบครอปเป็นวงกลม -->
+  <g stroke="#f6f5f3" stroke-width="24" stroke-linecap="round" fill="none">
+    <path d="M152 204 H360" />
+    <path d="M256 148 V364" />
+    <path d="M256 238 L172 348" />
+    <path d="M256 238 L340 348" />
+  </g>
+</svg>
