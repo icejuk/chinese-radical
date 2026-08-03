@@ -166,13 +166,21 @@ export function LearnScreen({
         >
           ‹
         </button>
-        <button type="button" className="btn btn-lg rate-again" onClick={() => rate(false)}>
-          <span>ยังไม่แม่น</span>
-          <small>เก็บไว้ทวน</small>
+        <button
+          type="button"
+          className="btn btn-lg rate-again"
+          aria-label="ยังไม่แม่น เก็บตัวนี้ไว้ทวน"
+          onClick={() => rate(false)}
+        >
+          ยังไม่แม่น
         </button>
-        <button type="button" className="btn btn-primary btn-lg rate-good" onClick={() => rate(true)}>
-          <span>จำได้</span>
-          <small>ไปตัวถัดไป</small>
+        <button
+          type="button"
+          className="btn btn-primary btn-lg rate-good"
+          aria-label="จำได้ ไปตัวถัดไป"
+          onClick={() => rate(true)}
+        >
+          จำได้
         </button>
       </div>
     </div>
