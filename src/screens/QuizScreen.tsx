@@ -9,23 +9,34 @@ import { SpeakButton } from '../components/SpeakButton'
 
 const SET_SIZE = 10
 
-export function QuizScreen() {
+export function QuizScreen({
+  simple = false,
+  focusKeys = [],
+}: {
+  simple?: boolean
+  focusKeys?: readonly string[]
+}) {
+  const setSize = simple ? 5 : SET_SIZE
   const [mode, setMode] = useState<QuizMode>('rad2th')
-  const [set, setSet] = useState<Question[]>(() => makeSet('rad2th', SET_SIZE))
+  const [set, setSet] = useState<Question[]>(() => makeSet('rad2th', setSize, focusKeys))
   const [i, setI] = useState(0)
   const [chosen, setChosen] = useState<number | null>(null)
   const [right, setRight] = useState(0)
   const [wrong, setWrong] = useState(0)
   const timer = useRef<number | null>(null)
 
-  // เปลี่ยนโหมด = เริ่มชุดใหม่
-  useEffect(() => {
-    setSet(makeSet(mode, SET_SIZE))
+  const changeMode = (nextMode: QuizMode) => {
+    if (timer.current) {
+      clearTimeout(timer.current)
+      timer.current = null
+    }
+    setMode(nextMode)
+    setSet(makeSet(nextMode, setSize, focusKeys))
     setI(0)
     setChosen(null)
     setRight(0)
     setWrong(0)
-  }, [mode])
+  }
 
   // ล้าง timer ตอน unmount ไม่งั้น setState หลัง unmount
   useEffect(() => () => { if (timer.current) clearTimeout(timer.current) }, [])
@@ -59,7 +70,7 @@ export function QuizScreen() {
   }
 
   const restart = () => {
-    setSet(makeSet(mode, SET_SIZE))
+    setSet(makeSet(mode, setSize, focusKeys))
     setI(0)
     setChosen(null)
     setRight(0)
@@ -68,12 +79,24 @@ export function QuizScreen() {
 
   return (
     <div className="stack">
-      <Chips<QuizMode>
-        label="โหมดควิซ"
-        value={mode}
-        onChange={setMode}
-        items={QUIZ_MODES.map((m) => ({ v: m.v, label: m.label }))}
-      />
+      {simple ? (
+        <details className="practice-settings">
+          <summary>เปลี่ยนรูปแบบ · {QUIZ_MODES.find((item) => item.v === mode)?.label}</summary>
+          <Chips<QuizMode>
+            label="โหมดควิซ"
+            value={mode}
+            onChange={changeMode}
+            items={QUIZ_MODES.map((m) => ({ v: m.v, label: m.label }))}
+          />
+        </details>
+      ) : (
+        <Chips<QuizMode>
+          label="โหมดควิซ"
+          value={mode}
+          onChange={changeMode}
+          items={QUIZ_MODES.map((m) => ({ v: m.v, label: m.label }))}
+        />
+      )}
 
       <ScoreBar right={right} wrong={wrong} />
       <Progress value={i} max={set.length} />

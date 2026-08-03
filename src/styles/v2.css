@@ -1,0 +1,717 @@
+/* V2 — mobile-first, เปิดมาแล้วเรียนได้ทันที
+   สโคปทุกอย่างใต้ .app-v2 เพื่อให้หน้าหรือ component เดิมยังใช้ token ชุดเดิมได้ */
+
+.app-v2 {
+  --header-h: 54px;
+  --tabbar-h: 60px;
+  --wrap: 720px;
+}
+
+.v2-header {
+  gap: 11px;
+  padding-right: calc(10px + var(--sar));
+  padding-left: calc(14px + var(--sal));
+  background: color-mix(in srgb, var(--bg) 94%, var(--surface));
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+
+.v2-header .header-mark {
+  width: 34px;
+  height: 34px;
+  border-radius: 9px;
+  background: var(--surface);
+  font-size: 19px;
+}
+
+.v2-header .header-title {
+  min-width: 0;
+  flex: 1;
+  font-size: 15px;
+  line-height: 1.35;
+}
+
+.v2-header .header-title small {
+  margin-top: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.header-back,
+.header-quick {
+  display: inline-grid;
+  width: 44px;
+  height: 44px;
+  flex: 0 0 auto;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--ink-2);
+  cursor: pointer;
+}
+
+.header-back {
+  margin-left: -7px;
+  font-size: 32px;
+  font-weight: 300;
+}
+
+.header-quick {
+  margin-left: auto;
+  font-size: 29px;
+  line-height: 1;
+}
+
+.header-back:active,
+.header-quick:active {
+  background: var(--surface-2);
+}
+
+.v2-content {
+  padding: 10px calc(12px + var(--sar)) 22px calc(12px + var(--sal));
+}
+
+.v2-content.full {
+  min-height: calc(100dvh - var(--header-h) - var(--tabbar-h) - var(--sat) - var(--sab));
+}
+
+.v2-tabbar {
+  padding-right: var(--sar);
+  padding-left: var(--sal);
+  background: color-mix(in srgb, var(--bg) 92%, var(--surface));
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+}
+
+.v2-tabbar button {
+  min-width: 0;
+  gap: 1px;
+  font-size: 11px;
+}
+
+.v2-tabbar button i {
+  font-size: 20px;
+}
+
+.v2-tabbar button[aria-current='page'] {
+  background: linear-gradient(to bottom, var(--seal-soft), transparent 72%);
+}
+
+/* ---------- control ที่ใช้ซ้ำใน V2 ---------- */
+.v2-segment {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(0, 1fr);
+  gap: 4px;
+  padding: 4px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--surface-2);
+}
+
+.v2-segment button {
+  min-height: 42px;
+  padding: 7px 10px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--ink-3);
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.v2-segment button[aria-selected='true'] {
+  background: var(--surface);
+  color: var(--ink);
+  outline: 1px solid var(--line);
+}
+
+/* ---------- เรียน ---------- */
+.v2-learn {
+  min-width: 0;
+  gap: 8px;
+}
+
+.v2-learn .learn-top {
+  min-height: 36px;
+}
+
+.v2-learn .learn-count {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 5px;
+  color: var(--ink-3);
+  font-size: 12px;
+}
+
+.v2-learn .learn-count b {
+  color: var(--seal);
+  font-size: 17px;
+}
+
+.learn-switch {
+  min-height: 40px;
+  padding: 6px 4px 6px 12px;
+  border: 0;
+  background: transparent;
+  color: var(--ink-2);
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.learn-switch::after {
+  content: '⌕';
+  margin-left: 6px;
+  font-size: 19px;
+  vertical-align: -1px;
+}
+
+.v2-learn .learn-card {
+  flex: 0 0 auto;
+  min-width: 0;
+  padding: 10px 12px 12px;
+  border-radius: 13px;
+  overflow: hidden;
+}
+
+.v2-learn .learn-stroke-hero .strokepad {
+  gap: 6px;
+}
+
+.v2-learn .strokepad-grid {
+  border-radius: 3px;
+}
+
+.v2-learn .strokepad-ctrl {
+  min-height: 38px;
+  gap: 7px;
+}
+
+.v2-learn .pad-btn {
+  width: 38px;
+  height: 38px;
+}
+
+.learn-essential {
+  display: flex;
+  width: min(100%, 360px);
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 7px;
+}
+
+.v2-learn .learn-gloss {
+  min-width: 0;
+  align-items: flex-start;
+  margin-top: 0;
+  text-align: left;
+}
+
+.v2-learn .learn-py {
+  font-size: 22px;
+  line-height: 1.15;
+}
+
+.v2-learn .learn-th {
+  font-size: 17px;
+  line-height: 1.35;
+}
+
+.v2-learn .learn-speak {
+  min-width: 0;
+  min-height: 44px;
+  padding: 7px 13px;
+  white-space: nowrap;
+}
+
+.v2-learn .learn-story {
+  width: min(100%, 440px);
+  margin-top: 9px;
+  padding: 9px 2px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 0;
+  font-size: 14px;
+  line-height: 1.65;
+  text-align: center;
+}
+
+.learn-more {
+  width: min(100%, 440px);
+  margin-top: 5px;
+  border-top: 1px solid var(--line);
+  text-align: left;
+}
+
+.learn-more > summary {
+  min-height: 42px;
+  padding: 10px 2px 7px;
+  color: var(--ink-3);
+  font-size: 12.5px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.learn-more .learn-tags {
+  margin: 5px 0 2px;
+}
+
+.learn-more .learn-kids {
+  margin-top: 10px;
+  padding-top: 10px;
+}
+
+.learn-more .learn-nokids {
+  margin-top: 6px;
+  padding-top: 7px;
+}
+
+.v2-rating {
+  bottom: calc(var(--tabbar-h) + var(--sab) + 4px);
+  display: grid;
+  grid-template-columns: 40px minmax(0, 1fr) minmax(0, 1fr);
+  gap: 6px;
+  padding-top: 12px;
+}
+
+.learn-prev {
+  display: grid;
+  width: 40px;
+  min-height: 56px;
+  place-items: center;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--surface);
+  color: var(--ink-3);
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.learn-prev:disabled {
+  opacity: 0.32;
+}
+
+.v2-rating .btn {
+  min-width: 0;
+  min-height: 56px;
+  flex-direction: column;
+  gap: 0;
+  padding: 6px 8px;
+  border-radius: 12px;
+  line-height: 1.25;
+  white-space: nowrap;
+}
+
+.v2-rating .btn small {
+  opacity: 0.72;
+  font-size: 10.5px;
+  font-weight: 600;
+}
+
+.rate-again {
+  border-color: var(--seal);
+  color: var(--seal);
+}
+
+.learn-done {
+  width: min(100%, 480px);
+  margin: 8vh auto 0;
+  border-radius: 14px;
+}
+
+.btn-quiet {
+  border-color: transparent;
+  background: transparent;
+  color: var(--ink-3);
+}
+
+/* ---------- ฝึก ---------- */
+.practice-shell {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+}
+
+.practice-intro {
+  display: flex;
+  flex-direction: column;
+  padding: 1px 2px 2px;
+}
+
+.practice-intro b {
+  font-size: 14.5px;
+}
+
+.practice-intro span {
+  color: var(--ink-3);
+  font-size: 12px;
+}
+
+.practice-shell .score,
+.practice-shell .quiz,
+.practice-shell .write,
+.practice-shell .done {
+  border-radius: 13px;
+}
+
+.practice-shell .quiz {
+  gap: 10px;
+  padding: 14px;
+}
+
+.practice-shell .quiz-glyph {
+  font-size: clamp(68px, 24vw, 96px);
+}
+
+.practice-empty {
+  display: flex;
+  min-height: 330px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  border-radius: 13px;
+  text-align: center;
+}
+
+.practice-empty > .zh {
+  color: var(--seal);
+  font-size: 58px;
+  line-height: 1;
+}
+
+.practice-empty p {
+  max-width: 320px;
+  margin: 0 0 7px;
+  color: var(--ink-3);
+  font-size: 13px;
+}
+
+.practice-shell .quiz-opts {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.practice-shell .quiz-opt {
+  min-height: 58px;
+  padding: 8px 10px;
+}
+
+.practice-settings {
+  border: 0;
+  color: var(--ink-3);
+  font-size: 12.5px;
+}
+
+/* ตัวเลือกขั้นสูงอยู่หลังแบบฝึกเสมอ — ผู้เรียนไม่ต้องตั้งค่าก่อนเริ่มข้อแรก */
+.practice-shell .stack > .practice-settings {
+  order: 10;
+}
+
+.practice-settings > summary {
+  width: max-content;
+  max-width: 100%;
+  min-height: 40px;
+  margin-left: auto;
+  padding: 9px 2px;
+  cursor: pointer;
+}
+
+.practice-settings[open] {
+  padding: 6px 0 2px;
+  border-top: 1px solid var(--line);
+}
+
+.practice-settings[open] > summary {
+  margin-bottom: 4px;
+}
+
+/* ---------- ค้น ---------- */
+.explore {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+}
+
+.explore-search-wrap {
+  position: sticky;
+  top: calc(var(--header-h) + var(--sat) + 8px);
+  z-index: 10;
+  display: flex;
+  min-height: 52px;
+  align-items: center;
+  gap: 10px;
+  padding: 0 12px;
+  border: 1px solid var(--line-strong);
+  border-radius: 13px;
+  background: var(--surface);
+}
+
+.explore-search-wrap > span {
+  color: var(--ink-3);
+  font-size: 25px;
+}
+
+.explore-search {
+  min-width: 0;
+  flex: 1;
+  min-height: 50px;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  font-size: 16px;
+}
+
+.explore-search::placeholder {
+  color: var(--ink-3);
+}
+
+.explore-search-wrap > button {
+  display: grid;
+  width: 40px;
+  height: 40px;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--surface-2);
+  color: var(--ink-3);
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.explore-summary > div {
+  display: flex;
+  flex-direction: column;
+  padding: 2px;
+}
+
+.explore-summary b {
+  font-size: 14px;
+}
+
+.explore-summary span {
+  color: var(--ink-3);
+  font-size: 11.5px;
+}
+
+.explore-section {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.explore-heading {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--ink-2);
+  font-size: 13px;
+}
+
+.explore-heading::after {
+  content: '';
+  height: 1px;
+  flex: 1;
+  background: var(--line);
+}
+
+.explore-heading span {
+  order: 2;
+  color: var(--ink-3);
+  font-size: 11px;
+}
+
+.explore-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 7px;
+}
+
+.explore-card {
+  position: relative;
+  display: flex;
+  min-width: 0;
+  min-height: 124px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  padding: 9px 5px 7px;
+  border: 1px solid var(--line);
+  border-radius: 11px;
+  background: var(--surface);
+  color: var(--ink);
+  cursor: pointer;
+  content-visibility: auto;
+  contain-intrinsic-size: auto 124px;
+}
+
+.explore-card:active {
+  border-color: var(--seal);
+  background: var(--seal-soft);
+}
+
+.explore-card b {
+  max-width: 100%;
+  overflow: hidden;
+  font-size: 11.5px;
+  line-height: 1.35;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.explore-type {
+  position: absolute;
+  top: 5px;
+  left: 7px;
+  color: var(--ink-3);
+  font-size: 9px;
+  font-weight: 700;
+}
+
+.explore-glyph {
+  font-size: 38px;
+  line-height: 1.15;
+}
+
+.explore-card .py {
+  max-width: 100%;
+  overflow: hidden;
+  font-size: 11px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.explore-parts {
+  max-width: 100%;
+  margin-top: 2px;
+  overflow: hidden;
+  color: var(--ink-3);
+  font-size: 10px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.explore-star {
+  position: absolute;
+  top: 6px;
+  right: 7px;
+  color: var(--seal);
+  font-size: 8px;
+}
+
+.explore-empty {
+  display: flex;
+  min-height: 260px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.explore-empty .zh {
+  color: var(--ink-3);
+  font-size: 62px;
+}
+
+.explore-empty p {
+  max-width: 300px;
+  margin: 4px 0 0;
+  color: var(--ink-3);
+  font-size: 13px;
+}
+
+@media (max-width: 350px) {
+  .explore-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .v2-rating {
+    grid-template-columns: 36px minmax(0, 1fr) minmax(0, 1fr);
+  }
+
+  .learn-prev {
+    width: 36px;
+  }
+}
+
+@media (max-height: 700px) {
+  .v2-content {
+    padding-top: 6px;
+  }
+
+  .v2-learn {
+    gap: 5px;
+  }
+
+  .v2-learn .learn-card {
+    padding-top: 7px;
+  }
+
+  .v2-learn .learn-story {
+    margin-top: 6px;
+    padding-top: 6px;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .learn-more > summary {
+    min-height: 36px;
+    padding-top: 7px;
+    padding-bottom: 4px;
+  }
+
+  .v2-rating {
+    padding-top: 7px;
+  }
+}
+
+@media (min-width: 560px) {
+  .explore-grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
+  .practice-shell .quiz-opts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 760px) {
+  .app-v2 {
+    --header-h: 58px;
+  }
+
+  .v2-content {
+    padding-top: 16px;
+  }
+
+  .v2-header {
+    padding-right: max(calc((100vw - 720px) / 2), 20px);
+    padding-left: max(calc((100vw - 720px) / 2), 20px);
+  }
+
+  .v2-tabbar {
+    right: 50%;
+    left: auto;
+    width: min(720px, 100%);
+    transform: translateX(50%);
+    border-right: 1px solid var(--line);
+    border-left: 1px solid var(--line);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .app-v2 *,
+  .app-v2 *::before,
+  .app-v2 *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}

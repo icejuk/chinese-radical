@@ -8,13 +8,18 @@ import { srsGet, today } from './srs'
 import { charsUsingRad, learnRads } from './tree'
 import type { Radical } from '../data/types'
 
-export const DAY_SIZE = 8
+export const DAY_SIZE = 5
 
-type DayLog = { d: number; done: string[] }
+type DayLog = { d: number; done: string[]; set?: string[] }
 
 function dayLog(): DayLog {
   const l = readJson<DayLog>(KEYS.day, { d: 0, done: [] })
-  return l.d === today() ? l : { d: today(), done: [] }
+  if (l.d !== today()) return { d: today(), done: [] }
+  return {
+    d: l.d,
+    done: Array.isArray(l.done) ? l.done.filter((item): item is string => typeof item === 'string') : [],
+    set: Array.isArray(l.set) ? l.set.filter((item): item is string => typeof item === 'string') : undefined,
+  }
 }
 
 /** อักขระที่ดูจบแล้ววันนี้ */
@@ -28,6 +33,15 @@ export function markDone(ch: string) {
 
 /** ชุดรากของวันนี้ — ครบกำหนดทวนก่อน แล้วเติมตัวใหม่ให้ครบ DAY_SIZE */
 export function todaySet(size = DAY_SIZE): Radical[] {
+  const log = dayLog()
+
+  // ชุดมาตรฐานถูก snapshot ครั้งแรกของวัน แล้วใช้ชุดเดิมแม้ SRS จะเปลี่ยนระหว่างเรียน
+  if (size === DAY_SIZE && log.set?.length) {
+    const byChar = new Map(learnRads.map((radical) => [radical.r, radical]))
+    const saved = log.set.map((char) => byChar.get(char)).filter((item): item is Radical => Boolean(item))
+    if (saved.length) return saved
+  }
+
   const srs = srsGet()
   const t = today()
 
@@ -50,12 +64,17 @@ export function todaySet(size = DAY_SIZE): Radical[] {
     if (!out.includes(r)) out.push(r)
   }
   // เรียนครบทุกรากแล้วและยังไม่มีอะไรครบกำหนด → ให้ทวนตัวที่ใกล้ครบกำหนดที่สุด
-  if (out.length === 0) {
-    return [...learnRads]
+  const selected = out.length === 0
+    ? [...learnRads]
       .sort((a, b) => (srs[a.r]?.due ?? 0) - (srs[b.r]?.due ?? 0))
       .slice(0, size)
+    : out
+
+  if (size === DAY_SIZE) {
+    writeJson(KEYS.day, { ...log, set: selected.map((radical) => radical.r) })
   }
-  return out
+
+  return selected
 }
 
 export type DayStats = {

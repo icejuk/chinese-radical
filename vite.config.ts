@@ -11,18 +11,23 @@ export default defineConfig({
       manifest: {
         name: '字根 — รากอักษรจีน',
         short_name: '字根 ราก',
-        description: 'จำตัวอักษรจีนด้วยการแตกเป็นรากศัพท์ — ราก ความหมาย ลำดับขีด และฝึกเขียน',
+        description: 'เปิดมาเรียนรากจีนได้ทันที — ดูลำดับขีด ฟังเสียง จำความหมาย แล้วฝึกจากสิ่งที่เพิ่งเรียน',
         lang: 'th',
-        start_url: './',
+        id: './',
+        start_url: './#learn',
         scope: './',
         display: 'standalone',
-        orientation: 'portrait',
         background_color: '#ddd0b4',
         theme_color: '#b23a2c',
         categories: ['education', 'books'],
         icons: [
           { src: './icon.svg', sizes: 'any', type: 'image/svg+xml', purpose: 'any' },
           { src: './icon-maskable.svg', sizes: 'any', type: 'image/svg+xml', purpose: 'maskable' },
+        ],
+        shortcuts: [
+          { name: 'เรียนวันนี้', short_name: 'วันนี้', url: './#learn', icons: [{ src: './icon.svg', sizes: 'any' }] },
+          { name: 'ฝึกจำและเขียน', short_name: 'ฝึก', url: './#practice', icons: [{ src: './icon.svg', sizes: 'any' }] },
+          { name: 'ค้นรากและตัวอักษร', short_name: 'ค้น', url: './#explore', icons: [{ src: './icon.svg', sizes: 'any' }] },
         ],
       },
       workbox: {
@@ -37,7 +42,7 @@ export default defineConfig({
             handler: 'CacheFirst',
             options: {
               cacheName: 'zh-tts',
-              expiration: { maxEntries: 800, maxAgeSeconds: 60 * 60 * 24 * 365 },
+              expiration: { maxEntries: 100, maxAgeSeconds: 60 * 60 * 24 * 180 },
               cacheableResponse: { statuses: [0, 200] },
               rangeRequests: true,
             },

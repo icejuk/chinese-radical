@@ -1,25 +1,37 @@
 import { useCallback, useEffect, useState } from 'react'
-import { GROUPS, initialTab, isTab, itemOf, groupOf, rememberTab, tabForGroup, type TabId } from './nav'
+import { NAV_ITEMS, initialTab, isTab, rememberTab, rootOf, titleOf, type TabId } from './nav'
 import { warmVoices } from './lib/tts'
-import { todaySet } from './lib/today'
+import { doneToday, todaySet } from './lib/today'
+import { srsGet } from './lib/srs'
+import { learnRads } from './lib/tree'
 import type { Radical } from './data/types'
 import { LearnScreen } from './screens/LearnScreen'
-import { RadicalsScreen } from './screens/RadicalsScreen'
 import { BreakdownScreen } from './screens/BreakdownScreen'
-import { QuizScreen } from './screens/QuizScreen'
-import { WriteScreen } from './screens/WriteScreen'
-import { CharsScreen } from './screens/CharsScreen'
+import { PracticeScreen } from './screens/PracticeScreen'
+import { ExploreScreen } from './screens/ExploreScreen'
 
-/** หน้าที่เป็นตารางกว้าง ให้ใช้พื้นที่จอมากกว่าหน้าอ่านทีละใบ */
-const WIDE: TabId[] = ['radicals', 'chars']
+type Deck = { id: number; queue: Radical[]; start: number; label: string; trackToday: boolean }
 
-type Deck = { queue: Radical[]; start: number; label: string }
+let deckId = 0
+
+function makeTodayDeck(restart = false): Deck {
+  const queue = todaySet()
+  const done = new Set(doneToday())
+  const next = queue.findIndex((radical) => !done.has(radical.r))
+  return {
+    id: ++deckId,
+    queue,
+    start: restart ? 0 : next < 0 ? queue.length : next,
+    label: 'ชุดวันนี้',
+    trackToday: true,
+  }
+}
 
 export default function App() {
   const [tab, setTab] = useState<TabId>(initialTab)
   const [char, setChar] = useState('河')
-  // สำรับที่กำลังอ่านในโหมดแฟลชการ์ด — ค่าเริ่มคือชุดของวันนี้
-  const [deck, setDeck] = useState<Deck>(() => ({ queue: todaySet(), start: 0, label: 'ชุดของวันนี้' }))
+  const [detailReturn, setDetailReturn] = useState<'learn' | 'explore'>('explore')
+  const [deck, setDeck] = useState<Deck>(() => makeTodayDeck())
 
   useEffect(() => {
     warmVoices()
@@ -32,90 +44,97 @@ export default function App() {
 
   useEffect(() => {
     const onHash = () => {
-      const h = location.hash.replace(/^#/, '')
-      if (isTab(h)) setTab(h)
+      const hash = location.hash.replace(/^#/, '')
+      if (isTab(hash)) setTab(hash)
     }
     window.addEventListener('hashchange', onHash)
     return () => window.removeEventListener('hashchange', onHash)
   }, [])
 
-  const openChar = useCallback((ch: string) => {
-    setChar(ch)
-    setTab('breakdown')
+  const openChar = useCallback((nextChar: string, returnTo: 'learn' | 'explore' = 'explore') => {
+    setChar(nextChar)
+    setDetailReturn(returnTo)
+    setTab('detail')
   }, [])
 
-  /** เริ่มชุดของวันนี้ — คำนวณใหม่ตอนกด เพราะ SRS อาจเปลี่ยนหลังทำควิซ */
-  const startToday = useCallback(() => {
-    setDeck({ queue: todaySet(), start: 0, label: 'ชุดของวันนี้' })
+  const openRadical = useCallback((radical: Radical) => {
+    setDeck({ id: ++deckId, queue: [radical], start: 0, label: 'เลือกมาเรียน', trackToday: false })
     setTab('learn')
   }, [])
 
-  const openDeck = useCallback((queue: Radical[], start: number, label: string) => {
-    setDeck({ queue, start, label })
+  const openToday = useCallback((restart = false) => {
+    setDeck(makeTodayDeck(restart))
     setTab('learn')
   }, [])
 
-  const group = groupOf(tab)
-  const item = itemOf(tab)
+  const activeRoot = tab === 'detail' ? detailReturn : rootOf(tab)
+  const learned = srsGet()
+  const learnedInDeck = deck.queue.filter((radical) => learned[radical.r])
+  const practiced = new Set(learnedInDeck.map((radical) => radical.r))
+  const practiceRadicals = [
+    ...learnedInDeck,
+    ...learnRads.filter((radical) => learned[radical.r] && !practiced.has(radical.r)),
+  ]
+  const practiceLabel = learnedInDeck.length ? deck.label : 'สิ่งที่เคยเรียน'
 
   return (
-    <div className="app">
-      <header className="header">
-        <div className="header-mark zh" aria-hidden>
-          根
-        </div>
+    <div className="app app-v2">
+      <header className="header v2-header">
+        {tab === 'detail' ? (
+          <button type="button" className="header-back" aria-label="กลับ" onClick={() => setTab(detailReturn)}>
+            ‹
+          </button>
+        ) : (
+          <div className="header-mark zh" aria-hidden>根</div>
+        )}
         <div className="header-title">
-          {item.label}
-          <small>字根 · รากอักษรจีน</small>
+          {tab === 'learn' && !deck.trackToday ? 'เรียนรากนี้' : titleOf(tab)}
+          <small>字根 · จำจีนให้เป็นภาพ</small>
         </div>
-        <div className="header-right zh">{item.icon}</div>
+        <button type="button" className="header-quick" onClick={() => setTab('explore')} aria-label="ค้นหา">
+         ⌕
+        </button>
       </header>
 
-      <main className={`content ${WIDE.includes(tab) ? 'wide' : ''} ${tab === 'learn' ? 'full' : ''}`}>
-        {group.items.length > 1 && (
-          <div className="chips group-chips" role="tablist" aria-label={'เมนู' + group.label}>
-            {group.items.map((it) => (
-              <button
-                key={it.t}
-                role="tab"
-                type="button"
-                className="chip"
-                aria-selected={tab === it.t}
-                onClick={() => setTab(it.t)}
-              >
-                {it.label}
-              </button>
-            ))}
-          </div>
-        )}
-
+      <main className={`content v2-content ${tab === 'learn' ? 'full' : ''}`}>
         {tab === 'learn' && (
           <LearnScreen
-            // key บังคับให้เริ่มการ์ดใหม่เมื่อเปลี่ยนสำรับ (ไม่ค้าง index ของสำรับก่อน)
-            key={deck.label + deck.start + deck.queue.length}
-            queue={deck.queue.slice(deck.start)}
+            key={deck.id}
+            queue={deck.queue}
             label={deck.label}
-            onPickChar={openChar}
-            onFinish={() => setTab('quiz')}
+            initialIndex={deck.start}
+            trackToday={deck.trackToday}
+            onPickChar={(nextChar) => openChar(nextChar, 'learn')}
+            onFinish={() => setTab('practice')}
+            onExplore={() => setTab('explore')}
+            onRestartToday={() => openToday(false)}
+            onPositionChange={(start) => setDeck((current) => ({ ...current, start }))}
           />
         )}
-        {tab === 'radicals' && <RadicalsScreen onOpen={openDeck} onStartToday={startToday} />}
-        {tab === 'breakdown' && <BreakdownScreen char={char} setChar={setChar} />}
-        {tab === 'quiz' && <QuizScreen />}
-        {tab === 'write' && <WriteScreen />}
-        {tab === 'chars' && <CharsScreen onPickChar={openChar} />}
+        {tab === 'practice' && (
+          <PracticeScreen
+            radicals={practiceRadicals}
+            label={practiceLabel}
+            onStartLearn={() => setTab('learn')}
+          />
+        )}
+        {tab === 'explore' && <ExploreScreen onPickRadical={openRadical} onPickChar={(nextChar) => openChar(nextChar)} />}
+        {tab === 'detail' && <BreakdownScreen char={char} setChar={setChar} />}
       </main>
 
-      <nav className="tabbar" aria-label="เมนูหลัก">
-        {GROUPS.map((g) => (
+      <nav className="tabbar v2-tabbar" aria-label="เมนูหลัก">
+        {NAV_ITEMS.map((item) => (
           <button
-            key={g.key}
+            key={item.t}
             type="button"
-            aria-current={group.key === g.key ? 'page' : undefined}
-            onClick={() => setTab(tabForGroup(g.key))}
+            aria-current={activeRoot === item.t ? 'page' : undefined}
+            onClick={() => {
+              if (item.t === 'learn' && !deck.trackToday) openToday(false)
+              else setTab(item.t)
+            }}
           >
-            <i aria-hidden>{g.icon}</i>
-            {g.label}
+            <i aria-hidden>{item.icon}</i>
+            <span>{item.label}</span>
           </button>
         ))}
       </nav>

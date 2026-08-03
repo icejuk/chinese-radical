@@ -146,7 +146,8 @@ export function StrokePad({
       .then((data) => {
         setTotal(data.strokes.length)
         setReady(true)
-        if (mode === 'animate' && autoStart) w.animateCharacter()
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+        if (mode === 'animate' && autoStart && !reduceMotion) w.animateCharacter()
       })
       .catch(() => setErr(true))
 

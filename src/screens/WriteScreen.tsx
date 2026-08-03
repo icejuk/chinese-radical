@@ -1,7 +1,7 @@
 /* ฝึกเขียน — ลากเขียนตามในกรอบ ระบบตรวจทีละขีด (hanzi-writer quiz mode)
    เขียนจบตัว → บันทึก SRS (ผิดเกิน 2 ขีดถือว่ายังไม่แม่น) แล้ว "ต้องกดปุ่มไปตัวถัดไปเอง"
    ไม่มี auto-advance เลยในหน้านี้ เพราะต้องมีเวลาดูว่าตัวที่เขียนเสร็จหน้าตาถูกไหม */
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useCallback, useMemo, useState } from 'react'
 import { hanzi } from '../data/hanzi'
 import { learnRads, shuffle } from '../lib/tree'
 import { srsUpdate, starsGet, dueHanzi } from '../lib/srs'
@@ -10,9 +10,10 @@ import { SpeakButton } from '../components/SpeakButton'
 import { Chips, EmptyNote } from '../components/ui'
 import { KEYS, readJson, writeJson } from '../lib/storage'
 
-type Src = 'rad' | 'char' | 'star' | 'due'
+type Src = 'today' | 'rad' | 'char' | 'star' | 'due'
 
 const SRC: { v: Src; label: string }[] = [
+  { v: 'today', label: 'ชุดที่เพิ่งเรียน' },
   { v: 'rad', label: 'ราก' },
   { v: 'char', label: 'ตัวอักษร' },
   { v: 'due', label: 'ครบกำหนดทวน' },
@@ -21,8 +22,10 @@ const SRC: { v: Src; label: string }[] = [
 
 type Item = { zh: string; py: string; th: string }
 
-function poolOf(src: Src): Item[] {
+function poolOf(src: Src, focusItems: readonly Item[]): Item[] {
   switch (src) {
+    case 'today':
+      return [...focusItems]
     case 'rad':
       return learnRads.map((r) => ({ zh: r.r, py: r.py, th: r.th }))
     case 'char':
@@ -38,21 +41,30 @@ function poolOf(src: Src): Item[] {
   }
 }
 
-export function WriteScreen() {
+export function WriteScreen({
+  simple = false,
+  focusItems = [],
+}: {
+  simple?: boolean
+  focusItems?: readonly Item[]
+}) {
   const saved = readJson<{ src: Src }>(KEYS.writeSrc, { src: 'rad' })
-  const [src, setSrc] = useState<Src>(SRC.some((s) => s.v === saved.src) ? saved.src : 'rad')
-  const [queue, setQueue] = useState<Item[]>(() => shuffle(poolOf(saved.src)))
+  const savedSource = SRC.some((source) => source.v === saved.src) ? saved.src : 'rad'
+  const initialSource: Src = simple && focusItems.length ? 'today' : savedSource
+  const [src, setSrc] = useState<Src>(initialSource)
+  const [queue, setQueue] = useState<Item[]>(() => shuffle(poolOf(initialSource, focusItems)))
   const [i, setI] = useState(0)
   const [result, setResult] = useState<number | null>(null) // จำนวนขีดที่ผิด (null = ยังเขียนไม่จบ)
   const [showRef, setShowRef] = useState(false)
 
-  useEffect(() => {
-    setQueue(shuffle(poolOf(src)))
+  const changeSource = (nextSource: Src) => {
+    setSrc(nextSource)
+    setQueue(shuffle(poolOf(nextSource, focusItems)))
     setI(0)
     setResult(null)
     setShowRef(false)
-    writeJson(KEYS.writeSrc, { src })
-  }, [src])
+    writeJson(KEYS.writeSrc, { src: nextSource })
+  }
 
   const item = queue[i]
 
@@ -71,7 +83,7 @@ export function WriteScreen() {
   }
 
   const restart = () => {
-    setQueue(shuffle(poolOf(src)))
+    setQueue(shuffle(poolOf(src, focusItems)))
     setI(0)
     setResult(null)
     setShowRef(false)
@@ -81,7 +93,14 @@ export function WriteScreen() {
 
   return (
     <div className="stack">
-      <Chips<Src> label="ชุดที่จะฝึกเขียน" value={src} onChange={setSrc} items={SRC} />
+      {simple ? (
+        <details className="practice-settings">
+          <summary>เปลี่ยนชุด · {SRC.find((item) => item.v === src)?.label}</summary>
+          <Chips<Src> label="ชุดที่จะฝึกเขียน" value={src} onChange={changeSource} items={SRC} />
+        </details>
+      ) : (
+        <Chips<Src> label="ชุดที่จะฝึกเขียน" value={src} onChange={changeSource} items={SRC} />
+      )}
 
       {queue.length === 0 ? (
         <EmptyNote>

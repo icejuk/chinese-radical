@@ -31,9 +31,9 @@ export type Question = {
 
 const radTh = (r: Radical) => r.th
 
-function qRad2Th(): Question {
-  const r = pick(learnRads)
-  const wrong = distractors(learnRads, [r], 3)
+function qRad2Th(pool: Radical[]): Question {
+  const r = pick(pool)
+  const wrong = distractors(pool, [r], 3)
   const opts = shuffle([r, ...wrong])
   return {
     key: r.r,
@@ -46,9 +46,9 @@ function qRad2Th(): Question {
   }
 }
 
-function qTh2Rad(): Question {
-  const r = pick(learnRads)
-  const wrong = distractors(learnRads, [r], 3)
+function qTh2Rad(pool: Radical[]): Question {
+  const r = pick(pool)
+  const wrong = distractors(pool, [r], 3)
   const opts = shuffle([r, ...wrong])
   return {
     key: r.r,
@@ -60,13 +60,14 @@ function qTh2Rad(): Question {
 }
 
 /** ตัวอักษร → เลือกรากที่ประกอบอยู่จริง (เอาราก 1 ตัวเป็นคำตอบ ตัวลวงคือรากที่ไม่ได้อยู่ในตัวนั้น) */
-function qChar2Rad(): Question | null {
-  const pool = hanzi.filter((h) => radsOf(h).length > 0)
+function qChar2Rad(items: Hanzi[]): Question | null {
+  const pool = items.filter((h) => radsOf(h).length > 0)
   if (!pool.length) return null
   const h = pick(pool)
   const rads = radsOf(h)
   const ans = pick(rads)
-  const wrong = distractors(learnRads, rads, 3)
+  const focusRads = learnRads.filter((radical) => pool.some((item) => item.parts.includes(radical.r)))
+  const wrong = distractors(focusRads.length >= 4 ? focusRads : learnRads, rads, 3)
   const opts = shuffle([ans, ...wrong])
   return {
     key: h.zh,
@@ -80,8 +81,8 @@ function qChar2Rad(): Question | null {
 }
 
 /** เห็นรากที่ประกอบ + พินอิน แล้วเดาความหมายไทยของตัวอักษร */
-function qChar2Th(): Question | null {
-  const pool = hanzi.filter((h) => h.parts.length >= 2)
+function qChar2Th(items: Hanzi[]): Question | null {
+  const pool = items.filter((h) => h.parts.length >= 2)
   if (!pool.length) return null
   const h = pick(pool)
   const wrong = distractors(pool, [h], 3) as Hanzi[]
@@ -97,26 +98,41 @@ function qChar2Th(): Question | null {
   }
 }
 
-export function makeQuestion(mode: QuizMode): Question {
+export function makeQuestion(mode: QuizMode, focusKeys: readonly string[] = []): Question {
+  const focus = new Set(focusKeys)
+  const focusedRadicals = focus.size ? learnRads.filter((radical) => focus.has(radical.r)) : learnRads
+  const radicalPool = focusedRadicals.length ? focusedRadicals : learnRads
+  const characterPool = focus.size
+    ? hanzi.filter((item) => focus.has(item.zh) || item.parts.some((part) => focus.has(part)))
+    : hanzi
+
   switch (mode) {
     case 'rad2th':
-      return qRad2Th()
+      return qRad2Th(radicalPool)
     case 'th2rad':
-      return qTh2Rad()
+      return qTh2Rad(radicalPool)
     case 'char2rad':
-      return qChar2Rad() ?? qRad2Th()
+      return qChar2Rad(characterPool) ?? qRad2Th(radicalPool)
     case 'char2th':
-      return qChar2Th() ?? qRad2Th()
+      return qChar2Th(characterPool) ?? qRad2Th(radicalPool)
   }
 }
 
 /** ชุดข้อที่ไม่ซ้ำ key ติดกัน — ซ้ำติดกันทำให้รู้สึกว่าแบบฝึกพัง */
-export function makeSet(mode: QuizMode, n: number): Question[] {
+export function makeSet(mode: QuizMode, n: number, focusKeys: readonly string[] = []): Question[] {
   const out: Question[] = []
   let guard = 0
   while (out.length < n && guard < n * 30) {
     guard++
-    const q = makeQuestion(mode)
+    const q = makeQuestion(mode, focusKeys)
+    if (out.some((item) => item.key === q.key)) continue
+    out.push(q)
+  }
+
+  // ชุด focus อาจเล็กกว่าจำนวนข้อ — ค่อยยอมให้ซ้ำ แต่ไม่ให้ซ้ำติดกัน
+  while (out.length < n && guard < n * 60) {
+    guard++
+    const q = makeQuestion(mode, focusKeys)
     if (out.length && out[out.length - 1].key === q.key) continue
     out.push(q)
   }

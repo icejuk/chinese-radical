@@ -1,67 +1,47 @@
-/* เมนู 2 ระดับ: กลุ่ม (แถบล่าง) → แท็บย่อย (ชิปแบบแท็บกระดาษด้านบน)
-   ไอคอนใช้ "ตัวจีนตัวเดียว" ไม่ใช่ emoji — เข้ากับธีมตำรา และผู้ใช้ได้เห็นตัวจีนซ้ำๆ ไปด้วย
-
-   ⚠️ ตารางราก (`radicals`) ต้องเป็นแท็บนอกสุด/หน้าแรก — ผู้ใช้บอกชัดว่าไม่ควรอยู่ลึก
-   และห้ามมีหน้าที่ "บังคับว่าวันนี้ต้องเรียนอะไร" มาขวางเป็นหน้าแรก (ข้อเสนอวันนี้เป็นการ์ดเล็กบนตารางแทน) */
+/* V2 ใช้เมนูระดับเดียว 3 ปุ่มเท่านั้น
+   เปิดแอปมาเรียนได้ทันที ส่วนหน้ารายละเอียดถือเป็นส่วนหนึ่งของ "ค้น" */
 import { KEYS, readRaw, writeRaw } from './lib/storage'
 
-export type TabId = 'radicals' | 'learn' | 'quiz' | 'write' | 'breakdown' | 'chars'
+export type TabId = 'learn' | 'practice' | 'explore' | 'detail'
+export type RootTab = Exclude<TabId, 'detail'>
 
-export type NavItem = { t: TabId; label: string; icon: string }
-export type NavGroup = { key: string; label: string; icon: string; items: NavItem[] }
-
-export const GROUPS: NavGroup[] = [
-  {
-    key: 'rads',
-    label: 'ราก',
-    icon: '部',
-    items: [{ t: 'radicals', label: 'ตารางราก', icon: '部' }],
-  },
-  {
-    key: 'learn',
-    label: 'เรียน',
-    icon: '学',
-    items: [{ t: 'learn', label: 'เรียนทีละราก', icon: '学' }],
-  },
-  {
-    key: 'drill',
-    label: 'ฝึก',
-    icon: '练',
-    items: [
-      { t: 'quiz', label: 'ควิซ', icon: '问' },
-      { t: 'write', label: 'ฝึกเขียน', icon: '写' },
-    ],
-  },
-  {
-    key: 'find',
-    label: 'ค้น',
-    icon: '查',
-    items: [
-      { t: 'breakdown', label: 'แตกตัวอักษร', icon: '析' },
-      { t: 'chars', label: 'คลังตัวอักษร', icon: '字' },
-    ],
-  },
-]
-
-const ALL: NavItem[] = GROUPS.flatMap((g) => g.items)
-
-export const isTab = (s: string): s is TabId => ALL.some((i) => i.t === s)
-
-export const itemOf = (t: TabId): NavItem => ALL.find((i) => i.t === t)!
-
-export const groupOf = (t: TabId): NavGroup => GROUPS.find((g) => g.items.some((i) => i.t === t))!
-
-export const tabForGroup = (key: string): TabId => GROUPS.find((g) => g.key === key)!.items[0].t
-
-export function initialTab(): TabId {
-  const h = location.hash.replace(/^#/, '')
-  if (isTab(h)) return h
-  const saved = readRaw(KEYS.nav)
-  // เปิดแอปมาเจอตารางรากทั้งหมด — เลือกเองได้ว่าจะเริ่มตัวไหน
-  return saved && isTab(saved) ? saved : 'radicals'
+export type NavItem = {
+  t: RootTab
+  label: string
+  icon: string
+  title: string
 }
 
-export function rememberTab(t: TabId) {
-  writeRaw(KEYS.nav, t)
-  if (location.hash.replace(/^#/, '') !== t) location.hash = t
+export const NAV_ITEMS: NavItem[] = [
+  { t: 'learn', label: 'วันนี้', icon: '学', title: 'เรียนวันนี้' },
+  { t: 'practice', label: 'ฝึก', icon: '练', title: 'ฝึกให้จำ' },
+  { t: 'explore', label: 'ค้น', icon: '查', title: 'ค้นรากและตัวอักษร' },
+]
+
+export const isTab = (value: string): value is TabId =>
+  value === 'learn' || value === 'practice' || value === 'explore' || value === 'detail'
+
+export const rootOf = (tab: TabId): RootTab => (tab === 'detail' ? 'explore' : tab)
+
+export const titleOf = (tab: TabId): string =>
+  tab === 'detail' ? 'เข้าใจตัวอักษร' : NAV_ITEMS.find((item) => item.t === tab)!.title
+
+export function initialTab(): TabId {
+  const hash = location.hash.replace(/^#/, '')
+  if (isTab(hash)) return hash
+
+  const saved = readRaw(KEYS.nav)
+  if (saved && isTab(saved)) return saved
+
+  // ค่าจาก V1: พากลับเข้ากลุ่มใหม่ที่ใกล้เคียง โดยไม่ทำให้ bookmark เก่าพัง
+  if (hash === 'quiz' || hash === 'write') return 'practice'
+  if (hash === 'radicals' || hash === 'chars' || hash === 'breakdown') return 'explore'
+  return 'learn'
+}
+
+export function rememberTab(tab: TabId) {
+  // detail ไม่มีอักขระอยู่ใน URL จึงไม่ควรบันทึก/เขียน hash แล้วพา reload ไปเปิด 河 แบบผิดบริบท
+  if (tab === 'detail') return
+  writeRaw(KEYS.nav, tab)
+  if (location.hash.replace(/^#/, '') !== tab) location.hash = tab
 }

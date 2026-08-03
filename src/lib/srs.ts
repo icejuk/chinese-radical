@@ -11,7 +11,12 @@ const INTERVALS = [0, 1, 2, 4, 7, 15, 30] // จำนวนวันจนถ�
 export type SrsRow = { box: number; due: number; wrong: number; right: number }
 export type SrsMap = Record<string, SrsRow>
 
-export const today = () => Math.floor(Date.now() / 86400000)
+/** เลขวันตามปฏิทินท้องถิ่นของผู้เรียน (ไม่ใช่ UTC)
+ *  ถ้าใช้ Date.now()/86400000 วันใหม่ในไทยจะเริ่มตอน 07:00 แทนเที่ยงคืน */
+export const today = () => {
+  const now = new Date()
+  return Math.floor(Date.UTC(now.getFullYear(), now.getMonth(), now.getDate()) / 86400000)
+}
 
 export const srsGet = () => readJson<SrsMap>(KEYS.srs, {})
 export const srsSave = (o: SrsMap) => writeJson(KEYS.srs, o)
@@ -54,6 +59,11 @@ export function addStar(zh: string) {
   }
 }
 
+export function removeStar(zh: string) {
+  const s = starsGet()
+  if (s.delete(zh)) starsSave(s)
+}
+
 /* ---- แหล่งความจริงของ SRS/ดาว ---- */
 export const allHanzi = (): Hanzi[] => hanzi
 /** รากก็ทวนได้ — เก็บ key เดียวกับตัวอักษร เพราะเป็นอักขระเดี่ยวเหมือนกัน */
@@ -64,7 +74,8 @@ export function dueHanzi(): Hanzi[] {
   const t = today()
   return allHanzi().filter((h) => {
     const r = o[h.zh]
-    return !r || r.due <= t
+    // ตัวที่ไม่เคยเรียนยังไม่ใช่ของที่ "ครบกำหนดทวน"
+    return Boolean(r && r.due <= t)
   })
 }
 
