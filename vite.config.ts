@@ -17,8 +17,8 @@ export default defineConfig({
         scope: './',
         display: 'standalone',
         orientation: 'portrait',
-        background_color: '#F6F5F3',
-        theme_color: '#17786A',
+        background_color: '#ddd0b4',
+        theme_color: '#b23a2c',
         categories: ['education', 'books'],
         icons: [
           { src: './icon.svg', sizes: 'any', type: 'image/svg+xml', purpose: 'any' },

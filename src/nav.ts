@@ -1,35 +1,45 @@
-/* เมนู 2 ระดับ: กลุ่ม (tab bar ล่างบนมือถือ) → แท็บย่อย (ชิปด้านบน / sidebar บนจอกว้าง) */
+/* เมนู 2 ระดับ: กลุ่ม (แถบล่าง) → แท็บย่อย (ชิปแบบแท็บกระดาษด้านบน)
+   ไอคอนใช้ "ตัวจีนตัวเดียว" ไม่ใช่ emoji — เข้ากับธีมตำรา และผู้ใช้ได้เห็นตัวจีนซ้ำๆ ไปด้วย
+
+   ⚠️ ตารางราก (`radicals`) ต้องเป็นแท็บนอกสุด/หน้าแรก — ผู้ใช้บอกชัดว่าไม่ควรอยู่ลึก
+   และห้ามมีหน้าที่ "บังคับว่าวันนี้ต้องเรียนอะไร" มาขวางเป็นหน้าแรก (ข้อเสนอวันนี้เป็นการ์ดเล็กบนตารางแทน) */
 import { KEYS, readRaw, writeRaw } from './lib/storage'
 
-export type TabId = 'radicals' | 'breakdown' | 'quiz' | 'write' | 'chars'
+export type TabId = 'radicals' | 'learn' | 'quiz' | 'write' | 'breakdown' | 'chars'
 
 export type NavItem = { t: TabId; label: string; icon: string }
 export type NavGroup = { key: string; label: string; icon: string; items: NavItem[] }
 
 export const GROUPS: NavGroup[] = [
   {
+    key: 'rads',
+    label: 'ราก',
+    icon: '部',
+    items: [{ t: 'radicals', label: 'ตารางราก', icon: '部' }],
+  },
+  {
     key: 'learn',
     label: 'เรียน',
-    icon: '📖',
-    items: [
-      { t: 'radicals', label: 'รากศัพท์', icon: '🌱' },
-      { t: 'breakdown', label: 'แตกตัวอักษร', icon: '🌳' },
-    ],
+    icon: '学',
+    items: [{ t: 'learn', label: 'เรียนทีละราก', icon: '学' }],
   },
   {
     key: 'drill',
     label: 'ฝึก',
-    icon: '🎯',
+    icon: '练',
     items: [
-      { t: 'quiz', label: 'ควิซ', icon: '🎯' },
-      { t: 'write', label: 'ฝึกเขียน', icon: '✍️' },
+      { t: 'quiz', label: 'ควิซ', icon: '问' },
+      { t: 'write', label: 'ฝึกเขียน', icon: '写' },
     ],
   },
   {
-    key: 'lib',
-    label: 'คลัง',
-    icon: '📚',
-    items: [{ t: 'chars', label: 'คลังตัวอักษร', icon: '📚' }],
+    key: 'find',
+    label: 'ค้น',
+    icon: '查',
+    items: [
+      { t: 'breakdown', label: 'แตกตัวอักษร', icon: '析' },
+      { t: 'chars', label: 'คลังตัวอักษร', icon: '字' },
+    ],
   },
 ]
 
@@ -47,11 +57,11 @@ export function initialTab(): TabId {
   const h = location.hash.replace(/^#/, '')
   if (isTab(h)) return h
   const saved = readRaw(KEYS.nav)
+  // เปิดแอปมาเจอตารางรากทั้งหมด — เลือกเองได้ว่าจะเริ่มตัวไหน
   return saved && isTab(saved) ? saved : 'radicals'
 }
 
 export function rememberTab(t: TabId) {
   writeRaw(KEYS.nav, t)
-  // เขียน hash เพื่อให้ปุ่ม back ของเบราว์เซอร์ใช้ได้ (replace ไม่ได้ ไม่งั้น back ไม่มีอะไรให้ย้อน)
   if (location.hash.replace(/^#/, '') !== t) location.hash = t
 }

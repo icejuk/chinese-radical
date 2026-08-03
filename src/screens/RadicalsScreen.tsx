@@ -1,109 +1,79 @@
-/* หน้าเรียนราก — การ์ดต่อหนึ่งราก: ตัวใหญ่ + รูปแปร + เรื่องเล่าช่วยจำ + ลำดับขีด + ตัวอักษรที่ใช้ราก
-   ที่นี่ "ตัวจีนเป็นพระเอก" ได้เต็มที่ (ต่างจาก chinese-study) แต่ยังมีพินอิน+ไทยกำกับทุกที่ */
+/* ตารางราก — ไว้ "หาตัวที่รู้จักแล้ว" ไม่ใช่ไว้อ่านเรียงยาว
+   เดิมเป็น accordion 115 ใบสูง 6,600px (ผู้ใช้บอกว่าใช้ยาก) → เปลี่ยนเป็นตารางตัวจีนใหญ่
+   กดตัวไหนก็เข้าโหมดแฟลชการ์ดของหมวดนั้น เริ่มที่ตัวที่กด */
 import { useMemo, useState } from 'react'
-import { RAD_CATS, type RadCat } from '../data/types'
-import { learnRads, charsUsingRad } from '../lib/tree'
-import { StrokePad } from '../components/StrokePad'
-import { SpeakButton } from '../components/SpeakButton'
-import { Chips } from '../components/ui'
+import { RAD_CATS, type RadCat, type Radical } from '../data/types'
+import { learnRads } from '../lib/tree'
+import { srsGet, starsGet } from '../lib/srs'
 import { KEYS, readJson, writeJson } from '../lib/storage'
+import { TodayCard } from '../components/TodayCard'
 
 type CatFilter = RadCat | 'ทั้งหมด'
 
-export function RadicalsScreen({ onPickChar }: { onPickChar: (ch: string) => void }) {
+export function RadicalsScreen({
+  onOpen,
+  onStartToday,
+}: {
+  /** เปิดโหมดเรียน: ส่งชุดทั้งหมวด + ตำแหน่งที่กด */
+  onOpen: (queue: Radical[], start: number, label: string) => void
+  /** กดจากการ์ดแนะนำวันนี้ */
+  onStartToday: () => void
+}) {
   const saved = readJson<{ cat: CatFilter }>(KEYS.radFilter, { cat: 'ทั้งหมด' })
   const [cat, setCat] = useState<CatFilter>(
     saved.cat === 'ทั้งหมด' || RAD_CATS.includes(saved.cat as RadCat) ? saved.cat : 'ทั้งหมด',
   )
-  const [open, setOpen] = useState<string | null>(null)
 
+  const srs = useMemo(() => srsGet(), [])
+  const stars = useMemo(() => starsGet(), [])
+
+  const cats = useMemo(() => RAD_CATS.filter((c) => learnRads.some((r) => r.cat === c)), [])
   const list = useMemo(
-    () => (cat === 'ทั้งหมด' ? learnRads : learnRads.filter((r) => r.cat === cat)).slice(),
+    () => (cat === 'ทั้งหมด' ? learnRads : learnRads.filter((r) => r.cat === cat)),
     [cat],
-  )
-
-  // หมวดที่มีรากจริงเท่านั้น — ไม่โชว์ชิปเปล่า
-  const cats = useMemo(
-    () => RAD_CATS.filter((c) => learnRads.some((r) => r.cat === c)),
-    [],
   )
 
   return (
     <div className="stack">
-      <Chips<CatFilter>
-        label="หมวดของราก"
-        value={cat}
-        onChange={(v) => {
-          setCat(v)
-          writeJson(KEYS.radFilter, { cat: v })
-        }}
-        items={[
-          { v: 'ทั้งหมด', label: `ทั้งหมด (${learnRads.length})` },
-          ...cats.map((c) => ({ v: c as CatFilter, label: c })),
-        ]}
-      />
+      <TodayCard onStart={onStartToday} />
 
-      <div className="rad-grid">
-        {list.map((r) => {
-          const kids = charsUsingRad(r)
-          const isOpen = open === r.r
-          return (
-            <div key={r.r} className={`card rad-card ${isOpen ? 'open' : ''}`}>
-              <button
-                type="button"
-                className="rad-head"
-                aria-expanded={isOpen}
-                onClick={() => setOpen(isOpen ? null : r.r)}
-              >
-                <span className="rad-glyph zh">{r.r}</span>
-                <span className="rad-meta">
-                  <span className="py">{r.py}</span>
-                  <b className="rad-th">{r.th}</b>
-                  <span className="muted rad-sub">
-                    {r.strokes} ขีด · {r.cat}
-                    {r.vars?.length ? ` · รูปแปร ${r.vars.join(' ')}` : ''}
-                  </span>
-                </span>
-                <span className="rad-caret" aria-hidden>
-                  {isOpen ? '▾' : '▸'}
-                </span>
-              </button>
+      <div className="chips">
+        {[{ v: 'ทั้งหมด' as CatFilter, label: `ทั้งหมด ${learnRads.length}` },
+          ...cats.map((c) => ({ v: c as CatFilter, label: c }))].map((it) => (
+          <button
+            key={it.v}
+            type="button"
+            className="chip"
+            aria-selected={cat === it.v}
+            onClick={() => {
+              setCat(it.v)
+              writeJson(KEYS.radFilter, { cat: it.v })
+            }}
+          >
+            {it.label}
+          </button>
+        ))}
+      </div>
 
-              {isOpen && (
-                <div className="rad-body">
-                  <p className="rad-story">{r.story}</p>
+      <div className="rad-table">
+        {list.map((r, idx) => (
+          <button
+            key={r.r}
+            type="button"
+            className={`rad-cell ${srs[r.r] ? 'is-learned' : ''}`}
+            onClick={() => onOpen(list, idx, cat === 'ทั้งหมด' ? 'ตารางราก' : cat)}
+          >
+            <span className="zh rad-cell-glyph">{r.r}</span>
+            <span className="rad-cell-th">{r.th}</span>
+            <span className="muted rad-cell-py">{r.py}</span>
+            {stars.has(r.r) && <span className="rad-cell-star">⭐</span>}
+            {srs[r.r] && <span className="rad-cell-dot" aria-label="เรียนแล้ว" />}
+          </button>
+        ))}
+      </div>
 
-                  <SpeakButton zh={r.r} hint={`ฟังเสียง ${r.py}`} />
-
-                  <div className="rad-strokes">
-                    <StrokePad char={r.r} mode="animate" size={180} />
-                  </div>
-
-                  {kids.length > 0 && (
-                    <div className="rad-kids">
-                      <div className="section-title">ตัวอักษรที่ใช้รากนี้ ({kids.length})</div>
-                      <div className="chips">
-                        {kids.map((h) => (
-                          <button
-                            key={h.zh}
-                            type="button"
-                            className="chip chip-zh"
-                            onClick={() => onPickChar(h.zh)}
-                          >
-                            <span className="zh">{h.zh}</span>
-                            <span className="chip-sub">
-                              {h.py} · {h.th}
-                            </span>
-                          </button>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-                </div>
-              )}
-            </div>
-          )
-        })}
+      <div className="muted rad-legend">
+        จุดแดงมุมขวาล่าง = เคยเรียนแล้ว · ⭐ = ทำเครื่องหมายว่ายังไม่แม่น · กดที่ตัวไหนก็เริ่มอ่านจากตัวนั้น
       </div>
     </div>
   )

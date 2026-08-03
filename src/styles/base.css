@@ -1,4 +1,7 @@
-/* reset + องค์ประกอบพื้นฐานที่ใช้ซ้ำทั้งแอป */
+/* องค์ประกอบพื้นฐาน — สไตล์ "หน้ากระดาษตำรา"
+   หลัก: ทุกอย่างเป็นแผ่นกระดาษบนโต๊ะ ไม่มีอะไรลอย (ห้ามใช้ box-shadow แบบการ์ดลอย)
+   ขอบเขตแบ่งด้วยเส้น 1px และพื้นที่ว่าง ไม่ใช่ด้วยเงา */
+
 *,
 *::before,
 *::after {
@@ -12,61 +15,71 @@ html {
 body {
   margin: 0;
   background: var(--bg);
+  /* ลายกระดาษสา: จุดเล็กๆ จางมากซ้อนบนพื้น ทำด้วย gradient (ห้ามใช้ไฟล์รูป — ต้อง offline ได้) */
+  background-image:
+    radial-gradient(circle at 12% 22%, rgba(120, 100, 60, 0.05) 0 1px, transparent 1px),
+    radial-gradient(circle at 68% 74%, rgba(120, 100, 60, 0.045) 0 1px, transparent 1px);
+  background-size: 17px 17px, 23px 23px;
   color: var(--ink);
   font-family: var(--font);
-  font-size: 15px;
-  line-height: 1.5;
-  -webkit-font-smoothing: antialiased;
-  overscroll-behavior-y: none;
+  font-size: 16px;
+  line-height: 1.6;
 }
 
-button {
+button,
+input,
+textarea,
+select {
   font: inherit;
   color: inherit;
 }
 
-input {
-  font: inherit;
-}
-
-/* แตะแล้วไม่ต้องมีกล่องไฮไลต์สีฟ้าของ iOS แต่ยังต้องเห็น focus ตอนใช้คีย์บอร์ด */
-button,
-input,
-[role='button'] {
-  -webkit-tap-highlight-color: transparent;
-}
-
 :focus-visible {
-  outline: 2px solid var(--brand);
+  outline: 2px solid var(--seal);
   outline-offset: 2px;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    transition-duration: 0.01ms !important;
-  }
-}
-
-/* ---------- ตัวอักษรจีน / พินอิน ---------- */
+/* ---------- ตัวอักษร ---------- */
 .zh {
   font-family: var(--font-zh);
+  font-weight: 400; /* ฟอนต์ตำราสวยที่น้ำหนักปกติ ตัวหนาจะเลอะเมื่อตัวใหญ่ */
 }
 
-/* พินอินเป็นตัวหลักที่ผู้เรียนอ่าน — ฮั่นจื่อเป็นตัวรองเสมอ */
+/* พินอินใช้สีหยก แยกจากคำแปลไทยที่เป็นสีหมึก — ให้กวาดตาเจอเสียงอ่านได้เร็ว */
 .py {
-  color: var(--brand-ink);
-  font-weight: 700;
+  color: var(--jade);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
 }
 
-/* ---------- การ์ด ---------- */
+.muted {
+  color: var(--ink-3);
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 2px 0 10px;
+  color: var(--ink-2);
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+}
+
+/* เส้นต่อท้ายหัวข้อ — แทนการใช้พื้นหลังไฮไลต์ ให้ดูเหมือนหัวบทในตำรา */
+.section-title::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--line);
+}
+
+/* ---------- แผ่นกระดาษ (เดิมชื่อ card) ---------- */
 .card {
-  background: var(--surface);
   border: 1px solid var(--line);
   border-radius: var(--r-md);
-  box-shadow: var(--sh-sm);
+  background: var(--surface);
 }
 
 .card-pad {
@@ -84,15 +97,19 @@ input,
   border: 1px solid var(--line-strong);
   border-radius: var(--r-sm);
   background: var(--surface);
-  color: var(--ink-2);
-  font-size: 14px;
-  font-weight: 700;
+  color: var(--ink);
+  font-size: 15px;
+  font-weight: 600;
   cursor: pointer;
-  transition: transform var(--dur) var(--ease), background var(--dur) var(--ease);
+  transition: background var(--dur) var(--ease), border-color var(--dur) var(--ease);
+}
+
+.btn:hover {
+  background: var(--surface-2);
 }
 
 .btn:active {
-  transform: scale(0.97);
+  background: var(--surface-3);
 }
 
 .btn:disabled {
@@ -100,281 +117,205 @@ input,
   cursor: default;
 }
 
+/* ปุ่มหลัก = ตราประทับแดงชาด (ใช้ได้ทีละไม่เกิน 1 อันในหน้าจอ) */
 .btn-primary {
-  border-color: transparent;
-  background: var(--brand-grad);
-  color: #fff;
-  box-shadow: var(--sh-brand);
+  border-color: var(--seal-ink);
+  background: var(--seal);
+  color: #f8f2e6;
 }
 
-.btn-ok {
-  border-color: var(--ok-line);
-  background: var(--ok-soft);
-  color: var(--ok);
+.btn-primary:hover,
+.btn-primary:active {
+  background: var(--seal-ink);
 }
 
-.btn-ok.solid {
-  border-color: transparent;
-  background: var(--ok);
-  color: #fff;
+.btn-lg {
+  min-height: 52px;
+  font-size: 16px;
 }
 
-.btn-err {
-  border-color: var(--err-line);
-  background: var(--err-soft);
-  color: var(--err);
-}
-
-.btn-err.solid {
-  border-color: transparent;
-  background: var(--err);
-  color: #fff;
+.btn-xl {
+  min-height: 60px;
+  font-size: 17px;
 }
 
 .btn-block {
   width: 100%;
 }
 
-.btn-lg {
-  min-height: 50px;
+.btn-ok {
+  border-color: var(--ok-line);
+  color: var(--ok);
+}
+
+.btn-ok.solid {
+  background: var(--ok-soft);
+}
+
+.btn-err {
+  border-color: var(--err-line);
+  color: var(--err);
+}
+
+.btn-err.solid {
+  background: var(--err-soft);
+}
+
+/* ปุ่มไอคอนกลมๆ ใช้กับ ‹ › ในแฟลชการ์ด */
+.btn-round {
+  min-width: 48px;
+  min-height: 48px;
+  padding: 0;
+  border-radius: var(--r-pill);
+  font-size: 18px;
+}
+
+/* ---------- ปุ่มฟังเสียง ---------- */
+.btn-speak {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 8px 16px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r-pill);
+  background: var(--surface);
+  color: var(--ink-2);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-speak.xl {
+  min-height: 48px;
   font-size: 15px;
 }
 
-/* ปุ่มฟังเสียง — เต็มความกว้าง กดที่ไหนก็ได้ ไม่ต้องเล็งวงกลมเล็กๆ */
-.btn-speak {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  width: 100%;
-  min-height: 60px;
-  padding: 12px 16px;
-  border: 1px solid var(--brand-line);
-  border-radius: var(--r-md);
-  background: var(--brand-soft);
-  color: var(--brand);
-  font-family: inherit;
-  cursor: pointer;
-  transition: transform var(--dur) var(--ease), background var(--dur) var(--ease);
+.btn-speak:active,
+.btn-speak.playing {
+  border-color: var(--jade);
+  background: var(--jade-soft);
+  color: var(--jade);
 }
 
 .btn-speak-ico {
-  font-size: 26px;
+  font-size: 16px;
   line-height: 1;
 }
 
-.btn-speak-text {
-  font-size: 14px;
-  font-weight: 800;
-}
-
-/* ตัวใหญ่: หน้าที่ "การฟัง" คือโจทย์ทั้งข้อ (โหมดฟัง / ฟังแปลไทย) */
-.btn-speak.xl {
-  flex-direction: column;
-  gap: 8px;
-  min-height: 148px;
-}
-
-.btn-speak.xl .btn-speak-ico {
-  font-size: 46px;
-}
-
-.btn-speak.xl .btn-speak-text {
-  font-size: 13px;
-  font-weight: 700;
-  opacity: 0.85;
-}
-
-.btn-speak:active {
-  transform: scale(0.985);
-  background: var(--brand-line);
-}
-
-/* โจทย์ทั้งก้อน = ปุ่มฟังเสียง (แตะคำแปล/ตัวจีน/ไอคอน ได้หมด) */
 .tap-speak {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
   width: 100%;
-  padding: 14px 12px 10px;
-  border: 1px solid var(--brand-line);
-  border-radius: var(--r-md);
-  background: var(--brand-soft);
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+  background: var(--surface);
   color: inherit;
-  text-align: center;
+  text-align: left;
   cursor: pointer;
-  transition: transform var(--dur) var(--ease), background var(--dur) var(--ease);
-}
-
-.tap-speak:active {
-  transform: scale(0.985);
-  background: var(--brand-line);
-}
-
-.tap-speak-ico {
-  margin-top: 4px;
-  font-size: 22px;
-  line-height: 1;
-  opacity: 0.75;
 }
 
 .tap-speak.playing {
-  animation: pulse 900ms var(--ease) infinite;
+  border-color: var(--jade);
+  background: var(--jade-soft);
 }
 
-.btn-speak.playing {
-  animation: pulse 900ms var(--ease) infinite;
+.tap-speak-ico {
+  margin-left: auto;
+  opacity: 0.7;
 }
 
-@keyframes pulse {
-  0%,
-  100% {
-    box-shadow: 0 0 0 0 rgba(193, 59, 49, 0.35);
-  }
-  50% {
-    box-shadow: 0 0 0 10px rgba(193, 59, 49, 0);
-  }
-}
-
-/* ---------- ชิป / segmented ---------- */
+/* ---------- ชิป (แถบเลื่อนแนวนอน) ---------- */
 .chips {
   display: flex;
   gap: 6px;
   overflow-x: auto;
   scrollbar-width: none;
-  padding: 2px 0 4px;
-  scroll-snap-type: x proximity;
+  -webkit-overflow-scrolling: touch;
+  /* หมวดของรากมี 15 อัน เลื่อนได้แต่ไม่มีสกรอลบาร์บนมือถือ
+     จางขอบขวาไว้เป็นสัญญาณว่ายังมีต่อ (ไม่มีอันนี้ผู้ใช้จะคิดว่ามีแค่ที่เห็น) */
+  mask-image: linear-gradient(to right, #000 0, #000 calc(100% - 28px), transparent 100%);
 }
 
 .chips::-webkit-scrollbar {
   display: none;
 }
 
-/* แถวชิปเมนูกลุ่ม (มือถือ) — เว้นใต้แถวให้ห่างจากเนื้อหา */
-.group-chips {
-  margin-bottom: 8px;
-}
-
+/* ชิปเป็นแท็บกระดาษ: ตัวที่เลือกคือกระดาษที่ยกขึ้นมาด้านหน้า (เส้นใต้หนา ไม่ใช่พื้นสี) */
 .chip {
   flex: 0 0 auto;
-  scroll-snap-align: center;
   min-height: 38px;
   padding: 8px 14px;
-  border: 1px solid var(--line);
-  border-radius: var(--r-pill);
-  background: var(--surface);
-  color: var(--ink-2);
-  font-size: 13px;
-  font-weight: 700;
+  border: 1px solid transparent;
+  border-bottom: 2px solid transparent;
+  border-radius: 0;
+  background: none;
+  color: var(--ink-3);
+  font-size: 14px;
+  font-weight: 600;
   white-space: nowrap;
   cursor: pointer;
-  transition: background var(--dur) var(--ease), color var(--dur) var(--ease);
 }
 
-.chip[aria-selected='true'] {
-  border-color: transparent;
-  background: var(--brand-grad);
-  color: #fff;
-  box-shadow: var(--sh-brand);
+.chip[aria-selected='true'],
+.chip[aria-current='page'] {
+  border-bottom-color: var(--seal);
+  color: var(--ink);
 }
 
-/* ชิปเลขบท — สี่เหลี่ยมจัตุรัสเล็ก */
 .chip-num {
   flex: 0 0 auto;
-  width: 40px;
-  height: 40px;
-  padding: 0;
+  min-width: 40px;
+  min-height: 40px;
   border: 1px solid var(--line);
   border-radius: var(--r-sm);
   background: var(--surface);
   color: var(--ink-2);
-  font-size: 14px;
-  font-weight: 800;
+  font-weight: 700;
   cursor: pointer;
 }
 
 .chip-num[aria-selected='true'] {
-  border-color: transparent;
-  background: var(--brand-grad);
-  color: #fff;
-  box-shadow: var(--sh-brand);
+  border-color: var(--seal);
+  background: var(--seal-soft);
+  color: var(--seal-ink);
 }
 
-/* ---------- ช่องพิมพ์ ---------- */
+/* ---------- ช่องกรอก ---------- */
 .input {
   width: 100%;
-  min-height: 48px;
-  padding: 12px 14px;
-  border: 2px solid var(--line);
+  min-height: 46px;
+  padding: 10px 12px;
+  border: 1px solid var(--line-strong);
   border-radius: var(--r-sm);
   background: var(--surface);
-  color: var(--ink);
-  /* ≥16px บังคับ ไม่งั้น iOS ซูมเองตอนโฟกัส */
-  font-size: 17px;
-  text-align: center;
-  outline: none;
-  transition: border-color var(--dur) var(--ease);
+  /* ≥16px บังคับ ไม่งั้น iOS ซูมเองตอนโฟกัส (viewport ไม่ล็อก maximum-scale) */
+  font-size: 16px;
 }
 
 .input:focus {
-  border-color: var(--brand);
-}
-
-.input.mono {
-  font-family: var(--font-mono);
-  letter-spacing: 1px;
-}
-
-/* ช่องพิมพ์ไทยห้ามใช้ mono/letter-spacing — สระกับวรรณยุกต์จะลอยเพี้ยน */
-.input.thai {
-  font-family: inherit;
-  letter-spacing: 0;
-  font-weight: 600;
+  border-color: var(--seal);
+  outline: none;
 }
 
 .input.ok {
-  border-color: var(--ok);
+  border-color: var(--ok-line);
   background: var(--ok-soft);
 }
 
 .input.bad {
-  border-color: var(--err);
+  border-color: var(--err-line);
   background: var(--err-soft);
-  animation: shake 260ms var(--ease);
 }
 
-@keyframes shake {
-  0%,
-  100% {
-    transform: translateX(0);
-  }
-  25% {
-    transform: translateX(-5px);
-  }
-  75% {
-    transform: translateX(5px);
-  }
-}
-
-/* ---------- ข้อความประกอบ ---------- */
-.muted {
-  color: var(--ink-3);
-  font-size: 13px;
-}
-
-.section-title {
-  margin: 2px 0 10px;
-  color: var(--ink-3);
-  font-size: 13px;
-  font-weight: 700;
-}
-
+/* ---------- ผลตอบ ---------- */
 .fb {
   min-height: 22px;
-  font-size: 13px;
-  font-weight: 700;
-  text-align: center;
+  font-size: 13.5px;
+  font-weight: 600;
 }
 
 .fb.ok {
@@ -387,38 +328,45 @@ input,
 
 /* ---------- แถบความคืบหน้า ---------- */
 .progress {
-  height: 4px;
-  border-radius: 2px;
+  height: 3px;
+  border-radius: 0;
   background: var(--surface-3);
-  overflow: hidden;
 }
 
-.progress > i {
+.progress i {
   display: block;
   height: 100%;
-  border-radius: 2px;
-  background: var(--brand-grad);
-  transition: width 400ms var(--ease);
+  background: var(--seal);
+  transition: width var(--dur) var(--ease);
 }
 
 /* ---------- แถบคะแนน ---------- */
 .score {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  padding: 10px 14px;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  text-align: center;
+}
+
+.score > div {
+  padding: 10px 6px;
+  border-right: 1px solid var(--line);
+}
+
+.score > div:last-child {
+  border-right: 0;
 }
 
 .score b {
   display: block;
-  font-size: 18px;
-  line-height: 1.1;
+  font-size: 20px;
+  line-height: 1.2;
 }
 
 .score span {
-  font-size: 10px;
   color: var(--ink-3);
-  font-weight: 700;
+  font-size: 11.5px;
+  font-weight: 600;
 }
 
 .score .c b {
@@ -429,6 +377,43 @@ input,
   color: var(--err);
 }
 
-.score .t b {
-  color: var(--warn);
+/* ---------- หน้าจบชุด ---------- */
+.done {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  text-align: center;
+}
+
+.done-ico {
+  font-size: 34px;
+  line-height: 1;
+}
+
+.done-title {
+  font-size: 19px;
+  font-weight: 700;
+}
+
+/* ตราประทับ — วงกลม/สี่เหลี่ยมแดงมีตัวเลขหรือตัวจีนข้างใน ใช้เน้นลำดับ/สถานะ */
+.seal {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 26px;
+  min-height: 26px;
+  padding: 2px 6px;
+  border: 1.5px solid var(--seal);
+  border-radius: var(--r-sm);
+  color: var(--seal);
+  font-size: 12px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.seal.filled {
+  background: var(--seal);
+  border-color: var(--seal);
+  color: #f8f2e6;
 }

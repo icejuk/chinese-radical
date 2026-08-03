@@ -8,6 +8,7 @@ export const KEYS = {
   radFilter: 'cr-rf',  // ตัวกรองหน้าราก { cat, strokes }
   charFilter: 'cr-cf', // ตัวกรองหน้าคลัง { rad, hsk, starOnly }
   writeSrc: 'cr-wsrc', // แหล่งตัวอักษรของแบบฝึกเขียน
+  day: 'cr-day',       // ความคืบหน้าของวันนี้ { d: เลขวัน, done: [อักขระที่ดูแล้ว] }
 } as const
 
 export function readJson<T>(key: string, fallback: T): T {

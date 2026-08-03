@@ -2,8 +2,8 @@
 
 PWA จำ **ตัวอักษรจีน** ด้วยการแตกเป็นรากศัพท์ (部首/偏旁) สำหรับผู้เรียนชาวไทย
 
-- repo: `git@github.com:icejuk/chinese-radical.git`
-- deploy: **Vercel auto-deploy เมื่อ push ขึ้น main** (build ตาม `vercel.json`: `npm run build` → เสิร์ฟ `dist/`)
+- GitHub เป้าหมาย: `icejuk/chinese-radical` (ตอนนี้ยังไม่มี remote — ห้ามสร้าง/push จนกว่าจะได้รับอนุญาต)
+- deploy เป้าหมาย: **Vercel + `radical.icejuk.dev`** เมื่อ push ขึ้น `main` (build ตาม `vercel.json`: `npm run build` → เสิร์ฟ `dist/`)
 - dev preview: `preview_start {name:'chinese-radical'}` → port 3470 (config อยู่ที่ `../.claude/launch.json`) — **ห้ามรัน dev server ด้วย Bash**
 - build ที่แปลงแล้ว (เช็ค PWA/offline จริง): `preview_start {name:'chinese-radical-build'}` → port 3471 (ต้อง `npm run build` ก่อน)
 
@@ -47,6 +47,33 @@ PWA จำ **ตัวอักษรจีน** ด้วยการแตก�
 
 ---
 
+## ดีไซน์: "หมึกบนกระดาษสา" — ห้ามกลายเป็น chinese-study อีก
+
+รอบแรกเคยพลาดด้วยการคัดลอก `tokens.css`/`base.css`/`layout.css`/โครง `App.tsx` จาก chinese-study มาแล้วเปลี่ยนแค่สี → ผู้ใช้ทักว่า "ดีไซน์เหมือนเว็บ chinese.icejuk.dev เลย" **ห้ามคัดลอกสไตล์จาก repo นั้นมาอีก**
+
+กฎของธีมนี้ (ดู `src/styles/tokens.css`):
+- **ไม่มี box-shadow แบบการ์ดลอย** — ขอบเขตใช้เส้น 1px (`--line`) กับพื้นที่ว่าง
+- **มุมเล็ก** 3–6px (`--r-sm`…`--r-lg`) ไม่ใช่ 14–20px
+- พื้นเป็นกระดาษสาอมเหลือง (`--bg`/`--surface`) มีลายจุดจางทำด้วย gradient ใน `base.css` (ห้ามใช้ไฟล์รูป)
+- **แดงชาด `--seal` คือจุดเน้นเดียว** — ใช้กับปุ่มหลัก (ทีละไม่เกิน 1 อันต่อจอ) ตราประทับ `.seal` ขีดใต้แท็บที่เลือก และสีของ "ราก" ในกรอบลำดับขีด
+- พินอินใช้สีหยก `--jade` เพื่อให้กวาดตาเจอเสียงอ่านแยกจากคำแปลไทยที่เป็นสีหมึก
+- ตัวจีนใช้ฟอนต์แบบตำรา (`--font-zh` = Songti/Kaiti ก่อน แล้วค่อยตก PingFang) **ห้ามใส่ font-weight หนากับตัวจีนขนาดใหญ่** จะเลอะ
+- **ไม่มี sidebar** — ทุกขนาดจอใช้ header + คอลัมน์เดียว + แถบล่าง (ไอคอนแถบล่างเป็นตัวจีนตัวเดียว 部/学/练/查 ไม่ใช่ emoji)
+- dark mode = กลับด้านหมึก/กระดาษ (พื้นหมึกเข้ม ตัวอักษรสีกระดาษ)
+
+## โครงการใช้งาน (สำคัญกว่าหน้าตา)
+
+ผู้ใช้ไม่ต้องการหน้า "วันนี้" ที่บังคับเส้นทาง และไม่ต้องการให้ตารางรากถูกซ่อนลึก โครงตอนนี้จึงเป็น 4 กลุ่มในแถบล่าง:
+
+1. **ราก → `radicals` เป็นหน้าแรก** แสดงตาราง 115 รากทันที กดตัวไหนก็เปิดแฟลชการ์ดของหมวดนั้นเริ่มที่ตัวนั้น
+   การ์ดชุดแนะนำวันนี้อยู่ด้านบนเป็นเพียงข้อเสนอ ข้ามได้ตลอด — **ห้ามสร้าง `TodayScreen` กลับมา**
+2. **เรียน → `learn` เป็นแฟลชการ์ดเต็มจอ ทีละราก** ปุ่มต่อไปต้อง sticky เหนือแถบล่างเสมอ
+3. **ฝึก → `quiz` / `write`** เลือกควิซหรือฝึกเขียนได้เอง
+4. **ค้น → `breakdown` / `chars`** ลำดับขีดต้องอยู่ครึ่งบนของหน้าแตกตัวอักษร และคลังตัวอักษรต้องกดเข้าหน้าแตกได้
+5. ชุดของวันนี้มาจาก `src/lib/today.ts`: ครบกำหนดทวนก่อน → รากใหม่**ที่มีตัวอักษรตัวอย่างในคลัง**ก่อน → ที่ยังไม่มีตัวอย่างไว้ท้าย
+   (เรียนรากที่ไม่มีตัวอย่างเลย เช่น 刀 ในคลังชุดนี้ ทำให้รู้สึกท่องลอยๆ — ห้ามเอาขึ้นก่อน)
+5. ชุดของวันนี้ต้อง**คงที่ตลอดวัน** ห้ามสุ่มใหม่ทุกครั้งที่เปิดแอป ไม่งั้นตัวเลข "3/8" ไม่มีความหมาย
+
 ## โครงสร้าง
 
 ```
@@ -54,12 +81,13 @@ package.json / vite.config.ts / tsconfig.json / vercel.json
 scripts/gen-strokes.mjs        ← ก็อปข้อมูลลำดับขีดจาก node_modules → public/strokes/ + gen strokeIndex.ts
 public/strokes/*.json          ← ข้อมูลเส้น ชื่อไฟล์เป็น codepoint hex (commit เข้า repo ด้วย)
 src/
-  main.tsx, App.tsx, nav.ts    ← nav 2 ระดับ (sidebar จอกว้าง / tab bar ล่างมือถือ)
+  main.tsx, App.tsx, nav.ts    ← nav 2 ระดับ: กลุ่ม (แถบล่าง) → แท็บย่อย (ชิปแบบแท็บกระดาษ)
   data/                        ← radicals.ts · hanzi.ts · types.ts · strokeIndex.ts (auto) · radicals.test.ts
-  lib/                         ← tree.ts (ราก↔ตัวอักษร) · quiz.ts · srs.ts · tts.ts · storage.ts
+  lib/                         ← today.ts · strokeGroups.ts · tree.ts · quiz.ts · srs.ts · tts.ts · storage.ts
   components/                  ← StrokePad.tsx (hanzi-writer wrapper) · SpeakButton · ui.tsx
-  screens/                     ← RadicalsScreen · BreakdownScreen · QuizScreen · WriteScreen · CharsScreen
-  styles/                      ← tokens.css (ธีมหยก + dark) · base.css · layout.css · screens.css
+  screens/                     ← LearnScreen (แฟลชการ์ด) · RadicalsScreen (ตาราง + TodayCard)
+                                 BreakdownScreen · QuizScreen · WriteScreen · CharsScreen
+  styles/                      ← tokens.css (ธีมกระดาษสา + dark) · base.css · layout.css · screens.css
 ```
 
 ### ข้อมูล (ตัวเลขจริง ณ 2026-08-03)
@@ -72,10 +100,12 @@ src/
 
 - `parts` ของตัวอักษรชี้ได้ทั้ง **ราก/รูปแปร** และ **ตัวอักษรอื่นในคลัง** → แผนภาพแตกซ้อนชั้นได้เอง
 - `kind:'sound'` = ส่วนที่บอกเสียงไม่บอกความหมาย (可 ใน 河) — หน้าเรียนไม่โชว์ โผล่แค่ตอนแตกตัวอักษร
+- หน้าแตกตัวอักษรเล่นลำดับขีดเป็นก้อนตาม `parts`: 河 เล่น 氵 3 ขีด → พัก → 可 5 ขีด พร้อมไฮไลต์กิ่งเดียวกัน
+  แบ่งได้อย่างปลอดภัย 160 ตัว; `学 友 果 我 理 现 玩` fallback เล่นทั้งตัวเพราะรูปย่อทำให้จำนวนขีดไม่ตรง
 
 ### localStorage (`src/lib/storage.ts` → `KEYS`)
 
-`cr-nav` · `cr-srs` · `cr-star` · `cr-rf` (ตัวกรองหน้าราก) · `cr-cf` (ตัวกรองหน้าคลัง) · `cr-wsrc` (ชุดฝึกเขียน)
+`cr-nav` · `cr-srs` · `cr-star` · `cr-rf` (ตัวกรองหน้าราก) · `cr-cf` (ตัวกรองหน้าคลัง) · `cr-wsrc` (ชุดฝึกเขียน) · `cr-day` (ความคืบหน้าชุดวันนี้)
 
 prefix `cr-` ตั้งใจให้ต่างจาก `xy-*` ของ chinese-study — **ห้ามใช้ `xy-*`**
 
@@ -95,6 +125,15 @@ prefix `cr-` ตั้งใจให้ต่างจาก `xy-*` ของ c
    (มี `@media (min-width: 520px)` คุมไว้แล้ว)
 6. **`<input>` ต้อง `font-size` ≥ 16px** + `autoCapitalize="none" autoCorrect="off" spellCheck={false}` ไม่งั้น iOS ซูม/แก้คำเอง
 7. **`touch-action: none` บน svg ของ StrokePad** จำเป็น ไม่งั้นลากเขียนแล้วหน้าเลื่อนตามนิ้ว
+8. **svg ของ hanzi-writer เป็น px ตายตัว scale ด้วย CSS ไม่ได้** (ไม่มี viewBox) — ต้องส่งขนาดที่คำนวณแล้วตอน create
+   `StrokePad` จึงวัดความกว้างที่ว่างจริง + จำกัดด้วยสัดส่วนความสูงจอ แล้วสร้าง writer ใหม่เมื่อค่าเปลี่ยน
+   **ห้ามคำนวณเพดานจาก `getBoundingClientRect().top`** — รอบแรก layout ยังไม่นิ่ง เคยทำให้กรอบตกใต้ขอบจอในโหมดแนวนอน
+9. **`.strokepad-grid` ต้องเป็น `box-sizing: content-box`** (ข้อยกเว้นเดียวของไฟล์) ไม่งั้นเส้น 米字格 เหลื่อมกับตัวอักษร 1px
+10. **จอเตี้ยต้องมี media query ตามความสูง ไม่ใช่ความกว้าง** — มี 3 ระดับที่คุมอยู่: `max-height: 740px` (iPhone 8),
+   `620px` (SE), `480px` (แนวนอน — หน้าฝึกเขียนสลับเป็น 2 คอลัมน์) แก้ layout แล้วต้องเช็คทั้งสามระดับ
+11. **`.chips` มี `mask-image` จางขอบขวา** เป็นสัญญาณว่าเลื่อนได้ (หมวดของราก 15 อันไม่พอในจอเดียว) — ห้ามเอาออก
+12. **แบ่งกลุ่มขีดด้วย `strokeCount` ที่ generate จาก `strokes.length` เท่านั้น** — ห้ามใช้ `radStrokes` หรือ `Radical.strokes`
+    เพราะข้อมูลไม่ครบและรูปแปรมีจำนวนขีดต่างจากรูปเต็ม ถ้าผลรวม `parts` ไม่ตรงตัวอักษรให้คืน `null` แล้วเล่นทั้งตัวแทน
 
 ---
 
@@ -103,8 +142,10 @@ prefix `cr-` ตั้งใจให้ต่างจาก `xy-*` ของ c
 1. `npx tsc --noEmit` — ไม่มี error
 2. `npm test` — ผ่านหมด (ถ้าแตะข้อมูล ต้องรัน `npm run strokes` ก่อน ไม่งั้นเทสไฟล์เส้นจะแดง)
 3. `npm run build` — ผ่าน
-4. เช็คในเบราว์เซอร์: ทั้ง 5 แท็บไม่มี console error · ลำดับขีดเล่นได้ · ฝึกเขียนตรวจขีดถูก/ผิดได้ · ตอบผิดในควิซไม่เด้งข้อถัดไป
-5. กวาด overflow ที่ 375px ทุกแท็บ (`document.documentElement.scrollWidth > innerWidth` ต้อง false)
+4. เช็คในเบราว์เซอร์: ทั้ง 6 หน้าจอไม่มี console error · ลำดับขีดเล่นได้ · ฝึกเขียนตรวจขีดถูก/ผิดได้ · ตอบผิดในควิซไม่เด้งข้อถัดไป
+5. **กวาด mobile ให้ครบ 5 ขนาด**: 320×568 (SE) · 375×667 (iPhone 8) · 375×812 · 414×896 · 667×375 (แนวนอน)
+   ทุกขนาดต้อง: ไม่เลื่อนแนวนอน (`scrollWidth > innerWidth` เป็น false) · ปุ่มสูง ≥ 30px · ไม่มีปุ่มถูก `.tabbar` ทับ
+   (ชิปใน `.chips` ล้นขอบขวาได้ตามปกติ เพราะเป็นแถบเลื่อน — อย่านับเป็นบั๊ก)
 6. เช็ค dark mode อ่านออก
 7. แสดงสกรีนช็อตให้ผู้ใช้ดู แล้วรอสั่ง push
 

@@ -1,118 +1,379 @@
-/* สไตล์เฉพาะหน้าจอของแอปนี้
-   หลักที่ต่างจาก chinese-study: ตัวจีนคือพระเอก → ตัวใหญ่ได้เต็มที่
-   แต่ทุกที่ที่โชว์ตัวจีนต้องมีพินอิน + ไทยกำกับ (สีพินอินใช้ --brand-ink จาก base.css)
-   ทุกบล็อกต้องไม่ล้นที่ 375px → ใช้ minmax(0,1fr) กับ grid ทุกอัน ห้ามใส่ min-width ตายตัว */
+/* สไตล์เฉพาะหน้าจอ — ธีม "หมึกบนกระดาษสา"
+   กฎที่ยึดทั้งไฟล์: ไม่มีเงา · ขอบเขตด้วยเส้น 1px · มุมเล็ก · ตัวจีนใหญ่ได้เต็มที่
+   ทุก grid ใช้ minmax(0, …) เพื่อไม่ให้ล้นที่ 375px */
 
-/* ---------- หน้าราก ---------- */
-.rad-grid {
-  display: grid;
-  gap: 10px;
-  grid-template-columns: minmax(0, 1fr);
-}
-
-@media (min-width: 620px) {
-  .rad-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-  /* การ์ดที่กางอยู่กินเต็มแถว — เนื้อหาข้างในกว้างกว่าครึ่งจอ */
-  .rad-card.open {
-    grid-column: 1 / -1;
-  }
-}
-
-.rad-head {
+/* ================= การ์ด "ทวนวันนี้" (อยู่บนตารางราก ไม่ใช่หน้าเต็ม) ================= */
+.today-card {
   display: flex;
   align-items: center;
   gap: 12px;
-  width: 100%;
   padding: 12px 14px;
-  border: 0;
-  border-radius: var(--r-md);
-  background: none;
-  color: inherit;
-  text-align: left;
-  cursor: pointer;
 }
 
-.rad-glyph {
-  flex: 0 0 auto;
-  width: 54px;
-  color: var(--ink);
-  font-size: 40px;
-  line-height: 1.1;
-  text-align: center;
-}
-
-.rad-meta {
+.today-card-main {
   display: flex;
   min-width: 0;
+  flex: 1;
   flex-direction: column;
-  gap: 1px;
+  gap: 6px;
 }
 
-.rad-th {
-  font-size: 15px;
+.today-card-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
-.rad-sub {
-  font-size: 12px;
+.today-card-title {
+  font-size: 13.5px;
+  font-weight: 700;
 }
 
-.rad-caret {
+.today-card-count {
   margin-left: auto;
-  color: var(--ink-3);
+  font-size: 11.5px;
+  white-space: nowrap;
 }
 
-.rad-body {
+/* ตัวจีนของชุดวันนี้ — ตัวที่ดูแล้วขีดเส้นใต้สีหยกและจางลง */
+.today-card-set {
   display: flex;
-  flex-direction: column;
-  gap: 12px;
-  padding: 0 14px 14px;
-}
-
-.rad-story {
-  margin: 0;
-  padding: 12px 14px;
-  border-radius: var(--r-sm);
-  background: var(--brand-soft);
-  color: var(--ink);
-  font-size: 14.5px;
-  line-height: 1.65;
-}
-
-.rad-strokes,
-.write-ref {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-}
-
-.rad-kids .chips {
   flex-wrap: wrap;
+  gap: 2px 8px;
 }
 
-/* ชิปที่มีตัวจีนใหญ่ + คำอ่านเล็ก (ใช้ทั้งหน้าราก หน้าค้นหา) */
-.chip-zh {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  height: auto;
-  padding: 8px 12px;
-}
-
-.chip-zh .zh {
-  font-size: 22px;
+.today-card-glyph {
+  border-bottom: 2px solid transparent;
+  font-size: 24px;
   line-height: 1.2;
 }
 
-.chip-sub {
+.today-card-glyph.is-done {
+  border-bottom-color: var(--jade);
   color: var(--ink-3);
-  font-size: 11.5px;
-  font-weight: 600;
 }
 
-/* ---------- กรอบลำดับขีด ---------- */
+.today-card-bar {
+  height: 4px;
+  background: var(--surface-3);
+}
+
+.today-card-bar i {
+  display: block;
+  height: 100%;
+  background: var(--seal);
+}
+
+.today-card-btn {
+  flex: 0 0 auto;
+  min-height: 44px;
+  padding: 8px 14px;
+  font-size: 14px;
+}
+
+@media (max-width: 420px) {
+  /* จอแคบ: ปุ่มลงไปอยู่ใต้ข้อมูลเต็มความกว้าง ไม่บีบตัวจีนของชุด */
+  .today-card {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .today-card-btn {
+    width: 100%;
+  }
+}
+
+/* ================= หน้าเรียน (แฟลชการ์ด) ================= */
+.learn {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.learn-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.learn-count {
+  font-size: 12.5px;
+}
+
+.learn-count b {
+  color: var(--ink);
+  font-size: 15px;
+}
+
+.learn-star {
+  min-height: 36px;
+  padding: 6px 12px;
+  font-size: 12.5px;
+}
+
+.learn-card {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 16px 22px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  background: var(--surface);
+  text-align: center;
+}
+
+/* ลำดับขีดเป็นสิ่งแรกในการ์ดและเล่นอัตโนมัติ — ไม่ซ่อนต่อท้ายเรื่องเล่า */
+.learn-stroke-hero {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+/* จอสูงระดับ iPhone 8/SE3 (667px) — ยึดขนาดตัวจีนตามความสูงจอ
+   ไม่งั้นการ์ดยาวเกินจอจนปุ่ม "เจอรากนี้ใน…" ไปตกอยู่ตรงตำแหน่งแถบล่างพอดี */
+@media (max-height: 740px) {
+  .learn-card {
+    padding: 12px 14px 16px;
+  }
+
+  .learn-story {
+    margin-top: 12px;
+    font-size: 14.5px;
+  }
+}
+
+/* จอเตี้ยมาก (มือถือแนวนอน / iPhone SE 568px) — บีบทุกอย่างให้เห็นตัว + เสียงอ่าน + ความหมาย ในหน้าเดียว */
+@media (max-height: 560px) {
+  .learn-card {
+    padding: 12px 14px 16px;
+  }
+
+  .learn-py {
+    font-size: 20px;
+  }
+
+  .learn-th {
+    font-size: 17px;
+  }
+
+  .learn-story {
+    margin-top: 10px;
+    padding: 10px 12px;
+    font-size: 14px;
+    line-height: 1.7;
+  }
+}
+
+.learn-gloss {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-top: 4px;
+}
+
+.learn-py {
+  font-size: 24px;
+}
+
+.learn-th {
+  font-size: 19px;
+  font-weight: 700;
+}
+
+.learn-tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.learn-var b {
+  margin-left: 4px;
+  font-size: 15px;
+}
+
+/* เรื่องเล่าที่มาของรูป = เนื้อหาหลักที่ทำให้จำได้ ให้พื้นที่อ่านสบายและจัดชิดซ้าย */
+.learn-story {
+  margin: 14px 0 0;
+  padding: 14px 16px;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  color: var(--ink);
+  font-size: 15px;
+  line-height: 1.8;
+  text-align: left;
+}
+
+.learn-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.learn-speak {
+  min-height: 38px;
+  padding: 6px 14px;
+}
+
+.learn-nokids {
+  width: 100%;
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+  font-size: 12.5px;
+  line-height: 1.7;
+  text-align: left;
+}
+
+.learn-kids {
+  width: 100%;
+  margin-top: 16px;
+  border-top: 1px solid var(--line);
+}
+
+.learn-kids-head {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 12px 2px 10px;
+  border: 0;
+  background: none;
+  color: var(--ink-2);
+  font-size: 13.5px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.learn-kids-grid {
+  display: grid;
+  gap: 6px;
+  grid-template-columns: repeat(auto-fill, minmax(78px, 1fr));
+  padding-bottom: 4px;
+}
+
+.learn-kid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+  padding: 8px 4px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+  background: var(--bg);
+  color: inherit;
+  cursor: pointer;
+}
+
+.learn-kid-glyph {
+  font-size: 26px;
+  line-height: 1.15;
+}
+
+.learn-kid .py {
+  font-size: 11.5px;
+}
+
+.learn-kid-th {
+  color: var(--ink-2);
+  font-size: 11px;
+  line-height: 1.35;
+}
+
+/* ปุ่ม "ต่อไป" คือปุ่มที่ต้องกดทุกใบ — ตรึงไว้ขอบล่างของ viewport
+   ไม่งั้นเวลาการ์ดยาว (เรื่องเล่า + ลำดับขีด + ตัวอักษรที่ใช้ราก) ต้องเลื่อนลงไปหาปุ่มทุกครั้ง */
+.learn-nav {
+  position: sticky;
+  /* ยกขึ้นเหนือแถบล่าง — sticky วัดจากขอบ viewport ซึ่งถูก .tabbar (fixed) ทับอยู่ */
+  bottom: calc(var(--tabbar-h) + var(--sab) + 6px);
+  z-index: 5;
+  display: flex;
+  gap: 8px;
+  padding: 8px 0 4px;
+  margin-top: auto;
+  background: linear-gradient(to bottom, transparent, var(--bg) 45%);
+}
+
+.learn-next {
+  flex: 1;
+}
+
+.learn-done {
+  padding: 28px 16px;
+}
+
+/* ================= ตารางราก ================= */
+.rad-table {
+  display: grid;
+  gap: 6px;
+  grid-template-columns: repeat(auto-fill, minmax(84px, 1fr));
+}
+
+.rad-cell {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+  padding: 10px 4px 8px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+  background: var(--surface);
+  color: inherit;
+  cursor: pointer;
+}
+
+.rad-cell:active {
+  background: var(--surface-2);
+}
+
+.rad-cell-glyph {
+  font-size: 34px;
+  line-height: 1.12;
+}
+
+.rad-cell-th {
+  font-size: 11.5px;
+  font-weight: 600;
+  line-height: 1.35;
+  text-align: center;
+}
+
+.rad-cell-py {
+  font-size: 10.5px;
+}
+
+.rad-cell-star {
+  position: absolute;
+  top: 3px;
+  left: 4px;
+  font-size: 10px;
+}
+
+/* จุดแดงเล็กๆ = เคยเรียนแล้ว (ใช้จุดไม่ใช่พื้นสี เพื่อไม่ให้ตารางลายพร้อย) */
+.rad-cell-dot {
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--seal);
+}
+
+.rad-legend {
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+/* ================= กรอบลำดับขีด ================= */
 .strokepad {
   display: flex;
   flex-direction: column;
@@ -121,18 +382,20 @@
   max-width: 100%;
 }
 
-/* 米字格 — เส้นตารางช่วยกะสัดส่วน วาดด้วย gradient ไม่ใช้ไฟล์รูป (ต้องทำงาน offline) */
+/* 米字格 — เส้นตารางช่วยกะสัดส่วน วาดด้วย gradient (ห้ามใช้ไฟล์รูป ต้อง offline ได้) */
 .strokepad-grid {
   position: relative;
+  /* content-box: ความกว้างที่ตั้ง = พื้นที่ใน ให้ตรงกับ svg เป๊ะ เส้นกลาง 米 จึงไม่เหลื่อม
+     (ทั้งไฟล์ใช้ border-box จาก base.css — ที่นี่เป็นข้อยกเว้นที่ตั้งใจ) */
+  box-sizing: content-box;
   max-width: 100%;
   border: 1px solid var(--line-strong);
-  border-radius: var(--r-sm);
   background:
     linear-gradient(to right, transparent calc(50% - 0.5px), var(--line) calc(50% - 0.5px), var(--line) calc(50% + 0.5px), transparent calc(50% + 0.5px)),
     linear-gradient(to bottom, transparent calc(50% - 0.5px), var(--line) calc(50% - 0.5px), var(--line) calc(50% + 0.5px), transparent calc(50% + 0.5px)),
     linear-gradient(to bottom right, transparent calc(50% - 0.5px), var(--surface-3) calc(50% - 0.5px), var(--surface-3) calc(50% + 0.5px), transparent calc(50% + 0.5px)),
     linear-gradient(to bottom left, transparent calc(50% - 0.5px), var(--surface-3) calc(50% - 0.5px), var(--surface-3) calc(50% + 0.5px), transparent calc(50% + 0.5px));
-  background-color: var(--surface);
+  background-color: var(--surface-2);
 }
 
 .strokepad-box svg {
@@ -148,22 +411,91 @@
   gap: 8px;
 }
 
+/* ปุ่มวงกลมไอคอนล้วน — เล็ก เงียบ ไม่แย่งความสนใจจากตัวอักษร */
+.pad-btn {
+  display: inline-flex;
+  width: 42px;
+  height: 42px;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r-pill);
+  background: var(--surface);
+  color: var(--ink-2);
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.pad-btn:hover {
+  border-color: var(--seal);
+  color: var(--seal);
+}
+
+.pad-btn:active {
+  background: var(--surface-2);
+}
+
+.pad-btn:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.pad-note {
+  color: var(--ink-3);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* ป้าย "กำลังเขียน 氵 (น้ำ) · 3 ขีด" ระหว่างเล่นลำดับขีดแยกทีละราก
+   ตัวรากใช้แดงชาดเพื่อให้ตาโยงกับรากที่ถูกไฮไลต์ในแผนภาพข้างล่างได้ทันที */
+.pad-now {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 6px;
+  min-height: 26px;
+  font-size: 13px;
+}
+
+.pad-now-label {
+  color: var(--ink-3);
+  font-weight: 600;
+}
+
+.pad-now-part {
+  color: var(--seal);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.pad-now-gloss {
+  color: var(--ink-2);
+  font-weight: 600;
+}
+
 .strokepad-count,
 .write-count {
   font-size: 12.5px;
 }
 
 .strokepad-progress {
-  font-size: 14px;
-  font-weight: 700;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 4px;
+  font-size: 12.5px;
+  font-weight: 600;
 }
 
 .strokepad-progress b {
-  color: var(--brand-ink);
-  font-size: 18px;
+  color: var(--seal);
+  font-size: 19px;
 }
 
 .strokepad-miss {
+  margin-left: 4px;
   color: var(--err);
 }
 
@@ -173,10 +505,81 @@
   text-align: center;
 }
 
-/* ---------- หน้าแตกตัวอักษร ---------- */
+/* ================= หน้าแตกตัวอักษร ================= */
+.bd-search {
+  font-size: 16px; /* ≥16px ไม่งั้น iOS ซูมเองตอนโฟกัส */
+}
+
 .bd-results {
   flex-wrap: wrap;
-  margin-top: 10px;
+}
+
+/* แถวแรกของหน้า: กรอบลำดับขีดคู่กับข้อมูลตัวอักษร — เห็นทันทีไม่ต้องเลื่อน */
+.bd-top {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.bd-top .strokepad {
+  flex: 0 0 auto;
+}
+
+@media (max-width: 460px) {
+  /* จอแคบ: กรอบขีดอยู่บน ข้อมูลอยู่ใต้แบบกระชับ (พินอิน+ความหมายบรรทัดเดียว ปุ่มแถวเดียว)
+     ถ้าปล่อยให้เรียงเป็นคอลัมน์ทั้งหมด การ์ดจะยาวจนดันคำอธิบายกับแผนภาพตกจอไปอีก */
+  .bd-top {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .bd-top .bd-info {
+    width: 100%;
+    align-items: center;
+  }
+
+  .bd-top .bd-gloss {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .bd-top .bd-btns {
+    display: flex;
+    width: 100%;
+    gap: 8px;
+  }
+
+  .bd-top .bd-btns > * {
+    min-width: 0;
+    flex: 1 1 0;
+    white-space: nowrap;
+  }
+}
+
+.chip-zh {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 6px 12px;
+  border: 1px solid var(--line);
+  border-bottom-width: 1px;
+  border-radius: var(--r-sm);
+  background: var(--surface);
+  color: var(--ink);
+}
+
+.chip-zh .zh {
+  font-size: 22px;
+  line-height: 1.2;
+}
+
+.chip-sub {
+  color: var(--ink-3);
+  font-size: 11.5px;
+  font-weight: 600;
 }
 
 .bd-main {
@@ -188,22 +591,38 @@
 .bd-hero {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 18px;
 }
 
 .bd-glyph {
   flex: 0 0 auto;
-  color: var(--ink);
-  font-size: 84px;
+  font-size: 92px;
   line-height: 1;
 }
 
 .bd-info {
   display: flex;
   min-width: 0;
+  flex: 1;
   flex-direction: column;
   align-items: flex-start;
-  gap: 6px;
+  gap: 10px;
+}
+
+.bd-gloss {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.bd-btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.bd-hsk {
+  font-size: 12.5px;
 }
 
 .bd-py {
@@ -216,23 +635,20 @@
 }
 
 .bd-hint {
-  padding: 12px 14px;
-  border-left: 3px solid var(--brand);
-  border-radius: var(--r-sm);
-  background: var(--brand-soft);
+  padding: 14px 16px;
+  border-left: 3px solid var(--seal);
+  background: var(--bg);
   font-size: 14.5px;
-  line-height: 1.65;
+  line-height: 1.75;
 }
 
-/* แผนภาพแตกส่วน — เรียงแนวนอนบนจอกว้าง ตกลงเป็นคอลัมน์บนมือถือ */
 .tree-root {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 8px;
 }
 
-/* มือถือ: ส่วนประกอบเรียงลงมาทีละอัน (2 คอลัมน์ที่ 375px แคบเกิน ข้อความชนแท็ก "บอกเสียง")
-   จอกว้างขึ้นค่อยให้ไหลข้างกันได้ */
+/* มือถือ: ส่วนประกอบเรียงลงมาทีละอัน (2 คอลัมน์ที่ 375px ทำให้ข้อความชนแท็ก "บอกเสียง") */
 .tree-node {
   display: flex;
   min-width: 0;
@@ -243,38 +659,49 @@
 
 @media (min-width: 520px) {
   .tree-node {
-    flex: 1 1 200px;
+    flex: 1 1 220px;
   }
 }
 
 .tree-chip {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   padding: 10px 12px;
   border: 1px solid var(--line);
   border-radius: var(--r-sm);
-  background: var(--surface-2);
+  background: var(--bg);
   color: inherit;
   text-align: left;
   cursor: default;
 }
 
 .tree-chip.can-drill {
-  border-color: var(--brand-line);
+  border-color: var(--line-strong);
   background: var(--surface);
   cursor: pointer;
 }
 
 .tree-chip.is-sound {
   border-style: dashed;
-  opacity: 0.85;
+}
+
+/* รากที่กรอบลำดับขีดกำลังเล่นอยู่ — ตาต้องโยงป้าย "กำลังเขียน" กับกิ่งนี้ได้ทันที */
+.tree-chip.is-active {
+  border-color: var(--seal);
+  border-width: 2px;
+  /* ชดเชยขอบที่หนาขึ้น 1px ไม่ให้กิ่งกระตุกตอนสลับกลุ่ม */
+  padding: 9px 11px;
+  background: var(--seal-soft);
+}
+
+.tree-chip.is-active .tree-glyph {
+  color: var(--seal);
 }
 
 .tree-glyph {
   flex: 0 0 auto;
-  color: var(--ink);
-  font-size: 34px;
+  font-size: 36px;
   line-height: 1.1;
 }
 
@@ -287,28 +714,27 @@
 .tree-th {
   font-size: 13px;
   font-weight: 700;
-  overflow-wrap: anywhere; /* ความหมายไทยยาวๆ ต้องตัดบรรทัดได้ ไม่ดันแท็กออกนอกการ์ด */
+  overflow-wrap: anywhere;
 }
 
 .tree-tag {
   flex: 0 0 auto;
   margin-left: auto;
-  padding: 2px 8px;
-  border-radius: var(--r-pill);
-  background: var(--surface-3);
+  padding: 2px 7px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r-sm);
   color: var(--ink-3);
-  font-size: 10.5px;
+  font-size: 10px;
   font-weight: 700;
 }
 
-/* ลูกของกิ่ง — เยื้องเข้ามาพร้อมเส้นบอกลำดับชั้น */
 .tree-kids {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  margin-left: 14px;
-  padding-left: 12px;
-  border-left: 2px dotted var(--line-strong);
+  margin-left: 16px;
+  padding-left: 14px;
+  border-left: 1px solid var(--line-strong);
 }
 
 .bd-words {
@@ -323,16 +749,16 @@
   gap: 8px;
   padding: 8px 12px;
   border: 1px solid var(--line);
-  border-radius: var(--r-pill);
-  background: var(--surface-2);
+  border-radius: var(--r-sm);
+  background: var(--bg);
   font-size: 13px;
 }
 
 .bd-word .zh {
-  font-size: 18px;
+  font-size: 19px;
 }
 
-/* ---------- ควิซ ---------- */
+/* ================= ควิซ ================= */
 .quiz {
   display: flex;
   flex-direction: column;
@@ -341,8 +767,7 @@
 }
 
 .quiz-glyph {
-  color: var(--ink);
-  font-size: 88px;
+  font-size: 92px;
   line-height: 1.05;
 }
 
@@ -363,21 +788,21 @@
 
 .quiz-opt {
   justify-content: flex-start;
-  gap: 10px;
+  gap: 12px;
   text-align: left;
 }
 
 .quiz-opt-glyph {
   flex: 0 0 auto;
-  width: 40px;
-  font-size: 28px;
+  width: 42px;
+  font-size: 30px;
   line-height: 1.1;
   text-align: center;
 }
 
 .quiz-opt-label {
   min-width: 0;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .quiz-opt.ok {
@@ -393,7 +818,7 @@
 }
 
 .quiz-opt.dim {
-  opacity: 0.5;
+  opacity: 0.45;
 }
 
 .quiz-explain {
@@ -401,11 +826,11 @@
   color: var(--ink-2);
   font-size: 13.5px;
   font-weight: 500;
-  line-height: 1.6;
+  line-height: 1.7;
   text-align: left;
 }
 
-/* ---------- ฝึกเขียน ---------- */
+/* ================= ฝึกเขียน ================= */
 .write {
   display: flex;
   flex-direction: column;
@@ -421,7 +846,7 @@
 }
 
 .write-py {
-  font-size: 26px;
+  font-size: 27px;
 }
 
 .write-th {
@@ -429,21 +854,104 @@
   font-weight: 700;
 }
 
+/* ปุ่มฟังเสียง + ดูตัวอย่าง ต้องอยู่แถวเดียวแม้จอ 320px
+   (ถ้า wrap เป็น 2 แถว กรอบเขียนจะถูกดันลงใต้ขอบจอ) */
 .write-actions {
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
-  gap: 8px;
+  gap: 6px;
   width: 100%;
+}
+
+.write-actions > * {
+  min-width: 0;
+  flex: 1 1 0;
+  padding-left: 8px;
+  padding-right: 8px;
+  font-size: 13.5px;
+  white-space: nowrap;
+}
+
+.write-ref {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
 }
 
 .write-ref-glyph {
   color: var(--ink-2);
-  font-size: 56px;
+  font-size: 58px;
   line-height: 1;
 }
 
-/* ---------- คลังตัวอักษร ---------- */
+/* มือถือแนวนอน (เตี้ยแต่กว้าง): วางโจทย์/ปุ่มไว้ซ้าย กรอบเขียนไว้ขวา
+   ถ้าเรียงลงมาตามปกติ กรอบจะตกใต้ขอบจอทันทีเพราะสูงเหลือแค่ ~60px */
+@media (max-height: 480px) and (min-width: 560px) {
+  .write {
+    display: grid;
+    align-items: start;
+    column-gap: 16px;
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  .write > .strokepad {
+    grid-column: 2;
+    grid-row: 1 / span 8;
+  }
+
+  .write > *:not(.strokepad) {
+    grid-column: 1;
+  }
+}
+
+/* จอเตี้ย: บีบส่วนโจทย์ให้เหลือที่ให้กรอบเขียนมากที่สุด
+   (พินอิน+ความหมายอยู่บรรทัดเดียว ปุ่มเตี้ยลง การ์ดชิดขึ้น) */
+@media (max-height: 620px) {
+  .write {
+    gap: 8px;
+  }
+
+  .write .card-pad,
+  .card-pad.write {
+    padding: 12px;
+  }
+
+  .write-prompt {
+    flex-direction: row;
+    align-items: baseline;
+    gap: 8px;
+  }
+
+  .write-py {
+    font-size: 20px;
+  }
+
+  .write-th {
+    font-size: 14.5px;
+  }
+
+  .write-actions > * {
+    min-height: 38px;
+    font-size: 13px;
+  }
+
+  .write-count {
+    font-size: 11.5px;
+  }
+
+  .strokepad-ctrl {
+    gap: 6px;
+  }
+
+  .strokepad-ctrl .btn {
+    min-height: 38px;
+    padding: 6px 10px;
+    font-size: 13px;
+  }
+}
+
+/* ================= คลังตัวอักษร ================= */
 .chars-star {
   display: flex;
   align-items: center;
@@ -455,13 +963,13 @@
 .chars-star input {
   width: 20px;
   height: 20px;
-  accent-color: var(--brand);
+  accent-color: var(--seal);
 }
 
 .chars-grid {
   display: grid;
-  gap: 8px;
-  grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));
+  gap: 6px;
+  grid-template-columns: repeat(auto-fill, minmax(92px, 1fr));
 }
 
 .chars-cell {
@@ -469,21 +977,24 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2px;
-  padding: 10px 6px;
+  gap: 1px;
+  padding: 10px 6px 8px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+  background: var(--surface);
   color: inherit;
   cursor: pointer;
 }
 
 .chars-glyph {
-  color: var(--ink);
   font-size: 34px;
-  line-height: 1.1;
+  line-height: 1.12;
 }
 
 .chars-th {
-  font-size: 12px;
+  font-size: 11.5px;
   font-weight: 600;
+  line-height: 1.35;
   text-align: center;
 }
 
@@ -500,7 +1011,7 @@
 
 .chars-star-mark {
   position: absolute;
-  top: 4px;
-  right: 6px;
-  font-size: 11px;
+  top: 3px;
+  right: 5px;
+  font-size: 10px;
 }

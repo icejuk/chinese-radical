@@ -8,6 +8,7 @@ import { radicals, findRad } from './radicals'
 import { hanzi } from './hanzi'
 import { RAD_CATS } from './types'
 import { strokeChars, strokePath } from './strokeIndex'
+import { strokeGroups } from '../lib/strokeGroups'
 
 const hanziMap = new Map(hanzi.map((h) => [h.zh, h]))
 
@@ -108,5 +109,20 @@ describe('ลำดับขีด (public/strokes)', () => {
       expect(strokeChars.has(h.zh), `${h.zh} ไม่อยู่ใน strokeIndex`).toBe(true)
       expect(existsSync(fileFor(h.zh)), `ไม่มีไฟล์ ${strokePath(h.zh)} (${h.zh})`).toBe(true)
     }
+  })
+
+  it('ตัวอักษรที่แบ่งกลุ่มขีดตามรากได้ ต้องมีอย่างน้อย 150 ตัว', () => {
+    const splittable = hanzi.filter((h) => strokeGroups(h.zh) !== null)
+    expect(splittable.length).toBeGreaterThanOrEqual(150)
+  })
+
+  it('ตัวที่แบ่งกลุ่มขีดไม่ได้ต้องอยู่ในลิสต์ข้อยกเว้นที่ประกาศไว้', () => {
+    const expected = new Set(['学', '友', '果', '我', '理', '现', '玩'])
+    const actual = hanzi.filter((h) => strokeGroups(h.zh) === null).map((h) => h.zh)
+
+    for (const zh of actual) {
+      expect(expected.has(zh), `${zh} แบ่งกลุ่มขีดไม่ได้และยังไม่อยู่ในลิสต์ข้อยกเว้น`).toBe(true)
+    }
+    expect(new Set(actual)).toEqual(expected)
   })
 })

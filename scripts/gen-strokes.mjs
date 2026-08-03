@@ -42,6 +42,7 @@ mkdirSync(outDir, { recursive: true })
 
 const have = []
 const missing = []
+const count = {} // อักขระ → จำนวนขีดจริง (มาจาก strokes.length ในไฟล์)
 let bytes = 0
 
 for (const ch of [...wanted].sort()) {
@@ -55,6 +56,9 @@ for (const ch of [...wanted].sort()) {
   writeFileSync(join(outDir, `${code}.json`), json)
   bytes += json.length
   have.push(ch)
+  // เก็บจำนวนขีด "จริง" จากไฟล์ — ใช้แบ่งกลุ่มขีดตามราก (lib/strokeGroups.ts)
+  // ห้ามใช้ Radical.strokes ที่เขียนมือแทน เพราะค่านั้นเป็นของรูปเต็ม (手=4) ไม่ใช่รูปแปร (扌=3)
+  count[ch] = JSON.parse(json).strokes.length
 }
 
 // index ให้ฝั่ง UI เช็คก่อนเรนเดอร์ — ไม่ต้อง fetch เดาแล้วเจอ 404
@@ -63,6 +67,10 @@ writeFileSync(
   `/* สร้างอัตโนมัติด้วย \`npm run strokes\` — ห้ามแก้มือ
    อักขระที่มีข้อมูลลำดับขีดใน public/strokes/<codepoint>.json */
 export const strokeChars = new Set(${JSON.stringify(have.join(''))}.split(''))
+
+/** จำนวนขีดจริงของแต่ละอักขระ (มาจาก strokes.length ในไฟล์ข้อมูล)
+    ใช้คำนวณว่าตัวอักษรหนึ่งแบ่งขีดตามรากได้ยังไง — ดู src/lib/strokeGroups.ts */
+export const strokeCount: Record<string, number> = ${JSON.stringify(count)}
 
 /** พาธไฟล์ลำดับขีดของอักขระ (ชื่อไฟล์เป็น codepoint hex) */
 export const strokePath = (ch: string) => \`./strokes/\${ch.codePointAt(0)!.toString(16)}.json\`
