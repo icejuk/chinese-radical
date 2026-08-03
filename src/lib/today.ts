@@ -5,7 +5,7 @@
    ชุดต้องคงที่ตลอดวัน — ไม่สุ่ม เพราะถ้าปิดแอปแล้วเปิดใหม่เจอชุดใหม่ ความคืบหน้า "3/8" จะไร้ความหมาย */
 import { KEYS, readJson, writeJson } from './storage'
 import { srsGet, today } from './srs'
-import { charsUsingRad, learnRads } from './tree'
+import { charsUsingRad, learnRads, shuffle } from './tree'
 import type { Radical } from '../data/types'
 
 export const DAY_SIZE = 5
@@ -70,11 +70,15 @@ export function todaySet(size = DAY_SIZE): Radical[] {
       .slice(0, size)
     : out
 
+  // SRS เป็นคนเลือกสมาชิกของชุด แต่สุ่มลำดับเพียงครั้งเดียวตอนสร้างชุดประจำวัน
+  // แล้วเก็บลำดับที่สุ่มได้ลง day log จึงไม่สลับใหม่เมื่อ refresh หรือเปิดแอปซ้ำ
+  const ordered = size === DAY_SIZE ? shuffle(selected) : selected
+
   if (size === DAY_SIZE) {
-    writeJson(KEYS.day, { ...log, set: selected.map((radical) => radical.r) })
+    writeJson(KEYS.day, { ...log, set: ordered.map((radical) => radical.r) })
   }
 
-  return selected
+  return ordered
 }
 
 export type DayStats = {

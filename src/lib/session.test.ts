@@ -1,5 +1,5 @@
-import { beforeEach, describe, expect, it, vi } from 'vitest'
-import { learnRads } from './tree'
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
+import { charsUsingRad, learnRads } from './tree'
 import { makeSet } from './quiz'
 import { dueHanzi, srsUpdate, today } from './srs'
 import { todaySet } from './today'
@@ -37,6 +37,10 @@ beforeEach(() => {
   vi.useRealTimers()
 })
 
+afterEach(() => {
+  vi.restoreAllMocks()
+})
+
 describe('V2 daily session', () => {
   it('keeps the same five radicals after SRS changes during the day', () => {
     const first = todaySet()
@@ -44,6 +48,22 @@ describe('V2 daily session', () => {
 
     srsUpdate(first[0].r, true)
     expect(todaySet().map((radical) => radical.r)).toEqual(first.map((radical) => radical.r))
+  })
+
+  it('shuffles the chosen five once, then locks that order for the day', () => {
+    const selectedByPriority = learnRads
+      .filter((radical) => charsUsingRad(radical).length > 0)
+      .slice(0, 5)
+      .map((radical) => radical.r)
+
+    vi.spyOn(Math, 'random').mockReturnValue(0)
+    const firstOrder = todaySet().map((radical) => radical.r)
+
+    expect(new Set(firstOrder)).toEqual(new Set(selectedByPriority))
+    expect(firstOrder).not.toEqual(selectedByPriority)
+
+    vi.mocked(Math.random).mockReturnValue(0.99)
+    expect(todaySet().map((radical) => radical.r)).toEqual(firstOrder)
   })
 
   it('uses the learner local calendar day', () => {
