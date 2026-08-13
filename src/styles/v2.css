@@ -467,6 +467,132 @@
   margin-bottom: 4px;
 }
 
+/* ---------- ฝึกเขียนจาก Chinese Study ---------- */
+.lesson-write-shell {
+  gap: 10px;
+}
+
+.lesson-write-source {
+  display: grid;
+  gap: 5px;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 13px;
+  background: var(--surface);
+}
+
+.lesson-write-source label {
+  color: var(--ink-3);
+  font-size: 11.5px;
+  font-weight: 700;
+}
+
+.lesson-write-source select {
+  width: 100%;
+  min-height: 46px;
+  padding: 7px 10px;
+  border: 1px solid var(--line-strong);
+  border-radius: 9px;
+  background: var(--surface);
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.lesson-write-status {
+  color: var(--ink-3);
+  font-size: 10.5px;
+}
+
+.lesson-write-status::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  margin-right: 5px;
+  border-radius: 50%;
+  background: var(--ink-3);
+}
+
+.lesson-write-status.live::before {
+  background: var(--jade);
+}
+
+.lesson-write-kind button {
+  font-size: 13px;
+}
+
+.lesson-write {
+  gap: 10px;
+}
+
+.lesson-write-progress-row {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  color: var(--ink-3);
+  font-size: 11.5px;
+  font-weight: 700;
+}
+
+.lesson-write > .progress {
+  width: 100%;
+}
+
+.lesson-word-mask {
+  display: flex;
+  min-height: 40px;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.lesson-word-mask span {
+  display: grid;
+  width: 34px;
+  height: 38px;
+  place-items: center;
+  border-bottom: 2px solid var(--line);
+  color: var(--ink-3);
+  font-family: var(--font-zh);
+  font-size: 24px;
+}
+
+.lesson-word-mask span.current {
+  border-bottom-color: var(--seal);
+  color: var(--seal);
+}
+
+.lesson-write-answer {
+  padding: 6px 12px;
+  border-radius: 8px;
+  background: var(--seal-soft);
+  color: var(--ink-2);
+  font-size: 13px;
+}
+
+.lesson-write-answer b {
+  margin-left: 6px;
+  color: var(--seal);
+  font-size: 25px;
+  font-weight: 400;
+}
+
+.lesson-write-loading,
+.lesson-write-empty {
+  border-radius: 13px;
+  color: var(--ink-3);
+  font-size: 13px;
+  text-align: center;
+}
+
+.lesson-write-empty p {
+  margin: 4px 0 0;
+}
+
+.lesson-write-done {
+  border-radius: 13px;
+}
+
 /* ---------- ค้น ---------- */
 .explore {
   display: flex;

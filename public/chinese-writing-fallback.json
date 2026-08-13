@@ -1,0 +1,2583 @@
+{
+  "version": 1,
+  "source": "chinese-study",
+  "lessons": [
+    {
+      "id": 1,
+      "title": "บทที่ 1 — 你好 · สวัสดี",
+      "zh": "你好",
+      "py": "Nǐ hǎo",
+      "th": "สวัสดี",
+      "vocab": [
+        {
+          "zh": "你",
+          "py": "nǐ",
+          "th": "คุณ",
+          "kind": "vocab"
+        },
+        {
+          "zh": "好",
+          "py": "hǎo",
+          "th": "ดี / โอเค",
+          "kind": "vocab"
+        },
+        {
+          "zh": "你好",
+          "py": "nǐ hǎo",
+          "th": "สวัสดี",
+          "kind": "vocab"
+        },
+        {
+          "zh": "一",
+          "py": "yī",
+          "th": "หนึ่ง",
+          "kind": "vocab"
+        },
+        {
+          "zh": "五",
+          "py": "wǔ",
+          "th": "ห้า",
+          "kind": "vocab"
+        },
+        {
+          "zh": "八",
+          "py": "bā",
+          "th": "แปด",
+          "kind": "vocab"
+        },
+        {
+          "zh": "大",
+          "py": "dà",
+          "th": "ใหญ่",
+          "kind": "vocab"
+        },
+        {
+          "zh": "不",
+          "py": "bù",
+          "th": "ไม่",
+          "kind": "vocab"
+        },
+        {
+          "zh": "口",
+          "py": "kǒu",
+          "th": "ปาก / ลักษณนามคนในครอบครัว",
+          "kind": "vocab"
+        },
+        {
+          "zh": "白",
+          "py": "bái",
+          "th": "ขาว",
+          "kind": "vocab"
+        },
+        {
+          "zh": "女",
+          "py": "nǚ",
+          "th": "หญิง",
+          "kind": "vocab"
+        },
+        {
+          "zh": "马",
+          "py": "mǎ",
+          "th": "ม้า",
+          "kind": "vocab"
+        }
+      ],
+      "phrases": [
+        {
+          "zh": "你好",
+          "py": "nǐ hǎo",
+          "th": "สวัสดี",
+          "kind": "phrase"
+        },
+        {
+          "zh": "不好",
+          "py": "bù hǎo",
+          "th": "ไม่ดี",
+          "kind": "phrase"
+        },
+        {
+          "zh": "好大",
+          "py": "hǎo dà",
+          "th": "ใหญ่มาก",
+          "kind": "phrase"
+        },
+        {
+          "zh": "不大",
+          "py": "bù dà",
+          "th": "ไม่ใหญ่",
+          "kind": "phrase"
+        },
+        {
+          "zh": "大口",
+          "py": "dà kǒu",
+          "th": "ปากใหญ่",
+          "kind": "phrase"
+        },
+        {
+          "zh": "白马",
+          "py": "bái mǎ",
+          "th": "ม้าขาว",
+          "kind": "phrase"
+        },
+        {
+          "zh": "好白",
+          "py": "hǎo bái",
+          "th": "ขาวมาก",
+          "kind": "phrase"
+        },
+        {
+          "zh": "五口",
+          "py": "wǔ kǒu",
+          "th": "ห้าคน (ในบ้าน)",
+          "kind": "phrase"
+        },
+        {
+          "zh": "一口",
+          "py": "yī kǒu",
+          "th": "หนึ่งคำ",
+          "kind": "phrase"
+        },
+        {
+          "zh": "女马",
+          "py": "nǚ mǎ",
+          "th": "ม้าตัวเมีย",
+          "kind": "phrase"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "บทที่ 2 — 汉语不太难 · ภาษาจีนไม่ยากเกินไป",
+      "zh": "汉语不太难",
+      "py": "Hànyǔ bú tài nán",
+      "th": "ภาษาจีนไม่ยากเกินไป",
+      "vocab": [
+        {
+          "zh": "忙",
+          "py": "máng",
+          "th": "ยุ่ง",
+          "kind": "vocab"
+        },
+        {
+          "zh": "吗",
+          "py": "ma",
+          "th": "ไหม (ท้ายคำถาม)",
+          "kind": "vocab"
+        },
+        {
+          "zh": "很",
+          "py": "hěn",
+          "th": "มาก",
+          "kind": "vocab"
+        },
+        {
+          "zh": "汉语",
+          "py": "Hànyǔ",
+          "th": "ภาษาจีน",
+          "kind": "vocab"
+        },
+        {
+          "zh": "难",
+          "py": "nán",
+          "th": "ยาก",
+          "kind": "vocab"
+        },
+        {
+          "zh": "太",
+          "py": "tài",
+          "th": "เกินไป",
+          "kind": "vocab"
+        },
+        {
+          "zh": "爸爸",
+          "py": "bàba",
+          "th": "พ่อ",
+          "kind": "vocab"
+        },
+        {
+          "zh": "妈妈",
+          "py": "māma",
+          "th": "แม่",
+          "kind": "vocab"
+        },
+        {
+          "zh": "他",
+          "py": "tā",
+          "th": "เขา (ชาย)",
+          "kind": "vocab"
+        },
+        {
+          "zh": "她",
+          "py": "tā",
+          "th": "เธอ (หญิง)",
+          "kind": "vocab"
+        },
+        {
+          "zh": "男",
+          "py": "nán",
+          "th": "ชาย",
+          "kind": "vocab"
+        },
+        {
+          "zh": "哥哥",
+          "py": "gēge",
+          "th": "พี่ชาย",
+          "kind": "vocab"
+        },
+        {
+          "zh": "弟弟",
+          "py": "dìdi",
+          "th": "น้องชาย",
+          "kind": "vocab"
+        },
+        {
+          "zh": "妹妹",
+          "py": "mèimei",
+          "th": "น้องสาว",
+          "kind": "vocab"
+        }
+      ],
+      "phrases": [
+        {
+          "zh": "你忙吗",
+          "py": "nǐ máng ma",
+          "th": "คุณยุ่งไหม",
+          "kind": "phrase"
+        },
+        {
+          "zh": "很忙",
+          "py": "hěn máng",
+          "th": "ยุ่งมาก",
+          "kind": "phrase"
+        },
+        {
+          "zh": "不忙",
+          "py": "bù máng",
+          "th": "ไม่ยุ่ง",
+          "kind": "phrase"
+        },
+        {
+          "zh": "汉语难吗",
+          "py": "Hànyǔ nán ma",
+          "th": "ภาษาจีนยากไหม",
+          "kind": "phrase"
+        },
+        {
+          "zh": "不太难",
+          "py": "bú tài nán",
+          "th": "ไม่ค่อยยาก",
+          "kind": "phrase"
+        },
+        {
+          "zh": "很难",
+          "py": "hěn nán",
+          "th": "ยากมาก",
+          "kind": "phrase"
+        },
+        {
+          "zh": "不难",
+          "py": "bù nán",
+          "th": "ไม่ยาก",
+          "kind": "phrase"
+        },
+        {
+          "zh": "爸爸妈妈",
+          "py": "bàba māma",
+          "th": "พ่อแม่",
+          "kind": "phrase"
+        },
+        {
+          "zh": "哥哥弟弟",
+          "py": "gēge dìdi",
+          "th": "พี่น้องชาย",
+          "kind": "phrase"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "บทที่ 3 — 明天见 · พรุ่งนี้เจอกัน",
+      "zh": "明天见",
+      "py": "Míngtiān jiàn",
+      "th": "พรุ่งนี้เจอกัน",
+      "vocab": [
+        {
+          "zh": "学",
+          "py": "xué",
+          "th": "เรียน",
+          "kind": "vocab"
+        },
+        {
+          "zh": "英语",
+          "py": "Yīngyǔ",
+          "th": "ภาษาอังกฤษ",
+          "kind": "vocab"
+        },
+        {
+          "zh": "去",
+          "py": "qù",
+          "th": "ไป",
+          "kind": "vocab"
+        },
+        {
+          "zh": "对",
+          "py": "duì",
+          "th": "ถูกต้อง",
+          "kind": "vocab"
+        },
+        {
+          "zh": "邮局",
+          "py": "yóujú",
+          "th": "ไปรษณีย์",
+          "kind": "vocab"
+        },
+        {
+          "zh": "寄",
+          "py": "jì",
+          "th": "ส่ง (จดหมาย)",
+          "kind": "vocab"
+        },
+        {
+          "zh": "信",
+          "py": "xìn",
+          "th": "จดหมาย",
+          "kind": "vocab"
+        },
+        {
+          "zh": "银行",
+          "py": "yínháng",
+          "th": "ธนาคาร",
+          "kind": "vocab"
+        },
+        {
+          "zh": "取",
+          "py": "qǔ",
+          "th": "รับ / ถอน",
+          "kind": "vocab"
+        },
+        {
+          "zh": "钱",
+          "py": "qián",
+          "th": "เงิน",
+          "kind": "vocab"
+        },
+        {
+          "zh": "明天",
+          "py": "míngtiān",
+          "th": "พรุ่งนี้",
+          "kind": "vocab"
+        },
+        {
+          "zh": "天",
+          "py": "tiān",
+          "th": "วัน",
+          "kind": "vocab"
+        },
+        {
+          "zh": "见",
+          "py": "jiàn",
+          "th": "พบ / เจอ",
+          "kind": "vocab"
+        },
+        {
+          "zh": "六",
+          "py": "liù",
+          "th": "หก",
+          "kind": "vocab"
+        },
+        {
+          "zh": "七",
+          "py": "qī",
+          "th": "เจ็ด",
+          "kind": "vocab"
+        },
+        {
+          "zh": "九",
+          "py": "jiǔ",
+          "th": "เก้า",
+          "kind": "vocab"
+        },
+        {
+          "zh": "北京",
+          "py": "Běijīng",
+          "th": "ปักกิ่ง",
+          "kind": "vocab"
+        }
+      ],
+      "phrases": [
+        {
+          "zh": "明天见",
+          "py": "míngtiān jiàn",
+          "th": "พรุ่งนี้แล้วพบกัน",
+          "kind": "phrase"
+        },
+        {
+          "zh": "去邮局",
+          "py": "qù yóujú",
+          "th": "ไปไปรษณีย์",
+          "kind": "phrase"
+        },
+        {
+          "zh": "寄信",
+          "py": "jì xìn",
+          "th": "ส่งจดหมาย",
+          "kind": "phrase"
+        },
+        {
+          "zh": "去银行",
+          "py": "qù yínháng",
+          "th": "ไปธนาคาร",
+          "kind": "phrase"
+        },
+        {
+          "zh": "取钱",
+          "py": "qǔ qián",
+          "th": "ถอนเงิน",
+          "kind": "phrase"
+        },
+        {
+          "zh": "学汉语",
+          "py": "xué Hànyǔ",
+          "th": "เรียนภาษาจีน",
+          "kind": "phrase"
+        },
+        {
+          "zh": "学英语",
+          "py": "xué Yīngyǔ",
+          "th": "เรียนภาษาอังกฤษ",
+          "kind": "phrase"
+        },
+        {
+          "zh": "明天去",
+          "py": "míngtiān qù",
+          "th": "ไปพรุ่งนี้",
+          "kind": "phrase"
+        },
+        {
+          "zh": "取信",
+          "py": "qǔ xìn",
+          "th": "รับจดหมาย",
+          "kind": "phrase"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "บทที่ 4 — 你去哪儿 · คุณไปไหน",
+      "zh": "你去哪儿",
+      "py": "Nǐ qù nǎr",
+      "th": "คุณไปไหน",
+      "vocab": [
+        {
+          "zh": "今天",
+          "py": "jīntiān",
+          "th": "วันนี้",
+          "kind": "vocab"
+        },
+        {
+          "zh": "昨天",
+          "py": "zuótiān",
+          "th": "เมื่อวาน",
+          "kind": "vocab"
+        },
+        {
+          "zh": "星期",
+          "py": "xīngqī",
+          "th": "สัปดาห์",
+          "kind": "vocab"
+        },
+        {
+          "zh": "星期天",
+          "py": "Xīngqītiān",
+          "th": "วันอาทิตย์",
+          "kind": "vocab"
+        },
+        {
+          "zh": "几",
+          "py": "jǐ",
+          "th": "กี่ / เท่าไร",
+          "kind": "vocab"
+        },
+        {
+          "zh": "二",
+          "py": "èr",
+          "th": "สอง",
+          "kind": "vocab"
+        },
+        {
+          "zh": "三",
+          "py": "sān",
+          "th": "สาม",
+          "kind": "vocab"
+        },
+        {
+          "zh": "四",
+          "py": "sì",
+          "th": "สี่",
+          "kind": "vocab"
+        },
+        {
+          "zh": "哪儿",
+          "py": "nǎr",
+          "th": "ที่ไหน",
+          "kind": "vocab"
+        },
+        {
+          "zh": "那儿",
+          "py": "nàr",
+          "th": "ที่นั่น",
+          "kind": "vocab"
+        },
+        {
+          "zh": "我",
+          "py": "wǒ",
+          "th": "ฉัน / ผม",
+          "kind": "vocab"
+        },
+        {
+          "zh": "回",
+          "py": "huí",
+          "th": "กลับ",
+          "kind": "vocab"
+        },
+        {
+          "zh": "学校",
+          "py": "xuéxiào",
+          "th": "โรงเรียน",
+          "kind": "vocab"
+        },
+        {
+          "zh": "再见",
+          "py": "zàijiàn",
+          "th": "ลาก่อน",
+          "kind": "vocab"
+        },
+        {
+          "zh": "对不起",
+          "py": "duìbuqǐ",
+          "th": "ขอโทษ",
+          "kind": "vocab"
+        },
+        {
+          "zh": "没关系",
+          "py": "méi guānxi",
+          "th": "ไม่เป็นไร",
+          "kind": "vocab"
+        },
+        {
+          "zh": "天安门",
+          "py": "Tiān'ān Mén",
+          "th": "เทียนอันเหมิน (สถานที่สำคัญในปักกิ่ง)",
+          "kind": "vocab"
+        }
+      ],
+      "phrases": [
+        {
+          "zh": "你去哪儿",
+          "py": "nǐ qù nǎr",
+          "th": "คุณจะไปไหน",
+          "kind": "phrase"
+        },
+        {
+          "zh": "我回学校",
+          "py": "wǒ huí xuéxiào",
+          "th": "ฉันกลับโรงเรียน",
+          "kind": "phrase"
+        },
+        {
+          "zh": "我去学校",
+          "py": "wǒ qù xuéxiào",
+          "th": "ฉันไปโรงเรียน",
+          "kind": "phrase"
+        },
+        {
+          "zh": "今天星期几",
+          "py": "jīntiān xīngqī jǐ",
+          "th": "วันนี้วันอะไร",
+          "kind": "phrase"
+        },
+        {
+          "zh": "对不起",
+          "py": "duìbuqǐ",
+          "th": "ขอโทษ",
+          "kind": "phrase"
+        },
+        {
+          "zh": "没关系",
+          "py": "méi guānxi",
+          "th": "ไม่เป็นไร",
+          "kind": "phrase"
+        },
+        {
+          "zh": "再见",
+          "py": "zàijiàn",
+          "th": "ลาก่อน",
+          "kind": "phrase"
+        },
+        {
+          "zh": "回学校",
+          "py": "huí xuéxiào",
+          "th": "กลับโรงเรียน",
+          "kind": "phrase"
+        },
+        {
+          "zh": "你好吗",
+          "py": "nǐ hǎo ma",
+          "th": "สบายดีไหม",
+          "kind": "phrase"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "บทที่ 5 — 这是王老师 · นี่คือคุณครูหวัง",
+      "zh": "这是王老师",
+      "py": "Zhè shì Wáng lǎoshī",
+      "th": "นี่คือคุณครูหวัง",
+      "vocab": [
+        {
+          "zh": "这",
+          "py": "zhè",
+          "th": "นี่ / นี้",
+          "kind": "vocab"
+        },
+        {
+          "zh": "是",
+          "py": "shì",
+          "th": "เป็น อยู่ คือ",
+          "kind": "vocab"
+        },
+        {
+          "zh": "老师",
+          "py": "lǎoshī",
+          "th": "ครู",
+          "kind": "vocab"
+        },
+        {
+          "zh": "您",
+          "py": "nín",
+          "th": "คุณ (ยกย่อง)",
+          "kind": "vocab"
+        },
+        {
+          "zh": "请",
+          "py": "qǐng",
+          "th": "เชิญ / กรุณา",
+          "kind": "vocab"
+        },
+        {
+          "zh": "进",
+          "py": "jìn",
+          "th": "เข้า",
+          "kind": "vocab"
+        },
+        {
+          "zh": "坐",
+          "py": "zuò",
+          "th": "นั่ง",
+          "kind": "vocab"
+        },
+        {
+          "zh": "喝",
+          "py": "hē",
+          "th": "ดื่ม",
+          "kind": "vocab"
+        },
+        {
+          "zh": "茶",
+          "py": "chá",
+          "th": "ชา",
+          "kind": "vocab"
+        },
+        {
+          "zh": "谢谢",
+          "py": "xièxie",
+          "th": "ขอบคุณ",
+          "kind": "vocab"
+        },
+        {
+          "zh": "不客气",
+          "py": "bú kèqi",
+          "th": "ไม่ต้องเกรงใจ",
+          "kind": "vocab"
+        },
+        {
+          "zh": "工作",
+          "py": "gōngzuò",
+          "th": "งาน / ทำงาน",
+          "kind": "vocab"
+        },
+        {
+          "zh": "身体",
+          "py": "shēntǐ",
+          "th": "สุขภาพ / ร่างกาย",
+          "kind": "vocab"
+        },
+        {
+          "zh": "十",
+          "py": "shí",
+          "th": "สิบ",
+          "kind": "vocab"
+        },
+        {
+          "zh": "日",
+          "py": "rì",
+          "th": "วัน / พระอาทิตย์",
+          "kind": "vocab"
+        }
+      ],
+      "phrases": [
+        {
+          "zh": "请进",
+          "py": "qǐng jìn",
+          "th": "เชิญเข้ามา",
+          "kind": "phrase"
+        },
+        {
+          "zh": "请坐",
+          "py": "qǐng zuò",
+          "th": "เชิญนั่ง",
+          "kind": "phrase"
+        },
+        {
+          "zh": "请喝茶",
+          "py": "qǐng hē chá",
+          "th": "เชิญดื่มชา",
+          "kind": "phrase"
+        },
+        {
+          "zh": "谢谢你",
+          "py": "xièxie nǐ",
+          "th": "ขอบคุณ",
+          "kind": "phrase"
+        },
+        {
+          "zh": "不客气",
+          "py": "bú kèqi",
+          "th": "ไม่ต้องเกรงใจ",
+          "kind": "phrase"
+        },
+        {
+          "zh": "我的爸爸",
+          "py": "wǒ de bàba",
+          "th": "พ่อของฉัน",
+          "kind": "phrase"
+        },
+        {
+          "zh": "身体好吗",
+          "py": "shēntǐ hǎo ma",
+          "th": "สุขภาพดีไหม",
+          "kind": "phrase"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "title": "บทที่ 6 — 我学习汉语 · ฉันเรียนภาษาจีน",
+      "zh": "我学习汉语",
+      "py": "Wǒ xuéxí Hànyǔ",
+      "th": "ฉันเรียนภาษาจีน",
+      "vocab": [
+        {
+          "zh": "请问",
+          "py": "qǐngwèn",
+          "th": "ขอถาม",
+          "kind": "vocab"
+        },
+        {
+          "zh": "贵姓",
+          "py": "guìxìng",
+          "th": "แซ่อะไร (สุภาพ)",
+          "kind": "vocab"
+        },
+        {
+          "zh": "叫",
+          "py": "jiào",
+          "th": "เรียก / ชื่อ",
+          "kind": "vocab"
+        },
+        {
+          "zh": "名字",
+          "py": "míngzi",
+          "th": "ชื่อ",
+          "kind": "vocab"
+        },
+        {
+          "zh": "哪",
+          "py": "nǎ",
+          "th": "ไหน",
+          "kind": "vocab"
+        },
+        {
+          "zh": "国",
+          "py": "guó",
+          "th": "ประเทศ",
+          "kind": "vocab"
+        },
+        {
+          "zh": "人",
+          "py": "rén",
+          "th": "คน",
+          "kind": "vocab"
+        },
+        {
+          "zh": "认识",
+          "py": "rènshi",
+          "th": "รู้จัก",
+          "kind": "vocab"
+        },
+        {
+          "zh": "高兴",
+          "py": "gāoxìng",
+          "th": "ดีใจ",
+          "kind": "vocab"
+        },
+        {
+          "zh": "也",
+          "py": "yě",
+          "th": "ก็ / เช่นกัน",
+          "kind": "vocab"
+        },
+        {
+          "zh": "学习",
+          "py": "xuéxí",
+          "th": "เรียน",
+          "kind": "vocab"
+        },
+        {
+          "zh": "什么",
+          "py": "shénme",
+          "th": "อะไร",
+          "kind": "vocab"
+        },
+        {
+          "zh": "发音",
+          "py": "fāyīn",
+          "th": "การออกเสียง",
+          "kind": "vocab"
+        },
+        {
+          "zh": "汉字",
+          "py": "Hànzì",
+          "th": "อักษรจีน",
+          "kind": "vocab"
+        },
+        {
+          "zh": "书",
+          "py": "shū",
+          "th": "หนังสือ",
+          "kind": "vocab"
+        },
+        {
+          "zh": "谁",
+          "py": "shéi",
+          "th": "ใคร",
+          "kind": "vocab"
+        },
+        {
+          "zh": "的",
+          "py": "de",
+          "th": "ของ",
+          "kind": "vocab"
+        },
+        {
+          "zh": "那",
+          "py": "nà",
+          "th": "นั่น / นั้น",
+          "kind": "vocab"
+        },
+        {
+          "zh": "杂志",
+          "py": "zázhì",
+          "th": "นิตยสาร",
+          "kind": "vocab"
+        },
+        {
+          "zh": "中文",
+          "py": "Zhōngwén",
+          "th": "ภาษาจีน",
+          "kind": "vocab"
+        },
+        {
+          "zh": "英文",
+          "py": "Yīngwén",
+          "th": "ภาษาอังกฤษ",
+          "kind": "vocab"
+        },
+        {
+          "zh": "朋友",
+          "py": "péngyou",
+          "th": "เพื่อน",
+          "kind": "vocab"
+        }
+      ],
+      "phrases": [
+        {
+          "zh": "你叫什么名字",
+          "py": "nǐ jiào shénme míngzi",
+          "th": "คุณชื่ออะไร",
+          "kind": "phrase"
+        },
+        {
+          "zh": "您贵姓",
+          "py": "nín guìxìng",
+          "th": "คุณแซ่อะไร",
+          "kind": "phrase"
+        },
+        {
+          "zh": "你是哪国人",
+          "py": "nǐ shì nǎ guó rén",
+          "th": "คุณเป็นคนประเทศไหน",
+          "kind": "phrase"
+        },
+        {
+          "zh": "认识你很高兴",
+          "py": "rènshi nǐ hěn gāoxìng",
+          "th": "ยินดีที่ได้รู้จัก",
+          "kind": "phrase"
+        },
+        {
+          "zh": "我也是",
+          "py": "wǒ yě shì",
+          "th": "ฉันก็เช่นกัน",
+          "kind": "phrase"
+        },
+        {
+          "zh": "谁的书",
+          "py": "shéi de shū",
+          "th": "หนังสือของใคร",
+          "kind": "phrase"
+        },
+        {
+          "zh": "好朋友",
+          "py": "hǎo péngyou",
+          "th": "เพื่อนสนิท",
+          "kind": "phrase"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "title": "บทที่ 7 — 你吃什么 · คุณกินอะไร",
+      "zh": "你吃什么",
+      "py": "Nǐ chī shénme",
+      "th": "คุณกินอะไร",
+      "vocab": [
+        {
+          "zh": "中午",
+          "py": "zhōngwǔ",
+          "th": "เที่ยง",
+          "kind": "vocab"
+        },
+        {
+          "zh": "吃",
+          "py": "chī",
+          "th": "กิน",
+          "kind": "vocab"
+        },
+        {
+          "zh": "饭",
+          "py": "fàn",
+          "th": "ข้าว / อาหาร",
+          "kind": "vocab"
+        },
+        {
+          "zh": "食堂",
+          "py": "shítáng",
+          "th": "โรงอาหาร",
+          "kind": "vocab"
+        },
+        {
+          "zh": "馒头",
+          "py": "mántou",
+          "th": "หมั่นโถว",
+          "kind": "vocab"
+        },
+        {
+          "zh": "要",
+          "py": "yào",
+          "th": "ต้องการ / เอา",
+          "kind": "vocab"
+        },
+        {
+          "zh": "个",
+          "py": "gè",
+          "th": "อัน (ลักษณนาม)",
+          "kind": "vocab"
+        },
+        {
+          "zh": "米饭",
+          "py": "mǐfàn",
+          "th": "ข้าวสวย",
+          "kind": "vocab"
+        },
+        {
+          "zh": "碗",
+          "py": "wǎn",
+          "th": "ถ้วย / ชาม",
+          "kind": "vocab"
+        },
+        {
+          "zh": "鸡蛋",
+          "py": "jīdàn",
+          "th": "ไข่ไก่",
+          "kind": "vocab"
+        },
+        {
+          "zh": "汤",
+          "py": "tāng",
+          "th": "ซุป / น้ำแกง",
+          "kind": "vocab"
+        },
+        {
+          "zh": "啤酒",
+          "py": "píjiǔ",
+          "th": "เบียร์",
+          "kind": "vocab"
+        },
+        {
+          "zh": "酒",
+          "py": "jiǔ",
+          "th": "เหล้า",
+          "kind": "vocab"
+        },
+        {
+          "zh": "这些",
+          "py": "zhèxiē",
+          "th": "เหล่านี้",
+          "kind": "vocab"
+        },
+        {
+          "zh": "些",
+          "py": "xiē",
+          "th": "บ้าง (จำนวนไม่แน่นอน)",
+          "kind": "vocab"
+        },
+        {
+          "zh": "一些",
+          "py": "yìxiē",
+          "th": "บ้าง / จำนวนหนึ่ง",
+          "kind": "vocab"
+        },
+        {
+          "zh": "那些",
+          "py": "nàxiē",
+          "th": "เหล่านั้น",
+          "kind": "vocab"
+        },
+        {
+          "zh": "饺子",
+          "py": "jiǎozi",
+          "th": "เกี๊ยว",
+          "kind": "vocab"
+        },
+        {
+          "zh": "包子",
+          "py": "bāozi",
+          "th": "ซาลาเปา",
+          "kind": "vocab"
+        },
+        {
+          "zh": "面条儿",
+          "py": "miàntiáor",
+          "th": "ก๋วยเตี๋ยว / บะหมี่",
+          "kind": "vocab"
+        }
+      ],
+      "phrases": [
+        {
+          "zh": "你吃什么",
+          "py": "nǐ chī shénme",
+          "th": "คุณกินอะไร",
+          "kind": "phrase"
+        },
+        {
+          "zh": "吃米饭",
+          "py": "chī mǐfàn",
+          "th": "กินข้าว",
+          "kind": "phrase"
+        },
+        {
+          "zh": "喝啤酒",
+          "py": "hē píjiǔ",
+          "th": "ดื่มเบียร์",
+          "kind": "phrase"
+        },
+        {
+          "zh": "一碗汤",
+          "py": "yì wǎn tāng",
+          "th": "ซุปหนึ่งถ้วย",
+          "kind": "phrase"
+        },
+        {
+          "zh": "一个包子",
+          "py": "yí ge bāozi",
+          "th": "ซาลาเปา 1 ลูก",
+          "kind": "phrase"
+        },
+        {
+          "zh": "我不要",
+          "py": "wǒ bú yào",
+          "th": "ฉันไม่เอา",
+          "kind": "phrase"
+        },
+        {
+          "zh": "吃饺子",
+          "py": "chī jiǎozi",
+          "th": "กินเกี๊ยว",
+          "kind": "phrase"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "title": "บทที่ 8 — 苹果一斤多少钱 · แอปเปิลครึ่งโลเท่าไร",
+      "zh": "苹果一斤多少钱",
+      "py": "Píngguǒ yì jīn duōshao qián",
+      "th": "แอปเปิลครึ่งโลเท่าไร",
+      "vocab": [
+        {
+          "zh": "买",
+          "py": "mǎi",
+          "th": "ซื้อ",
+          "kind": "vocab"
+        },
+        {
+          "zh": "水果",
+          "py": "shuǐguǒ",
+          "th": "ผลไม้",
+          "kind": "vocab"
+        },
+        {
+          "zh": "苹果",
+          "py": "píngguǒ",
+          "th": "แอปเปิล",
+          "kind": "vocab"
+        },
+        {
+          "zh": "斤",
+          "py": "jīn",
+          "th": "ครึ่งกิโล (หน่วยชั่ง)",
+          "kind": "vocab"
+        },
+        {
+          "zh": "多少",
+          "py": "duōshao",
+          "th": "เท่าไร (จำนวนมาก)",
+          "kind": "vocab"
+        },
+        {
+          "zh": "块",
+          "py": "kuài",
+          "th": "หยวน (ภาษาพูด)",
+          "kind": "vocab"
+        },
+        {
+          "zh": "毛",
+          "py": "máo",
+          "th": "1/10 หยวน",
+          "kind": "vocab"
+        },
+        {
+          "zh": "分",
+          "py": "fēn",
+          "th": "1/100 หยวน",
+          "kind": "vocab"
+        },
+        {
+          "zh": "贵",
+          "py": "guì",
+          "th": "แพง",
+          "kind": "vocab"
+        },
+        {
+          "zh": "便宜",
+          "py": "piányi",
+          "th": "ถูก",
+          "kind": "vocab"
+        },
+        {
+          "zh": "一点儿",
+          "py": "yìdiǎnr",
+          "th": "นิดหน่อย",
+          "kind": "vocab"
+        },
+        {
+          "zh": "来",
+          "py": "lái",
+          "th": "มา",
+          "kind": "vocab"
+        },
+        {
+          "zh": "吧",
+          "py": "ba",
+          "th": "เถอะ / นะ",
+          "kind": "vocab"
+        },
+        {
+          "zh": "还",
+          "py": "hái",
+          "th": "ยัง / อีก",
+          "kind": "vocab"
+        },
+        {
+          "zh": "别的",
+          "py": "bié de",
+          "th": "อย่างอื่น",
+          "kind": "vocab"
+        },
+        {
+          "zh": "橘子",
+          "py": "júzi",
+          "th": "ส้ม",
+          "kind": "vocab"
+        },
+        {
+          "zh": "怎么",
+          "py": "zěnme",
+          "th": "อย่างไร",
+          "kind": "vocab"
+        },
+        {
+          "zh": "卖",
+          "py": "mài",
+          "th": "ขาย",
+          "kind": "vocab"
+        },
+        {
+          "zh": "两",
+          "py": "liǎng",
+          "th": "สอง (บอกจำนวน)",
+          "kind": "vocab"
+        },
+        {
+          "zh": "一共",
+          "py": "yígòng",
+          "th": "ทั้งหมด",
+          "kind": "vocab"
+        },
+        {
+          "zh": "给",
+          "py": "gěi",
+          "th": "ให้",
+          "kind": "vocab"
+        },
+        {
+          "zh": "找",
+          "py": "zhǎo",
+          "th": "ทอนเงิน / หา",
+          "kind": "vocab"
+        }
+      ],
+      "phrases": [
+        {
+          "zh": "多少钱",
+          "py": "duōshao qián",
+          "th": "เท่าไร / กี่บาท",
+          "kind": "phrase"
+        },
+        {
+          "zh": "太贵了",
+          "py": "tài guì le",
+          "th": "แพงเกินไป",
+          "kind": "phrase"
+        },
+        {
+          "zh": "便宜点儿吧",
+          "py": "piányi diǎnr ba",
+          "th": "ถูกหน่อยนะ",
+          "kind": "phrase"
+        },
+        {
+          "zh": "来五个吧",
+          "py": "lái wǔ gè ba",
+          "th": "เอา 5 ลูก",
+          "kind": "phrase"
+        },
+        {
+          "zh": "怎么卖",
+          "py": "zěnme mài",
+          "th": "ขายยังไง",
+          "kind": "phrase"
+        },
+        {
+          "zh": "一共多少钱",
+          "py": "yígòng duōshao qián",
+          "th": "ทั้งหมดเท่าไร",
+          "kind": "phrase"
+        },
+        {
+          "zh": "还要别的吗",
+          "py": "hái yào bié de ma",
+          "th": "เอาอย่างอื่นอีกไหม",
+          "kind": "phrase"
+        },
+        {
+          "zh": "给你钱",
+          "py": "gěi nǐ qián",
+          "th": "ให้เงินคุณ",
+          "kind": "phrase"
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "title": "บทที่ 9 — 我换人民币 · ฉันแลกเงินหยวน",
+      "zh": "我换人民币",
+      "py": "Wǒ huàn rénmínbì",
+      "th": "ฉันแลกเงินหยวน",
+      "vocab": [
+        {
+          "zh": "下午",
+          "py": "xiàwǔ",
+          "th": "บ่าย",
+          "kind": "vocab"
+        },
+        {
+          "zh": "上午",
+          "py": "shàngwǔ",
+          "th": "ช่วงเช้า",
+          "kind": "vocab"
+        },
+        {
+          "zh": "图书馆",
+          "py": "túshūguǎn",
+          "th": "ห้องสมุด",
+          "kind": "vocab"
+        },
+        {
+          "zh": "换",
+          "py": "huàn",
+          "th": "แลก / เปลี่ยน",
+          "kind": "vocab"
+        },
+        {
+          "zh": "小姐",
+          "py": "xiǎojiě",
+          "th": "คุณ (หญิงสาว)",
+          "kind": "vocab"
+        },
+        {
+          "zh": "营业员",
+          "py": "yíngyèyuán",
+          "th": "พนักงาน",
+          "kind": "vocab"
+        },
+        {
+          "zh": "人民币",
+          "py": "rénmínbì",
+          "th": "เงินหยวน (RMB)",
+          "kind": "vocab"
+        },
+        {
+          "zh": "百",
+          "py": "bǎi",
+          "th": "ร้อย",
+          "kind": "vocab"
+        },
+        {
+          "zh": "千",
+          "py": "qiān",
+          "th": "พัน",
+          "kind": "vocab"
+        },
+        {
+          "zh": "万",
+          "py": "wàn",
+          "th": "หมื่น",
+          "kind": "vocab"
+        },
+        {
+          "zh": "美元",
+          "py": "měiyuán",
+          "th": "ดอลลาร์สหรัฐ",
+          "kind": "vocab"
+        },
+        {
+          "zh": "港币",
+          "py": "gǎngbì",
+          "th": "ดอลลาร์ฮ่องกง",
+          "kind": "vocab"
+        },
+        {
+          "zh": "日元",
+          "py": "rìyuán",
+          "th": "เยนญี่ปุ่น",
+          "kind": "vocab"
+        },
+        {
+          "zh": "韩元",
+          "py": "hányuán",
+          "th": "วอนเกาหลีใต้",
+          "kind": "vocab"
+        },
+        {
+          "zh": "欧元",
+          "py": "ōuyuán",
+          "th": "ยูโร",
+          "kind": "vocab"
+        },
+        {
+          "zh": "等",
+          "py": "děng",
+          "th": "รอ",
+          "kind": "vocab"
+        },
+        {
+          "zh": "一会儿",
+          "py": "yíhuìr",
+          "th": "สักครู่",
+          "kind": "vocab"
+        },
+        {
+          "zh": "先生",
+          "py": "xiānsheng",
+          "th": "คุณ (ผู้ชาย)",
+          "kind": "vocab"
+        },
+        {
+          "zh": "数",
+          "py": "shǔ",
+          "th": "นับ",
+          "kind": "vocab"
+        }
+      ],
+      "phrases": [
+        {
+          "zh": "我换人民币",
+          "py": "wǒ huàn rénmínbì",
+          "th": "ฉันแลกเงินหยวน",
+          "kind": "phrase"
+        },
+        {
+          "zh": "请等一会儿",
+          "py": "qǐng děng yíhuìr",
+          "th": "กรุณารอสักครู่",
+          "kind": "phrase"
+        },
+        {
+          "zh": "王小姐",
+          "py": "Wáng xiǎojiě",
+          "th": "คุณหวัง (หญิง)",
+          "kind": "phrase"
+        },
+        {
+          "zh": "张先生",
+          "py": "Zhāng xiānsheng",
+          "th": "คุณจาง (ชาย)",
+          "kind": "phrase"
+        },
+        {
+          "zh": "一百块",
+          "py": "yìbǎi kuài",
+          "th": "100 หยวน",
+          "kind": "phrase"
+        },
+        {
+          "zh": "换钱",
+          "py": "huàn qián",
+          "th": "แลกเงิน",
+          "kind": "phrase"
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "title": "บทที่ 10 — 他住哪儿 · เขาอยู่ที่ไหน",
+      "zh": "他住哪儿",
+      "py": "Tā zhù nǎr",
+      "th": "เขาอยู่ที่ไหน",
+      "vocab": [
+        {
+          "zh": "办公室",
+          "py": "bàngōngshì",
+          "th": "ห้องทำงาน / ออฟฟิศ",
+          "kind": "vocab"
+        },
+        {
+          "zh": "找",
+          "py": "zhǎo",
+          "th": "หา (คน / งาน)",
+          "kind": "vocab"
+        },
+        {
+          "zh": "在",
+          "py": "zài",
+          "th": "อยู่ / ที่",
+          "kind": "vocab"
+        },
+        {
+          "zh": "家",
+          "py": "jiā",
+          "th": "บ้าน",
+          "kind": "vocab"
+        },
+        {
+          "zh": "呢",
+          "py": "ne",
+          "th": "ล่ะ",
+          "kind": "vocab"
+        },
+        {
+          "zh": "住",
+          "py": "zhù",
+          "th": "อยู่ / พักอาศัย",
+          "kind": "vocab"
+        },
+        {
+          "zh": "号",
+          "py": "hào",
+          "th": "เบอร์ / หมายเลข",
+          "kind": "vocab"
+        },
+        {
+          "zh": "楼",
+          "py": "lóu",
+          "th": "ตึก",
+          "kind": "vocab"
+        },
+        {
+          "zh": "门",
+          "py": "mén",
+          "th": "ประตู",
+          "kind": "vocab"
+        },
+        {
+          "zh": "零",
+          "py": "líng",
+          "th": "ศูนย์ (〇)",
+          "kind": "vocab"
+        },
+        {
+          "zh": "房间",
+          "py": "fángjiān",
+          "th": "ห้อง",
+          "kind": "vocab"
+        },
+        {
+          "zh": "知道",
+          "py": "zhīdào",
+          "th": "รู้",
+          "kind": "vocab"
+        },
+        {
+          "zh": "电话",
+          "py": "diànhuà",
+          "th": "โทรศัพท์",
+          "kind": "vocab"
+        },
+        {
+          "zh": "号码",
+          "py": "hàomǎ",
+          "th": "หมายเลข (โทรศัพท์)",
+          "kind": "vocab"
+        },
+        {
+          "zh": "手机",
+          "py": "shǒujī",
+          "th": "มือถือ",
+          "kind": "vocab"
+        }
+      ],
+      "phrases": [
+        {
+          "zh": "他住哪儿",
+          "py": "tā zhù nǎr",
+          "th": "เขาอยู่ที่ไหน",
+          "kind": "phrase"
+        },
+        {
+          "zh": "他在家呢",
+          "py": "tā zài jiā ne",
+          "th": "เขาอยู่บ้าน",
+          "kind": "phrase"
+        },
+        {
+          "zh": "我不知道",
+          "py": "wǒ bù zhīdào",
+          "th": "ฉันไม่รู้",
+          "kind": "phrase"
+        },
+        {
+          "zh": "电话号码",
+          "py": "diànhuà hàomǎ",
+          "th": "เบอร์โทรศัพท์",
+          "kind": "phrase"
+        },
+        {
+          "zh": "你住几号楼",
+          "py": "nǐ zhù jǐ hào lóu",
+          "th": "คุณอยู่ตึกหมายเลขอะไร",
+          "kind": "phrase"
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "title": "บทที่ 11 — 我们都是留学生 · พวกเราเป็นนักเรียนต่างชาติ",
+      "zh": "我们都是留学生",
+      "py": "Wǒmen dōu shì liúxuéshēng",
+      "th": "พวกเราเป็นนักเรียนต่างชาติ",
+      "vocab": [
+        {
+          "zh": "秘书",
+          "py": "mìshū",
+          "th": "เลขานุการ",
+          "kind": "vocab"
+        },
+        {
+          "zh": "先",
+          "py": "xiān",
+          "th": "ก่อน",
+          "kind": "vocab"
+        },
+        {
+          "zh": "介绍",
+          "py": "jièshào",
+          "th": "แนะนำ",
+          "kind": "vocab"
+        },
+        {
+          "zh": "一下儿",
+          "py": "yíxiàr",
+          "th": "สักหน่อย (หลัง V)",
+          "kind": "vocab"
+        },
+        {
+          "zh": "校长",
+          "py": "xiàozhǎng",
+          "th": "ผู้อำนวยการ / อธิการบดี",
+          "kind": "vocab"
+        },
+        {
+          "zh": "位",
+          "py": "wèi",
+          "th": "ท่าน (ลักษณนามคน)",
+          "kind": "vocab"
+        },
+        {
+          "zh": "教授",
+          "py": "jiàoshòu",
+          "th": "ศาสตราจารย์",
+          "kind": "vocab"
+        },
+        {
+          "zh": "欢迎",
+          "py": "huānyíng",
+          "th": "ยินดีต้อนรับ",
+          "kind": "vocab"
+        },
+        {
+          "zh": "留学生",
+          "py": "liúxuéshēng",
+          "th": "นักเรียนต่างชาติ / นักเรียนแลกเปลี่ยน",
+          "kind": "vocab"
+        },
+        {
+          "zh": "我们",
+          "py": "wǒmen",
+          "th": "พวกเรา",
+          "kind": "vocab"
+        },
+        {
+          "zh": "你们",
+          "py": "nǐmen",
+          "th": "พวกคุณ",
+          "kind": "vocab"
+        },
+        {
+          "zh": "他们",
+          "py": "tāmen",
+          "th": "พวกเขา",
+          "kind": "vocab"
+        },
+        {
+          "zh": "都",
+          "py": "dōu",
+          "th": "ทั้งหมด / ล้วน",
+          "kind": "vocab"
+        },
+        {
+          "zh": "和",
+          "py": "hé",
+          "th": "และ",
+          "kind": "vocab"
+        },
+        {
+          "zh": "俩",
+          "py": "liǎ",
+          "th": "ทั้งสอง",
+          "kind": "vocab"
+        },
+        {
+          "zh": "学生",
+          "py": "xuésheng",
+          "th": "นักเรียน",
+          "kind": "vocab"
+        },
+        {
+          "zh": "没什么",
+          "py": "méi shénme",
+          "th": "ไม่เป็นไร / ไม่ต้องกังวล",
+          "kind": "vocab"
+        }
+      ],
+      "phrases": [
+        {
+          "zh": "我介绍一下儿",
+          "py": "wǒ jièshào yíxiàr",
+          "th": "ขอแนะนำสักหน่อย",
+          "kind": "phrase"
+        },
+        {
+          "zh": "欢迎你们",
+          "py": "huānyíng nǐmen",
+          "th": "ยินดีต้อนรับพวกคุณ",
+          "kind": "phrase"
+        },
+        {
+          "zh": "一位老师",
+          "py": "yí wèi lǎoshī",
+          "th": "ครู 1 ท่าน",
+          "kind": "phrase"
+        },
+        {
+          "zh": "我们俩",
+          "py": "wǒmen liǎ",
+          "th": "เราสองคน",
+          "kind": "phrase"
+        },
+        {
+          "zh": "你和我",
+          "py": "nǐ hé wǒ",
+          "th": "คุณและฉัน",
+          "kind": "phrase"
+        },
+        {
+          "zh": "没什么",
+          "py": "méi shénme",
+          "th": "ไม่เป็นไร",
+          "kind": "phrase"
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "title": "บทที่ 12 — 你在哪儿学习汉语 · คุณเรียนภาษาจีนที่ไหน",
+      "zh": "你在哪儿学习汉语",
+      "py": "Nǐ zài nǎr xuéxí Hànyǔ",
+      "th": "คุณเรียนภาษาจีนที่ไหน",
+      "vocab": [
+        {
+          "zh": "语言",
+          "py": "yǔyán",
+          "th": "ภาษา",
+          "kind": "vocab"
+        },
+        {
+          "zh": "大学",
+          "py": "dàxué",
+          "th": "มหาวิทยาลัย",
+          "kind": "vocab"
+        },
+        {
+          "zh": "怎么样",
+          "py": "zěnmeyàng",
+          "th": "เป็นอย่างไรบ้าง",
+          "kind": "vocab"
+        },
+        {
+          "zh": "觉得",
+          "py": "juéde",
+          "th": "รู้สึกว่า / คิดว่า",
+          "kind": "vocab"
+        },
+        {
+          "zh": "语法",
+          "py": "yǔfǎ",
+          "th": "ไวยากรณ์",
+          "kind": "vocab"
+        },
+        {
+          "zh": "听",
+          "py": "tīng",
+          "th": "ฟัง",
+          "kind": "vocab"
+        },
+        {
+          "zh": "说",
+          "py": "shuō",
+          "th": "พูด",
+          "kind": "vocab"
+        },
+        {
+          "zh": "比较",
+          "py": "bǐjiào",
+          "th": "ค่อนข้าง / เปรียบเทียบ",
+          "kind": "vocab"
+        },
+        {
+          "zh": "容易",
+          "py": "róngyì",
+          "th": "ง่าย",
+          "kind": "vocab"
+        },
+        {
+          "zh": "但是",
+          "py": "dànshì",
+          "th": "แต่",
+          "kind": "vocab"
+        },
+        {
+          "zh": "读",
+          "py": "dú",
+          "th": "อ่าน",
+          "kind": "vocab"
+        },
+        {
+          "zh": "写",
+          "py": "xiě",
+          "th": "เขียน",
+          "kind": "vocab"
+        },
+        {
+          "zh": "给",
+          "py": "gěi",
+          "th": "ให้ / แก่",
+          "kind": "vocab"
+        },
+        {
+          "zh": "新",
+          "py": "xīn",
+          "th": "ใหม่",
+          "kind": "vocab"
+        },
+        {
+          "zh": "同学",
+          "py": "tóngxué",
+          "th": "เพื่อนร่วมชั้น",
+          "kind": "vocab"
+        },
+        {
+          "zh": "同屋",
+          "py": "tóngwū",
+          "th": "เพื่อนร่วมห้อง / รูมเมท",
+          "kind": "vocab"
+        },
+        {
+          "zh": "班",
+          "py": "bān",
+          "th": "ชั้นเรียน",
+          "kind": "vocab"
+        }
+      ],
+      "phrases": [
+        {
+          "zh": "你在哪儿学习汉语",
+          "py": "nǐ zài nǎr xuéxí Hànyǔ",
+          "th": "คุณเรียนภาษาจีนที่ไหน",
+          "kind": "phrase"
+        },
+        {
+          "zh": "汉语比英语难",
+          "py": "Hànyǔ bǐ Yīngyǔ nán",
+          "th": "ภาษาจีนยากกว่าภาษาอังกฤษ",
+          "kind": "phrase"
+        },
+        {
+          "zh": "我觉得",
+          "py": "wǒ juéde",
+          "th": "ฉันคิดว่า / รู้สึกว่า",
+          "kind": "phrase"
+        },
+        {
+          "zh": "听和说",
+          "py": "tīng hé shuō",
+          "th": "ฟังและพูด",
+          "kind": "phrase"
+        },
+        {
+          "zh": "读和写",
+          "py": "dú hé xiě",
+          "th": "อ่านและเขียน",
+          "kind": "phrase"
+        },
+        {
+          "zh": "新同学",
+          "py": "xīn tóngxué",
+          "th": "เพื่อนร่วมชั้นคนใหม่",
+          "kind": "phrase"
+        },
+        {
+          "zh": "我的同屋",
+          "py": "wǒ de tóngwū",
+          "th": "รูมเมทของฉัน",
+          "kind": "phrase"
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "title": "บทที่ 13 — 这是不是中药 · นี่ใช่ยาจีนไหม",
+      "zh": "这是不是中药",
+      "py": "Zhè shì bu shì zhōngyào",
+      "th": "นี่ใช่ยาจีนไหม",
+      "vocab": [
+        {
+          "zh": "没有",
+          "py": "méiyǒu",
+          "th": "ไม่มี / ไม่ได้(ทำ)",
+          "kind": "vocab"
+        },
+        {
+          "zh": "箱子",
+          "py": "xiāngzi",
+          "th": "กระเป๋าเดินทาง / กล่อง",
+          "kind": "vocab"
+        },
+        {
+          "zh": "有",
+          "py": "yǒu",
+          "th": "มี",
+          "kind": "vocab"
+        },
+        {
+          "zh": "这儿",
+          "py": "zhèr",
+          "th": "ที่นี่",
+          "kind": "vocab"
+        },
+        {
+          "zh": "重",
+          "py": "zhòng",
+          "th": "หนัก",
+          "kind": "vocab"
+        },
+        {
+          "zh": "黑",
+          "py": "hēi",
+          "th": "ดำ",
+          "kind": "vocab"
+        },
+        {
+          "zh": "红",
+          "py": "hóng",
+          "th": "แดง",
+          "kind": "vocab"
+        },
+        {
+          "zh": "轻",
+          "py": "qīng",
+          "th": "เบา",
+          "kind": "vocab"
+        },
+        {
+          "zh": "旧",
+          "py": "jiù",
+          "th": "เก่า / ใช้แล้ว",
+          "kind": "vocab"
+        },
+        {
+          "zh": "药",
+          "py": "yào",
+          "th": "ยา",
+          "kind": "vocab"
+        },
+        {
+          "zh": "中药",
+          "py": "zhōngyào",
+          "th": "ยาจีน",
+          "kind": "vocab"
+        },
+        {
+          "zh": "西药",
+          "py": "xīyào",
+          "th": "ยาแผนปัจจุบัน",
+          "kind": "vocab"
+        },
+        {
+          "zh": "茶叶",
+          "py": "cháyè",
+          "th": "ใบชา",
+          "kind": "vocab"
+        },
+        {
+          "zh": "里",
+          "py": "li",
+          "th": "ใน / ข้างใน",
+          "kind": "vocab"
+        },
+        {
+          "zh": "日用品",
+          "py": "rìyòngpǐn",
+          "th": "ของใช้ประจำวัน",
+          "kind": "vocab"
+        },
+        {
+          "zh": "件",
+          "py": "jiàn",
+          "th": "ตัว/ชุด (ลักษณนามเสื้อผ้า)",
+          "kind": "vocab"
+        },
+        {
+          "zh": "衣服",
+          "py": "yīfu",
+          "th": "เสื้อผ้า",
+          "kind": "vocab"
+        },
+        {
+          "zh": "把",
+          "py": "bǎ",
+          "th": "คัน/ด้าม (ลักษณนามของมีด้าม)",
+          "kind": "vocab"
+        },
+        {
+          "zh": "雨伞",
+          "py": "yǔsǎn",
+          "th": "ร่ม",
+          "kind": "vocab"
+        },
+        {
+          "zh": "雨",
+          "py": "yǔ",
+          "th": "ฝน",
+          "kind": "vocab"
+        },
+        {
+          "zh": "平板电脑",
+          "py": "píngbǎn diànnǎo",
+          "th": "แท็บเล็ต",
+          "kind": "vocab"
+        },
+        {
+          "zh": "本",
+          "py": "běn",
+          "th": "เล่ม (ลักษณนามหนังสือ)",
+          "kind": "vocab"
+        },
+        {
+          "zh": "词典",
+          "py": "cídiǎn",
+          "th": "พจนานุกรม",
+          "kind": "vocab"
+        },
+        {
+          "zh": "优盘",
+          "py": "yōupán",
+          "th": "แฟลชไดรฟ์ (USB)",
+          "kind": "vocab"
+        },
+        {
+          "zh": "支",
+          "py": "zhī",
+          "th": "แท่ง/ด้าม (ลักษณนามปากกา)",
+          "kind": "vocab"
+        },
+        {
+          "zh": "毛笔",
+          "py": "máobǐ",
+          "th": "พู่กัน",
+          "kind": "vocab"
+        },
+        {
+          "zh": "笔",
+          "py": "bǐ",
+          "th": "ปากกา",
+          "kind": "vocab"
+        }
+      ],
+      "phrases": [
+        {
+          "zh": "重不重",
+          "py": "zhòng bu zhòng",
+          "th": "หนักไหม",
+          "kind": "phrase"
+        },
+        {
+          "zh": "这是不是中药",
+          "py": "zhè shì bu shì zhōngyào",
+          "th": "นี่ใช่ยาจีนไหม",
+          "kind": "phrase"
+        },
+        {
+          "zh": "一些药",
+          "py": "yìxiē yào",
+          "th": "ยาจำนวนหนึ่ง",
+          "kind": "phrase"
+        },
+        {
+          "zh": "比较轻",
+          "py": "bǐjiào qīng",
+          "th": "ค่อนข้างเบา",
+          "kind": "phrase"
+        },
+        {
+          "zh": "两件衣服",
+          "py": "liǎng jiàn yīfu",
+          "th": "เสื้อผ้า 2 ตัว",
+          "kind": "phrase"
+        },
+        {
+          "zh": "一把雨伞",
+          "py": "yì bǎ yǔsǎn",
+          "th": "ร่ม 1 คัน",
+          "kind": "phrase"
+        },
+        {
+          "zh": "一本词典",
+          "py": "yì běn cídiǎn",
+          "th": "พจนานุกรม 1 เล่ม",
+          "kind": "phrase"
+        },
+        {
+          "zh": "三支毛笔",
+          "py": "sān zhī máobǐ",
+          "th": "พู่กัน 3 แท่ง",
+          "kind": "phrase"
+        },
+        {
+          "zh": "加油",
+          "py": "jiāyóu",
+          "th": "สู้ ๆ",
+          "kind": "phrase"
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "title": "บทที่ 14 — 你的车是新的还是旧的 · รถของคุณคันใหม่หรือคันเก่า",
+      "zh": "你的车是新的还是旧的",
+      "py": "Nǐ de chē shì xīn de háishi jiù de",
+      "th": "รถของคุณคันใหม่หรือคันเก่า",
+      "vocab": [
+        {
+          "zh": "经理",
+          "py": "jīnglǐ",
+          "th": "ผู้จัดการ",
+          "kind": "vocab"
+        },
+        {
+          "zh": "好久",
+          "py": "hǎojiǔ",
+          "th": "นานมาก",
+          "kind": "vocab"
+        },
+        {
+          "zh": "啊",
+          "py": "à",
+          "th": "อ๋อ (อุทานร้องอ๋อ)",
+          "kind": "vocab"
+        },
+        {
+          "zh": "马马虎虎",
+          "py": "mǎmǎhūhū",
+          "th": "งั้น ๆ / เฉย ๆ",
+          "kind": "vocab"
+        },
+        {
+          "zh": "最近",
+          "py": "zuìjìn",
+          "th": "ช่วงนี้ / เร็ว ๆ นี้",
+          "kind": "vocab"
+        },
+        {
+          "zh": "刚",
+          "py": "gāng",
+          "th": "เพิ่ง",
+          "kind": "vocab"
+        },
+        {
+          "zh": "开学",
+          "py": "kāixué",
+          "th": "เปิดเทอม",
+          "kind": "vocab"
+        },
+        {
+          "zh": "开",
+          "py": "kāi",
+          "th": "เปิด / เริ่ม",
+          "kind": "vocab"
+        },
+        {
+          "zh": "有(一)点儿",
+          "py": "yǒu(yì)diǎnr",
+          "th": "นิดหน่อย / เล็กน้อย",
+          "kind": "vocab"
+        },
+        {
+          "zh": "还是",
+          "py": "háishi",
+          "th": "หรือ (ในประโยคเลือก)",
+          "kind": "vocab"
+        },
+        {
+          "zh": "咖啡",
+          "py": "kāfēi",
+          "th": "กาแฟ",
+          "kind": "vocab"
+        },
+        {
+          "zh": "杯",
+          "py": "bēi",
+          "th": "แก้ว (ลักษณนาม)",
+          "kind": "vocab"
+        },
+        {
+          "zh": "车",
+          "py": "chē",
+          "th": "รถ",
+          "kind": "vocab"
+        },
+        {
+          "zh": "自行车",
+          "py": "zìxíngchē",
+          "th": "จักรยาน",
+          "kind": "vocab"
+        },
+        {
+          "zh": "汽车",
+          "py": "qìchē",
+          "th": "รถยนต์",
+          "kind": "vocab"
+        },
+        {
+          "zh": "摩托车",
+          "py": "mótuōchē",
+          "th": "มอเตอร์ไซค์",
+          "kind": "vocab"
+        },
+        {
+          "zh": "出租车",
+          "py": "chūzūchē",
+          "th": "แท็กซี่",
+          "kind": "vocab"
+        },
+        {
+          "zh": "颜色",
+          "py": "yánsè",
+          "th": "สี",
+          "kind": "vocab"
+        },
+        {
+          "zh": "蓝",
+          "py": "lán",
+          "th": "สีน้ำเงิน",
+          "kind": "vocab"
+        },
+        {
+          "zh": "红色",
+          "py": "hóngsè",
+          "th": "สีแดง",
+          "kind": "vocab"
+        },
+        {
+          "zh": "黄色",
+          "py": "huángsè",
+          "th": "สีเหลือง",
+          "kind": "vocab"
+        },
+        {
+          "zh": "蓝色",
+          "py": "lánsè",
+          "th": "สีน้ำเงิน",
+          "kind": "vocab"
+        },
+        {
+          "zh": "绿色",
+          "py": "lǜsè",
+          "th": "สีเขียว",
+          "kind": "vocab"
+        },
+        {
+          "zh": "白色",
+          "py": "báisè",
+          "th": "สีขาว",
+          "kind": "vocab"
+        },
+        {
+          "zh": "黑色",
+          "py": "hēisè",
+          "th": "สีดำ",
+          "kind": "vocab"
+        },
+        {
+          "zh": "紫色",
+          "py": "zǐsè",
+          "th": "สีม่วง",
+          "kind": "vocab"
+        },
+        {
+          "zh": "橙色",
+          "py": "chéngsè",
+          "th": "สีส้ม",
+          "kind": "vocab"
+        },
+        {
+          "zh": "灰色",
+          "py": "huīsè",
+          "th": "สีเทา",
+          "kind": "vocab"
+        },
+        {
+          "zh": "棕色",
+          "py": "zōngsè",
+          "th": "สีน้ำตาล",
+          "kind": "vocab"
+        },
+        {
+          "zh": "粉红色",
+          "py": "fěnhóngsè",
+          "th": "สีชมพู",
+          "kind": "vocab"
+        },
+        {
+          "zh": "浅蓝色",
+          "py": "qiǎnlánsè",
+          "th": "สีฟ้า (ฟ้าอ่อน)",
+          "kind": "vocab"
+        },
+        {
+          "zh": "辆",
+          "py": "liàng",
+          "th": "คัน (ลักษณนามรถ)",
+          "kind": "vocab"
+        },
+        {
+          "zh": "关",
+          "py": "Guān",
+          "th": "แซ่กวาน (นามสกุลจีน)",
+          "kind": "vocab"
+        }
+      ],
+      "phrases": [
+        {
+          "zh": "好久不见",
+          "py": "hǎojiǔ bú jiàn",
+          "th": "ไม่ได้เจอกันนาน",
+          "kind": "phrase"
+        },
+        {
+          "zh": "欢迎欢迎",
+          "py": "huānyíng huānyíng",
+          "th": "ยินดีต้อนรับ",
+          "kind": "phrase"
+        },
+        {
+          "zh": "马马虎虎",
+          "py": "mǎmǎhūhū",
+          "th": "งั้น ๆ / เฉย ๆ",
+          "kind": "phrase"
+        },
+        {
+          "zh": "有点儿忙",
+          "py": "yǒudiǎnr máng",
+          "th": "ยุ่งนิดหน่อย",
+          "kind": "phrase"
+        },
+        {
+          "zh": "茶还是咖啡",
+          "py": "chá háishi kāfēi",
+          "th": "ชาหรือกาแฟ",
+          "kind": "phrase"
+        },
+        {
+          "zh": "来杯茶",
+          "py": "lái bēi chá",
+          "th": "เอาชาสักแก้ว",
+          "kind": "phrase"
+        },
+        {
+          "zh": "什么颜色",
+          "py": "shénme yánsè",
+          "th": "สีอะไร",
+          "kind": "phrase"
+        },
+        {
+          "zh": "是新的还是旧的",
+          "py": "shì xīn de háishi jiù de",
+          "th": "ใหม่หรือเก่า",
+          "kind": "phrase"
+        },
+        {
+          "zh": "那辆蓝的",
+          "py": "nà liàng lán de",
+          "th": "คันสีน้ำเงินคันนั้น",
+          "kind": "phrase"
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "title": "บทที่ 15 — 你家有几口人 · ครอบครัวคุณมีกี่คน",
+      "zh": "你家有几口人",
+      "py": "Nǐ jiā yǒu jǐ kǒu rén",
+      "th": "ครอบครัวคุณมีกี่คน",
+      "vocab": [
+        {
+          "zh": "全",
+          "py": "quán",
+          "th": "ทั้ง / ทั้งหมด",
+          "kind": "vocab"
+        },
+        {
+          "zh": "照片",
+          "py": "zhàopiàn",
+          "th": "รูปถ่าย",
+          "kind": "vocab"
+        },
+        {
+          "zh": "张",
+          "py": "zhāng",
+          "th": "ใบ/แผ่น (ลักษณนามกระดาษ/รูป)",
+          "kind": "vocab"
+        },
+        {
+          "zh": "看",
+          "py": "kàn",
+          "th": "ดู / มอง / อ่าน",
+          "kind": "vocab"
+        },
+        {
+          "zh": "姐姐",
+          "py": "jiějie",
+          "th": "พี่สาว",
+          "kind": "vocab"
+        },
+        {
+          "zh": "只",
+          "py": "zhǐ",
+          "th": "เพียง / แค่",
+          "kind": "vocab"
+        },
+        {
+          "zh": "做",
+          "py": "zuò",
+          "th": "ทำ",
+          "kind": "vocab"
+        },
+        {
+          "zh": "大夫",
+          "py": "dàifu",
+          "th": "หมอ",
+          "kind": "vocab"
+        },
+        {
+          "zh": "医院",
+          "py": "yīyuàn",
+          "th": "โรงพยาบาล",
+          "kind": "vocab"
+        },
+        {
+          "zh": "公司",
+          "py": "gōngsī",
+          "th": "บริษัท",
+          "kind": "vocab"
+        },
+        {
+          "zh": "商店",
+          "py": "shāngdiàn",
+          "th": "ร้านค้า",
+          "kind": "vocab"
+        },
+        {
+          "zh": "律师",
+          "py": "lǜshī",
+          "th": "ทนายความ",
+          "kind": "vocab"
+        },
+        {
+          "zh": "外贸",
+          "py": "wàimào",
+          "th": "การค้าต่างประเทศ",
+          "kind": "vocab"
+        },
+        {
+          "zh": "小",
+          "py": "xiǎo",
+          "th": "เล็ก",
+          "kind": "vocab"
+        },
+        {
+          "zh": "员工",
+          "py": "yuángōng",
+          "th": "พนักงาน",
+          "kind": "vocab"
+        },
+        {
+          "zh": "大概",
+          "py": "dàgài",
+          "th": "ประมาณ",
+          "kind": "vocab"
+        },
+        {
+          "zh": "多",
+          "py": "duō",
+          "th": "มาก / เยอะ",
+          "kind": "vocab"
+        },
+        {
+          "zh": "外国",
+          "py": "wàiguó",
+          "th": "ต่างประเทศ",
+          "kind": "vocab"
+        }
+      ],
+      "phrases": [
+        {
+          "zh": "你家有几口人",
+          "py": "nǐ jiā yǒu jǐ kǒu rén",
+          "th": "ครอบครัวคุณมีกี่คน",
+          "kind": "phrase"
+        },
+        {
+          "zh": "全家的照片",
+          "py": "quán jiā de zhàopiàn",
+          "th": "รูปถ่ายทั้งครอบครัว",
+          "kind": "phrase"
+        },
+        {
+          "zh": "一张照片",
+          "py": "yì zhāng zhàopiàn",
+          "th": "รูป 1 ใบ",
+          "kind": "phrase"
+        },
+        {
+          "zh": "做什么工作",
+          "py": "zuò shénme gōngzuò",
+          "th": "ทำงานอะไร",
+          "kind": "phrase"
+        },
+        {
+          "zh": "在医院工作",
+          "py": "zài yīyuàn gōngzuò",
+          "th": "ทำงานที่โรงพยาบาล",
+          "kind": "phrase"
+        },
+        {
+          "zh": "有多少员工",
+          "py": "yǒu duōshao yuángōng",
+          "th": "มีพนักงานกี่คน",
+          "kind": "phrase"
+        },
+        {
+          "zh": "一百多个",
+          "py": "yì bǎi duō gè",
+          "th": "ร้อยกว่า (คน/อัน)",
+          "kind": "phrase"
+        },
+        {
+          "zh": "比较小",
+          "py": "bǐjiào xiǎo",
+          "th": "ค่อนข้างเล็ก",
+          "kind": "phrase"
+        },
+        {
+          "zh": "只有两个弟弟",
+          "py": "zhǐ yǒu liǎng gè dìdi",
+          "th": "มีแค่น้องชาย 2 คน",
+          "kind": "phrase"
+        }
+      ]
+    }
+  ]
+}

@@ -37,6 +37,17 @@ const wanted = new Set([
   ...charsFrom('hanzi.ts', [/\{ zh: '(.)'/g, /parts: \[([^\]]+)\]/g]),
 ])
 
+// คำ/วลีจาก chinese.icejuk.dev ที่ sync มาเป็น fallback สำหรับโหมดฝึกเขียนจากบทเรียน
+const chineseFallback = join(root, 'public', 'chinese-writing-fallback.json')
+if (existsSync(chineseFallback)) {
+  const catalog = JSON.parse(readFileSync(chineseFallback, 'utf8'))
+  for (const lesson of catalog.lessons ?? []) {
+    for (const item of [...(lesson.vocab ?? []), ...(lesson.phrases ?? [])]) {
+      for (const ch of item.zh?.match(/[㐀-鿿\u{20000}-\u{2a6df}]/gu) ?? []) wanted.add(ch)
+    }
+  }
+}
+
 rmSync(outDir, { recursive: true, force: true })
 mkdirSync(outDir, { recursive: true })
 

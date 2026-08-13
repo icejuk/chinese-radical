@@ -2,8 +2,9 @@ import { useMemo, useState } from 'react'
 import type { Radical } from '../data/types'
 import { QuizScreen } from './QuizScreen'
 import { WriteScreen } from './WriteScreen'
+import { LessonWriteScreen } from './LessonWriteScreen'
 
-type Mode = 'quiz' | 'write'
+type Mode = 'quiz' | 'write' | 'lesson'
 
 export function PracticeScreen({
   radicals,
@@ -30,14 +31,25 @@ export function PracticeScreen({
         <button type="button" role="tab" aria-selected={mode === 'write'} onClick={() => setMode('write')}>
           ฝึกเขียน
         </button>
+        <button type="button" role="tab" aria-selected={mode === 'lesson'} onClick={() => setMode('lesson')}>
+          จากบทเรียน
+        </button>
       </div>
 
       <div className="practice-intro">
-        <b>{mode === 'quiz' ? 'ตอบจากสิ่งที่จำได้' : 'เขียนจากเสียงและความหมาย'}</b>
-        <span>{mode === 'quiz' ? `5 ข้อจาก${label} · เริ่มได้เลย` : `ฝึกเฉพาะ${label} · ระบบตรวจให้ทีละเส้น`}</span>
+        <b>{mode === 'quiz' ? 'ตอบจากสิ่งที่จำได้' : mode === 'write' ? 'เขียนจากเสียงและความหมาย' : 'ฝึกคำศัพท์จาก Chinese Study'}</b>
+        <span>
+          {mode === 'quiz'
+            ? `5 ข้อจาก${label} · เริ่มได้เลย`
+            : mode === 'write'
+              ? `ฝึกเฉพาะ${label} · ระบบตรวจให้ทีละเส้น`
+              : 'เลือกบท แล้วเขียนคำศัพท์หรือวลีทีละตัวอักษร'}
+        </span>
       </div>
 
-      {radicals.length === 0 ? (
+      {mode === 'lesson' ? (
+        <LessonWriteScreen />
+      ) : radicals.length === 0 ? (
         <div className="card card-pad practice-empty">
           <span className="zh">学</span>
           <b>เรียนอย่างน้อย 1 ตัวก่อน</b>

@@ -36,6 +36,17 @@ export default defineConfig({
         maximumFileSizeToCacheInBytes: 6 * 1024 * 1024,
         runtimeCaching: [
           {
+            // แบบฝึกเขียนฉบับล่าสุดจากแอป Chinese Study — ถ้าออฟไลน์ UI ยังมี bundled fallback
+            urlPattern: /^https:\/\/chinese\.icejuk\.dev\/api\/writing-exercises\.json$/,
+            handler: 'NetworkFirst',
+            options: {
+              cacheName: 'chinese-study-exercises',
+              networkTimeoutSeconds: 3,
+              expiration: { maxEntries: 2, maxAgeSeconds: 60 * 60 * 24 * 30 },
+              cacheableResponse: { statuses: [0, 200] },
+            },
+          },
+          {
             // เสียงอ่านจีน — ข้อยกเว้นเดียวที่ยิงออกเน็ต
             // response เป็น opaque (status 0) จึงต้องระบุ statuses: [0, 200] ไม่งั้นแคชไม่ติด
             urlPattern: /^https:\/\/translate\.googleapis\.com\/translate_tts/,

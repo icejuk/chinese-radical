@@ -8,6 +8,7 @@
     "build": "tsc -b && vite build",
     "preview": "vite preview",
     "strokes": "node scripts/gen-strokes.mjs",
+    "sync:chinese": "node scripts/sync-chinese-exercises.mjs && npm run strokes",
     "test": "vitest run",
     "test:watch": "vitest"
   },
