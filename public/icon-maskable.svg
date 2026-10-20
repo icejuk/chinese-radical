@@ -1,1 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192"><rect width="192" height="192" fill="#101624"/><ellipse cx="96" cy="96" rx="64" ry="43" transform="rotate(-32 96 96)" fill="none" stroke="#74638e" stroke-width="3"/><circle cx="96" cy="96" r="45" fill="#2b2642"/><text x="96" y="119" text-anchor="middle" font-family="sans-serif" font-size="65" fill="#e3d7ff">字</text><circle cx="145" cy="57" r="7" fill="#bda7ff"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192" role="img" aria-label="Mandarin Trail">
+ <rect width="192" height="192" fill="#101624"/>
+ <rect x="17" y="17" width="158" height="158" rx="42" fill="#24243d" stroke="#575070" stroke-width="2"/>
+ <g transform="translate(-7.5 0)">
+  <path d="M59 137V70a20 20 0 0 1 35-13l19 22a20 20 0 0 0 35-13V53" fill="none" stroke="#d6c7ff" stroke-width="10" stroke-linecap="round"/>
+  <path d="M59 137h63a26 26 0 0 0 26-26V99" fill="none" stroke="#8ee0d4" stroke-width="10" stroke-linecap="round"/>
+  <circle cx="59" cy="137" r="12" fill="#d6c7ff"/>
+  <circle cx="148" cy="53" r="12" fill="#8ee0d4"/>
+ </g>
+</svg>
