@@ -1,0 +1,16 @@
+{
+  "reportedRoute": "http://127.0.0.1:5199/#map?focus=c%3A%E6%B0%B4&branch=c%3A%E7%94%9F&branch=c%3A%E5%AD%A6&branch=c%3A%E6%B0%B4",
+  "desktop": {
+    "font": "53.5313px",
+    "labelOverlaps": 0,
+    "markers": 5,
+    "renderScale": 0.3362520391290838,
+    "world": {
+      "height": 1301,
+      "width": 2416
+    },
+    "overviewChinesePx": 18.000008782230726
+  },
+  "readingScale": "100%",
+  "bundle": "/assets/index-C-hnEH4t.js"
+}

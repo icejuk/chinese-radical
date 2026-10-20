@@ -6,33 +6,33 @@ export default defineConfig({
   plugins: [
     react(),
     VitePWA({
-      registerType: 'autoUpdate',
+      registerType: 'prompt',
       includeAssets: ['icon.svg', 'icon-maskable.svg'],
       manifest: {
-        name: '字根 — รากอักษรจีน',
-        short_name: '字根 ราก',
-        description: 'เปิดมาเรียนรากจีนได้ทันที — ดูลำดับขีด ฟังเสียง จำความหมาย แล้วฝึกจากสิ่งที่เพิ่งเรียน',
+        name: 'Mandarin Trail — แผนที่คำจีน',
+        short_name: 'Mandarin Trail',
+        description: 'สำรวจต้นไม้คำจีน พร้อมพินอิน ไทย เสียง ประโยค ทบทวน ฝึกพูดและเขียน',
         lang: 'th',
         id: './',
-        start_url: './#learn',
+        start_url: './#map',
         scope: './',
         display: 'standalone',
-        background_color: '#ddd0b4',
-        theme_color: '#b23a2c',
+        background_color: '#101624',
+        theme_color: '#101624',
         categories: ['education', 'books'],
         icons: [
           { src: './icon.svg', sizes: 'any', type: 'image/svg+xml', purpose: 'any' },
           { src: './icon-maskable.svg', sizes: 'any', type: 'image/svg+xml', purpose: 'maskable' },
         ],
         shortcuts: [
-          { name: 'เรียนวันนี้', short_name: 'วันนี้', url: './#learn', icons: [{ src: './icon.svg', sizes: 'any' }] },
-          { name: 'ฝึกจำและเขียน', short_name: 'ฝึก', url: './#practice', icons: [{ src: './icon.svg', sizes: 'any' }] },
-          { name: 'ค้นรากและตัวอักษร', short_name: 'ค้น', url: './#explore', icons: [{ src: './icon.svg', sizes: 'any' }] },
+          { name: 'แผนที่คำ', short_name: 'แผนที่', url: './#map', icons: [{ src: './icon.svg', sizes: 'any' }] },
+          { name: 'คำสู่ประโยค', short_name: 'ประโยค', url: './#sentences', icons: [{ src: './icon.svg', sizes: 'any' }] },
+          { name: 'ฝึกพูด', short_name: 'พูด', url: './#speaking', icons: [{ src: './icon.svg', sizes: 'any' }] },
         ],
       },
       workbox: {
         // json อยู่ในลิสต์ด้วยเพราะข้อมูลลำดับขีด (public/strokes/*.json) ต้องใช้ได้ตอนออฟไลน์
-        globPatterns: ['**/*.{js,css,html,svg,woff2,json}'],
+        globPatterns: ['**/*.{js,css,html,svg,woff2,json,TXT}'],
         maximumFileSizeToCacheInBytes: 6 * 1024 * 1024,
         runtimeCaching: [
           {

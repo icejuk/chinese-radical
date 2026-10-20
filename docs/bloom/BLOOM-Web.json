@@ -1,0 +1,686 @@
+[
+  {
+    "id": "TC-1",
+    "test_name": "ใช้คีย์บอร์ดทั้ง 4 ส่วน",
+    "category": "Accessibility",
+    "priority": "P1",
+    "precondition": "คอมไม่ใช้เมาส์",
+    "test_steps": [
+      "Tab ไปเมนูและปุ่ม",
+      "Enter/Space เลือก",
+      "Esc ปิด dialog"
+    ],
+    "expected_result": "focus มองเห็น ลำดับสมเหตุผล ไม่มี keyboard trap และกลับจุดเดิมหลังปิด dialog",
+    "status": "Not run",
+    "actual_result": "",
+    "evidence": ""
+  },
+  {
+    "id": "TC-2",
+    "test_name": "ลด motion และขยายข้อความ",
+    "category": "Accessibility",
+    "priority": "P1",
+    "precondition": "เปิด reduced motion และ text zoom 200%",
+    "test_steps": [
+      "เข้า focus",
+      "สลับหน้า",
+      "อ่านข้อความและกดปุ่ม"
+    ],
+    "expected_result": "ลดการเคลื่อนไหว เนื้อหาไม่ทับจนอ่านหรือใช้งานไม่ได้",
+    "status": "Not run",
+    "actual_result": "",
+    "evidence": ""
+  },
+  {
+    "id": "TC-3",
+    "test_name": "เสียงคำปกติและช้า",
+    "category": "Audio",
+    "priority": "P0",
+    "precondition": "มีเสียง 水 และ 学生",
+    "test_steps": [
+      "ฟังเสียง 水",
+      "ฟังเสียงช้า",
+      "สลับไป 学生"
+    ],
+    "expected_result": "อ่านคำที่เลือกถูกต้อง ช้าลงจริง ไม่เล่นคำเก่า และไม่ซ้อนเสียง",
+    "status": "Not run",
+    "actual_result": "",
+    "evidence": ""
+  },
+  {
+    "id": "TC-4",
+    "test_name": "หยุดเสียงเมื่อเปลี่ยนหน้า",
+    "category": "Audio",
+    "priority": "P0",
+    "precondition": "เริ่มเสียงประโยค",
+    "test_steps": [
+      "กดฟังประโยค",
+      "เปลี่ยนเมนูทันที"
+    ],
+    "expected_result": "เสียงหยุดเมื่อออก ปุ่มไม่ค้างสถานะกำลังเล่น",
+    "status": "Not run",
+    "actual_result": "",
+    "evidence": ""
+  },
+  {
+    "id": "TC-5",
+    "test_name": "โหลดเสียงช้า/เสียงพัง",
+    "category": "Audio",
+    "priority": "P1",
+    "precondition": "จำลองสัญญาณช้าหรือไฟล์เสียงหาย",
+    "test_steps": [
+      "กดฟัง",
+      "รอผล",
+      "คืนเครือข่ายแล้วลองใหม่"
+    ],
+    "expected_result": "มี loading/error และ retry ไม่แสดงว่ากำลังเล่นตลอดไป",
+    "status": "Not run",
+    "actual_result": "",
+    "evidence": ""
+  },
+  {
+    "id": "TC-6",
+    "test_name": "คำและประโยคพินอินไทยตรงกัน",
+    "category": "Audio",
+    "priority": "P1",
+    "precondition": "ชุดประโยคแนะนำตัว",
+    "test_steps": [
+      "เปลี่ยน 学生 เป็น 医生 แล้ว 中国人",
+      "ฟังแต่ละประโยค"
+    ],
+    "expected_result": "我 是 และคำท้าย พินอิน ไทย กับเสียงอ้างถึงคำเดียวกัน",
+    "status": "Not run",
+    "actual_result": "",
+    "evidence": ""
+  },
+  {
+    "id": "TC-7",
+    "test_name": "เปิด BLOOM เป็นหน้าแผนที่",
+    "category": "Map",
+    "priority": "P0",
+    "precondition": "แอป BLOOM พร้อมทดสอบ",
+    "test_steps": [
+      "เปิด URL ของแอป",
+      "รอโหลดข้อมูล"
+    ],
+    "expected_result": "เห็นกลุ่มคำและช่องค้น ไม่มีจอว่างถาวรหรือข้อผิดพลาด",
+    "status": "Passed",
+    "actual_result": "Production preview แสดง quick words, 4 กลุ่ม และคลัง 97 คำ / 94 ตัวอักษร",
+    "evidence": "docs/bloom/VERIFICATION.md"
+  },
+  {
+    "id": "TC-8",
+    "test_name": "แตกคำจาก 学 ไป 学生 แล้วไป 生",
+    "category": "Map",
+    "priority": "P0",
+    "precondition": "มีคลัง 97 คำ / 94 ตัวอักษร",
+    "test_steps": [
+      "เลือก 学",
+      "เลือก 学生",
+      "เลือก 生 ในคำ"
+    ],
+    "expected_result": "เห็น 生 และคำของ 生 เชื่อมต่อจาก 学生 บนต้นไม้เดียวกับ 学 พร้อมพินอิน/ไทย",
+    "status": "Not run",
+    "actual_result": "",
+    "evidence": ""
+  },
+  {
+    "id": "TC-9",
+    "test_name": "水 มีครบ 7 คำบนต้นไม้เดียว",
+    "category": "Map",
+    "priority": "P0",
+    "precondition": "อยู่หน้า focus 水",
+    "test_steps": [
+      "ลากดูทั้งต้นไม้",
+      "กดดูทั้งต้นไม้",
+      "เลือกคำแล้วกลับคำที่เลือก"
+    ],
+    "expected_result": "ครบ 7 คำบนผืนเดียว ไม่มีปุ่มแบ่งหน้า อ่านพินอินและไทยได้เมื่อซูม",
+    "status": "Not run",
+    "actual_result": "",
+    "evidence": ""
+  },
+  {
+    "id": "TC-10",
+    "test_name": "การ์ดไม่ทับเมื่อเลือก 开水",
+    "category": "Map",
+    "priority": "P0",
+    "precondition": "focus 水 บนมือถือ",
+    "test_steps": [
+      "เลือก 开水",
+      "อ่านพินอินและไทย",
+      "ดูรอบตัวกลาง"
+    ],
+    "expected_result": "การ์ดไม่ทับกัน รายละเอียดเปิดทันทีและปิดคืนต้นไม้ได้ คำที่ไม่เกี่ยวไม่ซ้อนเป็นข้อความจาง",
+    "status": "Not run",
+    "actual_result": "",
+    "evidence": ""
+  },
+  {
+    "id": "TC-11",
+    "test_name": "มือถือกดคำแล้วเปิดรายละเอียดทันที",
+    "category": "Map",
+    "priority": "P0",
+    "precondition": "จอ 320px อยู่ 木材",
+    "test_steps": [
+      "กด 木材",
+      "ปิดรายละเอียด",
+      "กดคำเดิมอีกครั้ง",
+      "เปิดลำดับขีดและเลือก 材"
+    ],
+    "expected_result": "เห็น mùcái และไทยทันที กดซ้ำเปิดได้ เปลี่ยนเป็นกรอบเขียน 材 7 ขีด ปิดคืนต้นไม้ได้",
+    "status": "Passed",
+    "actual_result": "Browser 320px: ค้น 木材 → sheet → ฝึกเขียน → 材 7 ขีด ผ่าน",
+    "evidence": "docs/bloom/VERIFICATION.md"
+  },
+  {
+    "id": "TC-12",
+    "test_name": "แตกกิ่ง ยุบกิ่ง และป้องกันวงวน",
+    "category": "Map",
+    "priority": "P1",
+    "precondition": "focus 学",
+    "test_steps": [
+      "เลือก 学生 แล้วแตกกิ่ง 生",
+      "เลือก 学 ใน 学生",
+      "ยุบกิ่ง 生"
+    ],
+    "expected_result": "เก็บกิ่ง 学 เดิม กลับตัวบรรพบุรุษโดยไม่วนซ้ำ ยุบเฉพาะกิ่งลูกและเลือกคำแม่",
+    "status": "Not run",
+    "actual_result": "",
+    "evidence": ""
+  },
+  {
+    "id": "TC-13",
+    "test_name": "ค้นด้วยจีน พินอินมี/ไม่มีวรรณยุกต์ และไทย",
+    "category": "Map",
+    "priority": "P1",
+    "precondition": "มีคำ 学生",
+    "test_steps": [
+      "ค้น 学生",
+      "ค้น xuésheng แล้ว xuesheng",
+      "ค้น นักเรียน"
+    ],
+    "expected_result": "ไปคำที่ตรงกัน จีน พินอิน ไทยสอดคล้องกัน",
+    "status": "Not run",
+    "actual_result": "",
+    "evidence": ""
+  },
+  {
+    "id": "TC-14",
+    "test_name": "ค้นไม่พบ/ว่าง/อักขระพิเศษ",
+    "category": "Map",
+    "priority": "P1",
+    "precondition": "อยู่หน้าแผนที่",
+    "test_steps": [
+      "ค้นคำที่ไม่มีใน seed",
+      "ค้นช่องว่าง",
+      "ค้น <script>"
+    ],
+    "expected_result": "แจ้งไม่พบอย่างปลอดภัย ไม่แสดง HTML ไม่พัง และค้นคำปกติต่อได้",
+    "status": "Not run",
+    "actual_result": "",
+    "evidence": ""
+  },
+  {
+    "id": "TC-15",
+    "test_name": "ลากแล้วไม่กลายเป็นเลือกคำ",
+    "category": "Map",
+    "priority": "P1",
+    "precondition": "มีการ์ดในแผนที่",
+    "test_steps": [
+      "ลากเริ่มจากการ์ด",
+      "ปล่อยนิ้ว",
+      "แตะการ์ดครั้งเดียว"
+    ],
+    "expected_result": "ลากทำให้แผนที่เคลื่อนโดยไม่เลือกคำ แตะครั้งเดียวจึงเลือกคำ",
+    "status": "Not run",
+    "actual_result": "",
+    "evidence": ""
+  },
+  {
+    "id": "TC-16",
+    "test_name": "ซูมและกลับพอดีจอ",
+    "category": "Map",
+    "priority": "P1",
+    "precondition": "อยู่แผนที่",
+    "test_steps": [
+      "ใช้ +/− และ wheel บนคอม",
+      "ใช้ pinch บนมือถือ",
+      "กดพอดีจอ"
+    ],
+    "expected_result": "ซูมรอบจุดที่ใช้งาน ควบคุมได้ และกลับพอดีโดยไม่หลงตำแหน่ง",
+    "status": "Not run",
+    "actual_result": "",
+    "evidence": ""
+  },
+  {
+    "id": "TC-17",
+    "test_name": "ตัวอักษรทุกตัวในคลังมีข้อมูลครบ",
+    "category": "Map",
+    "priority": "P1",
+    "precondition": "คลัง 97 คำ",
+    "test_steps": [
+      "ตรวจ metadata ทุกตัวในคำ",
+      "ตรวจ edges และ local stroke files"
+    ],
+    "expected_result": "ไม่มีตัวอักษรที่ปิดอยู่ในชุดคำ ไม่มีความสัมพันธ์เท็จหรือไฟล์ขีดขาด",
+    "status": "Passed",
+    "actual_result": "Automated corpus validation ผ่าน metadata, typed edges และ local stroke files ทุกตัว",
+    "evidence": "docs/bloom/VERIFICATION.md"
+  },
+  {
+    "id": "TC-18",
+    "test_name": "เมนูครบ 4 ส่วน",
+    "category": "Navigation",
+    "priority": "P0",
+    "precondition": "เปิดแอป",
+    "test_steps": [
+      "กดแผนที่",
+      "กดประโยค",
+      "กดทบทวน",
+      "กดฝึกพูด"
+    ],
+    "expected_result": "หน้าตรงเมนู active ถูกต้อง ยังเป็น BLOOM ทุกหน้า",
+    "status": "Passed",
+    "actual_result": "Browser desktop: กดครบ map/sentences/review/speaking; mobile layout ตรวจครบ",
+    "evidence": "docs/bloom/VERIFICATION.md"
+  },
+  {
+    "id": "TC-19",
+    "test_name": "URL โดยตรงและ browser back",
+    "category": "Navigation",
+    "priority": "P1",
+    "precondition": "มี URL ของแต่ละหน้า",
+    "test_steps": [
+      "เปิด URL โดยตรง",
+      "เดินไปหน้าถัดไป",
+      "กด back และ forward"
+    ],
+    "expected_result": "กลับหน้าถูกต้อง ไม่ค้างหน้าเดิมหรือเกิด history loop",
+    "status": "Passed",
+    "actual_result": "Production: เลือก 医生 ในประโยค → ต้นไม้ → Back คืน 我是医生 พร้อมการเลือกเดิม",
+    "evidence": "docs/bloom/VERIFICATION.md"
+  },
+  {
+    "id": "TC-20",
+    "test_name": "เข้าลิงก์ #learn/#practice/#explore เดิม",
+    "category": "Navigation",
+    "priority": "P1",
+    "precondition": "มีแผน compatibility ที่ตกลงใน P0",
+    "test_steps": [
+      "เปิดแต่ละ hash เดิม",
+      "กด back",
+      "ตรวจข้อมูลเดิม"
+    ],
+    "expected_result": "ทำตาม mapping ที่ระบุใน P0 ไม่จอว่างและไม่ลบ localStorage เก่า",
+    "status": "Not run",
+    "actual_result": "",
+    "evidence": ""
+  },
+  {
+    "id": "TC-21",
+    "test_name": "อัปเกรดจาก cache เวอร์ชันเดิม",
+    "category": "PWA",
+    "priority": "P0",
+    "precondition": "ติดตั้ง PWA เดิมไว้ในเครื่องทดสอบ",
+    "test_steps": [
+      "เปิด build BLOOM ผ่าน server ทดสอบ",
+      "ให้ service worker อัปเดต",
+      "เปิดใหม่"
+    ],
+    "expected_result": "JS CSS และข้อมูลเป็นรุ่นเดียวกัน ไม่มี stale UI และไม่ลบ progress เก่า",
+    "status": "Not run",
+    "actual_result": "",
+    "evidence": ""
+  },
+  {
+    "id": "TC-22",
+    "test_name": "แจ้งอัปเดตโดยไม่บังคับรีโหลด",
+    "category": "PWA",
+    "priority": "P1",
+    "precondition": "ติดตั้ง production preview รุ่นแรกแล้ว",
+    "test_steps": [
+      "build รุ่นใหม่บน origin เดิม",
+      "reload ให้แอปตรวจอัปเดต",
+      "รอแจ้งเตือน",
+      "กดอัปเดตแอป"
+    ],
+    "expected_result": "เห็นแจ้งเตือนก่อน reload และหลังผู้ใช้เลือกจึงโหลด CSS/JS รุ่นใหม่จริง",
+    "status": "Passed",
+    "actual_result": "Browser localhost:5199: มีรุ่นใหม่ → กดอัปเดต → CSS hash เปลี่ยนเป็นรุ่นล่าสุด และการ์ดไม่ทับ",
+    "evidence": "docs/bloom/VERIFICATION.md"
+  },
+  {
+    "id": "TC-23",
+    "test_name": "ขาดเครือข่ายหลังโหลดแอปแล้ว",
+    "category": "PWA",
+    "priority": "P1",
+    "precondition": "เคยเปิดแอปและลำดับขีดสำเร็จ",
+    "test_steps": [
+      "ตัดเน็ต",
+      "เปิดแผนที่/ลำดับขีด",
+      "ลองเสียงที่ยังไม่เคยโหลด"
+    ],
+    "expected_result": "ข้อมูล bundled ที่มีใช้ได้ ส่วนเสียงที่ไม่มีแจ้งตามจริง ไม่จอว่าง",
+    "status": "Not run",
+    "actual_result": "",
+    "evidence": ""
+  },
+  {
+    "id": "TC-24",
+    "test_name": "โหลดจริงและลากแผนที่ต่อเนื่อง",
+    "category": "Performance",
+    "priority": "P1",
+    "precondition": "production build อุปกรณ์/เครือข่ายที่บันทึกไว้",
+    "test_steps": [
+      "วัด LCP และ CLS",
+      "ลาก/ซูมต่อเนื่อง",
+      "เปลี่ยนคำหลายครั้ง"
+    ],
+    "expected_result": "เป้าหมาย LCP ≤2.5s CLS ≤0.1 ผลต้องอ้างอิงการวัดจริง ลากไม่ค้างหรือจัดผังทุกเฟรม",
+    "status": "Not run",
+    "actual_result": "",
+    "evidence": ""
+  },
+  {
+    "id": "TC-25",
+    "test_name": "ไม่ล้นแนวนอนที่จอ 320/375/390",
+    "category": "Responsive",
+    "priority": "P0",
+    "precondition": "BLOOM แต่ละหน้าพร้อมทดสอบ",
+    "test_steps": [
+      "เปิดทั้ง 4 หน้าในแต่ละความกว้าง",
+      "เปิด focus 水",
+      "เปิดรายละเอียดคำ"
+    ],
+    "expected_result": "ไม่มี horizontal page scroll การ์ดไม่ทับ ปุ่มสำคัญอยู่ในจอและเลื่อนถึงได้",
+    "status": "Passed",
+    "actual_result": "ทั้ง 4 หน้า x 3 widths ไม่พบ horizontal overflow; map ไม่มี card intersection",
+    "evidence": "docs/bloom/VERIFICATION.md"
+  },
+  {
+    "id": "TC-26",
+    "test_name": "สลับ portrait/landscape ระหว่าง focus",
+    "category": "Responsive",
+    "priority": "P1",
+    "precondition": "เลือก 海水 ในต้นไม้ 水",
+    "test_steps": [
+      "หมุนมือถือ",
+      "หมุนกลับ",
+      "ดูคำที่เลือกและกิ่งที่เปิด"
+    ],
+    "expected_result": "คำนวณผังใหม่ ไม่มีการ์ดค้างนอกจอ ไม่เลือกคำใหม่โดยไม่ได้กด",
+    "status": "Not run",
+    "actual_result": "",
+    "evidence": ""
+  },
+  {
+    "id": "TC-27",
+    "test_name": "คอมและแท็บเล็ต 768/1024/1440",
+    "category": "Responsive",
+    "priority": "P1",
+    "precondition": "อยู่ BLOOM",
+    "test_steps": [
+      "เปิดทั้ง 4 หน้า",
+      "ย่อขยายหน้าต่าง",
+      "เปิดรายละเอียดคำ"
+    ],
+    "expected_result": "เมนูและรายละเอียดไม่บังเนื้อหา ตัวจีน พินอิน ไทยอ่านได้ตามขนาดจอ",
+    "status": "Passed",
+    "actual_result": "ทั้ง 4 หน้า x 3 widths ไม่พบ horizontal overflow; ตรวจภาพจริงที่ 1024/1280",
+    "evidence": "docs/bloom/VERIFICATION.md"
+  },
+  {
+    "id": "TC-28",
+    "test_name": "ตอบถูกและเฉลยครั้งเดียว",
+    "category": "Review",
+    "priority": "P0",
+    "precondition": "เริ่มรอบทบทวน",
+    "test_steps": [
+      "ฟัง 学生",
+      "เลือกนักเรียน",
+      "ตรวจคำตอบ",
+      "กดตรวจซ้ำเร็ว ๆ"
+    ],
+    "expected_result": "เฉลย 学生/xuésheng/นักเรียน นับผลเพียงครั้งเดียว",
+    "status": "Passed",
+    "actual_result": "ข้อแรกเลือกนักเรียน → เฉลย 学生 → คะแนน 1; duplicate-check regression ผ่าน",
+    "evidence": "docs/bloom/VERIFICATION.md"
+  },
+  {
+    "id": "TC-29",
+    "test_name": "ตอบผิดแล้วทำข้อต่อไป",
+    "category": "Review",
+    "priority": "P0",
+    "precondition": "เริ่มรอบทบทวน",
+    "test_steps": [
+      "ฟัง 学生",
+      "เลือกโรงเรียน",
+      "ตรวจแล้วไปต่อ"
+    ],
+    "expected_result": "เห็นคำตอบที่ถูกโดยไม่บอกว่าผ่าน และไปข้อต่อไปได้",
+    "status": "Passed",
+    "actual_result": "ข้อสองเลือกแพทย์ → เฉลย 学校 คะแนนคง 1 และไปต่อได้",
+    "evidence": "docs/bloom/VERIFICATION.md"
+  },
+  {
+    "id": "TC-30",
+    "test_name": "ห้ามตรวจโดยยังไม่เลือก",
+    "category": "Review",
+    "priority": "P1",
+    "precondition": "ยังไม่เลือกคำตอบ",
+    "test_steps": [
+      "ดูปุ่มตรวจ",
+      "ลองกดหรือกด Enter"
+    ],
+    "expected_result": "ปุ่ม disabled หรือไม่มีผล ไม่บันทึกคำตอบว่างเป็นถูก",
+    "status": "Passed",
+    "actual_result": "AX ระบุปุ่มตรวจ disabled ก่อนเลือก; reducer regression ผ่าน",
+    "evidence": "docs/bloom/VERIFICATION.md"
+  },
+  {
+    "id": "TC-31",
+    "test_name": "จบรอบและเริ่มใหม่",
+    "category": "Review",
+    "priority": "P1",
+    "precondition": "รอบมี 3 ข้อ",
+    "test_steps": [
+      "ตอบครบ 3 ข้อ",
+      "อ่านสรุป",
+      "เริ่มใหม่"
+    ],
+    "expected_result": "จำนวนถูกตรงที่ตอบ เริ่มใหม่เป็นข้อแรกและรีเซ็ตคะแนนรอบ",
+    "status": "Passed",
+    "actual_result": "ตอบถูก/ผิด/ถูก ได้ 2 จาก 3 และเริ่มใหม่เป็นข้อ 1 คะแนน 0",
+    "evidence": "docs/bloom/VERIFICATION.md"
+  },
+  {
+    "id": "TC-32",
+    "test_name": "เปลี่ยนคำท้ายประโยค",
+    "category": "Sentence",
+    "priority": "P0",
+    "precondition": "เปิดคำสู่ประโยค",
+    "test_steps": [
+      "เลือก 学生",
+      "เลือก 医生",
+      "เลือก 中国人"
+    ],
+    "expected_result": "เห็น 我是学生 / 我是医生 / 我是中国人 พร้อมไทยและพินอินถูกชุด",
+    "status": "Not run",
+    "actual_result": "",
+    "evidence": ""
+  },
+  {
+    "id": "TC-33",
+    "test_name": "กลับไปยังคำจากประโยค",
+    "category": "Sentence",
+    "priority": "P1",
+    "precondition": "เลือก 医生 ในประโยค",
+    "test_steps": [
+      "กดดูคำนี้บนแผนที่"
+    ],
+    "expected_result": "เข้าแผนที่โดยโฟกัส 医生 หรือชุดที่มีคำนี้ ไม่กลับไปคำตั้งต้นผิดตัว",
+    "status": "Passed",
+    "actual_result": "เปลี่ยนเป็น 医生 แล้วดูบนแผนที่ โฟกัส 医生 และย้อนกลับคืนประโยคเดิม",
+    "evidence": "docs/bloom/VERIFICATION.md"
+  },
+  {
+    "id": "TC-34",
+    "test_name": "เปลี่ยนสถานการณ์และดูตัวอย่าง",
+    "category": "Speaking",
+    "priority": "P0",
+    "precondition": "เปิดฝึกพูด",
+    "test_steps": [
+      "เลือกเพื่อนใหม่",
+      "เปิดตัวอย่าง",
+      "เลือกสั่งน้ำ",
+      "กดคำถามถัดไป"
+    ],
+    "expected_result": "คำถาม/ตัวอย่าง/เสียงตรงสถานการณ์ ตัวอย่างเก่าไม่ค้าง",
+    "status": "Passed",
+    "actual_result": "เจอเพื่อนใหม่ → แสดงตัวอย่าง → ขอน้ำ → คำถามถัดไป ล้างตัวอย่างเดิม",
+    "evidence": "docs/bloom/VERIFICATION.md"
+  },
+  {
+    "id": "TC-35",
+    "test_name": "อนุญาตไมค์ อัด หยุด และฟัง",
+    "category": "Speaking",
+    "priority": "P0",
+    "precondition": "HTTPS หรือ localhost เบราว์เซอร์รองรับ",
+    "test_steps": [
+      "กดอัดแล้วอนุญาต",
+      "พูดหนึ่งประโยค",
+      "หยุดและฟังเสียงตัวเอง"
+    ],
+    "expected_result": "ได้เสียงของผู้ใช้ มีสถานะกำลังอัดชัด ไม่อ้างคะแนนวรรณยุกต์หรือความถูกต้องอัตโนมัติ",
+    "status": "Not run",
+    "actual_result": "",
+    "evidence": ""
+  },
+  {
+    "id": "TC-36",
+    "test_name": "ปฏิเสธไมค์",
+    "category": "Speaking",
+    "priority": "P0",
+    "precondition": "ยังไม่ให้สิทธิ์ไมค์",
+    "test_steps": [
+      "กดอัด",
+      "ปฏิเสธสิทธิ์",
+      "ฟังตัวอย่างและดูคำตอบ"
+    ],
+    "expected_result": "ไม่ค้างกำลังอัด แจ้งเหตุและยังฝึกฟัง/อ่านต่อได้",
+    "status": "Not run",
+    "actual_result": "",
+    "evidence": ""
+  },
+  {
+    "id": "TC-37",
+    "test_name": "ออกจากหน้าขณะอัด",
+    "category": "Speaking",
+    "priority": "P0",
+    "precondition": "กำลังอัดเสียง",
+    "test_steps": [
+      "เปลี่ยนเมนู",
+      "ตรวจ indicator ไมค์",
+      "กลับมาหน้าพูด"
+    ],
+    "expected_result": "track ไมค์หยุด indicator ดับ ไม่เล่นเสียงเก่าหรือมี recorder เก่าทำงาน",
+    "status": "Not run",
+    "actual_result": "",
+    "evidence": ""
+  },
+  {
+    "id": "TC-38",
+    "test_name": "เสียงไม่อัปโหลด",
+    "category": "Speaking",
+    "priority": "P0",
+    "precondition": "เปิด Network inspector บนอุปกรณ์ทดสอบ",
+    "test_steps": [
+      "อัดและหยุด",
+      "เปลี่ยนคำถาม",
+      "ออกจากหน้า"
+    ],
+    "expected_result": "ไม่มี request ส่งข้อมูลเสียง/Blob ไปภายนอก และไม่เก็บเสียงใน log/analytics",
+    "status": "Not run",
+    "actual_result": "",
+    "evidence": ""
+  },
+  {
+    "id": "TC-39",
+    "test_name": "เบราว์เซอร์ไม่รองรับหรือไม่มีไมค์",
+    "category": "Speaking",
+    "priority": "P1",
+    "precondition": "MediaRecorder หรือ input device ใช้ไม่ได้",
+    "test_steps": [
+      "กดอัด",
+      "ดูข้อความ",
+      "ฝึกต่อจากตัวอย่าง"
+    ],
+    "expected_result": "มีทางเลือกฝึกต่อ ไม่มี crash และไม่สร้างไฟล์เสียงว่างเป็นสำเร็จ",
+    "status": "Not run",
+    "actual_result": "",
+    "evidence": ""
+  },
+  {
+    "id": "TC-40",
+    "test_name": "ดูลำดับขีด 水 และ 生",
+    "category": "Writing",
+    "priority": "P0",
+    "precondition": "มี stroke data ใน public/strokes",
+    "test_steps": [
+      "เปิด 水",
+      "เล่นลำดับขีด",
+      "เปลี่ยนเป็น 生"
+    ],
+    "expected_result": "ข้อมูลถูกตัว จำนวนขีดตรงข้อมูลจริง ไม่มี SVG ของตัวเก่าซ้อน",
+    "status": "Not run",
+    "actual_result": "",
+    "evidence": ""
+  },
+  {
+    "id": "TC-41",
+    "test_name": "เปลี่ยนตัวระหว่าง animation",
+    "category": "Writing",
+    "priority": "P1",
+    "precondition": "เปิดลำดับขีดและเริ่มเล่น",
+    "test_steps": [
+      "เริ่ม animation",
+      "เปลี่ยนตัวทันที",
+      "ปิดหน้าฝึกเขียน"
+    ],
+    "expected_result": "ยกเลิกงานเก่าได้ ไม่เล่นต่อหลังออกและไม่มี error จาก unmount",
+    "status": "Passed",
+    "actual_result": "เล่น 医 → เปลี่ยน 生 ได้ 5 ขีด และสลับ quiz ไม่ซ้อน SVG",
+    "evidence": "docs/bloom/VERIFICATION.md"
+  },
+  {
+    "id": "TC-42",
+    "test_name": "ฝึกเขียนด้วย touch",
+    "category": "Writing",
+    "priority": "P1",
+    "precondition": "เปิดโหมด quiz ใน StrokePad",
+    "test_steps": [
+      "เขียนทีละขีด",
+      "ลองขีดผิด",
+      "เขียนให้ครบ"
+    ],
+    "expected_result": "พื้นที่เขียนไม่เลื่อนทั้งหน้า แจ้งผลตามขีดจริงและจบได้",
+    "status": "Not run",
+    "actual_result": "",
+    "evidence": ""
+  },
+  {
+    "id": "TC-43",
+    "test_name": "ตัวที่ไม่มี stroke data",
+    "category": "Writing",
+    "priority": "P1",
+    "precondition": "เลือกตัวที่ยังไม่มีข้อมูลทดสอบ",
+    "test_steps": [
+      "เปิดการเขียน"
+    ],
+    "expected_result": "แจ้งว่ายังไม่มีข้อมูล มีทางกลับ ไม่ว่างหรือโหลดไม่สิ้นสุด",
+    "status": "Not run",
+    "actual_result": "",
+    "evidence": ""
+  }
+]

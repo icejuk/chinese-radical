@@ -37,6 +37,15 @@ const wanted = new Set([
   ...charsFrom('hanzi.ts', [/\{ zh: '(.)'/g, /parts: \[([^\]]+)\]/g]),
 ])
 
+// BLOOM vocabulary, including all characters in compound words.
+for (const file of ['seed.ts', 'woodExpansion.ts', 'peopleExpansion.ts', 'dailyExpansion.ts', 'foundationExpansion.ts', 'characterCatalog.ts']) {
+  const source = readFileSync(join(root, 'src', 'features', 'bloom', file), 'utf8')
+  const patterns = file === 'seed.ts' ? [/"zh": "([^"]+)"/g] : [/\['([^']+)',/g]
+  for (const pattern of patterns) for (const match of source.matchAll(pattern)) {
+    for (const ch of match[1].match(/[㐀-鿿]/gu) ?? []) wanted.add(ch)
+  }
+}
+
 // คำ/วลีจาก chinese.icejuk.dev ที่ sync มาเป็น fallback สำหรับโหมดฝึกเขียนจากบทเรียน
 const chineseFallback = join(root, 'public', 'chinese-writing-fallback.json')
 if (existsSync(chineseFallback)) {

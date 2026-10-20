@@ -1,0 +1,297 @@
+{
+  "url": "http://127.0.0.1:5199/#map?focus=c%3A%E5%AD%A6&branch=c%3A%E7%94%9F&branch=c%3A%E5%AD%A6&branch=c%3A%E6%B0%B4",
+  "zoom": "80%",
+  "cards": [
+    {
+      "py": "ORBIT",
+      "pyFont": "20px",
+      "pyVisible": true,
+      "scale": 0.7999999306418679,
+      "th": "ทุกกลุ่ม",
+      "thFont": "17.5px",
+      "thVisible": true,
+      "word": "คำจีน"
+    },
+    {
+      "py": "xué",
+      "pyFont": "20px",
+      "pyVisible": true,
+      "scale": 0.7999999306418679,
+      "th": "เรียน",
+      "thFont": "17.5px",
+      "thVisible": true,
+      "word": "学"
+    },
+    {
+      "py": "mù",
+      "pyFont": "20px",
+      "pyVisible": true,
+      "scale": 0.7999999306418679,
+      "th": "ไม้",
+      "thFont": "17.5px",
+      "thVisible": true,
+      "word": "木"
+    },
+    {
+      "py": "shuǐ",
+      "pyFont": "20px",
+      "pyVisible": true,
+      "scale": 0.8000002774325284,
+      "th": "น้ำ",
+      "thFont": "17.5px",
+      "thVisible": true,
+      "word": "水"
+    },
+    {
+      "py": "rén",
+      "pyFont": "20px",
+      "pyVisible": true,
+      "scale": 0.8000001040371981,
+      "th": "คน",
+      "thFont": "17.5px",
+      "thVisible": true,
+      "word": "人"
+    },
+    {
+      "py": "shēng",
+      "pyFont": "20px",
+      "pyVisible": true,
+      "scale": 0.7999999306418679,
+      "th": "เกิด",
+      "thFont": "17.5px",
+      "thVisible": true,
+      "word": "生"
+    },
+    {
+      "py": "xuésheng",
+      "pyFont": "20px",
+      "pyVisible": true,
+      "scale": 0.7999999306418679,
+      "th": "นักเรียน",
+      "thFont": "17.5px",
+      "thVisible": true,
+      "word": "学生"
+    },
+    {
+      "py": "shēngrì",
+      "pyFont": "20px",
+      "pyVisible": true,
+      "scale": 0.8000001040371981,
+      "th": "วันเกิด",
+      "thFont": "17.5px",
+      "thVisible": true,
+      "word": "生日"
+    },
+    {
+      "py": "shēnghuó",
+      "pyFont": "20px",
+      "pyVisible": true,
+      "scale": 0.7999999306418679,
+      "th": "ชีวิต",
+      "thFont": "17.5px",
+      "thVisible": true,
+      "word": "生活"
+    },
+    {
+      "py": "yīshēng",
+      "pyFont": "20px",
+      "pyVisible": true,
+      "scale": 0.7999999306418679,
+      "th": "แพทย์",
+      "thFont": "17.5px",
+      "thVisible": true,
+      "word": "医生"
+    },
+    {
+      "py": "shēngqì",
+      "pyFont": "20px",
+      "pyVisible": true,
+      "scale": 0.8000001040371981,
+      "th": "โกรธ",
+      "thFont": "17.5px",
+      "thVisible": true,
+      "word": "生气"
+    },
+    {
+      "py": "shēngcí",
+      "pyFont": "20px",
+      "pyVisible": true,
+      "scale": 0.7999999306418679,
+      "th": "คำศัพท์ใหม่",
+      "thFont": "17.5px",
+      "thVisible": true,
+      "word": "生词"
+    },
+    {
+      "py": "rénshēng",
+      "pyFont": "20px",
+      "pyVisible": true,
+      "scale": 0.7999999306418679,
+      "th": "ชีวิตคน",
+      "thFont": "17.5px",
+      "thVisible": true,
+      "word": "人生"
+    },
+    {
+      "py": "nǚshēng",
+      "pyFont": "20px",
+      "pyVisible": true,
+      "scale": 0.7999999306418679,
+      "th": "นักเรียนหญิง",
+      "thFont": "17.5px",
+      "thVisible": true,
+      "word": "女生"
+    },
+    {
+      "py": "nánshēng",
+      "pyFont": "20px",
+      "pyVisible": true,
+      "scale": 0.7999999306418679,
+      "th": "นักเรียนชาย",
+      "thFont": "17.5px",
+      "thVisible": true,
+      "word": "男生"
+    },
+    {
+      "py": "xuésheng",
+      "pyFont": "20px",
+      "pyVisible": true,
+      "scale": 0.8000002774325284,
+      "th": "นักเรียน",
+      "thFont": "17.5px",
+      "thVisible": true,
+      "word": "学生"
+    },
+    {
+      "py": "xuéxiào",
+      "pyFont": "20px",
+      "pyVisible": true,
+      "scale": 0.7999995838512074,
+      "th": "โรงเรียน",
+      "thFont": "17.5px",
+      "thVisible": true,
+      "word": "学校"
+    },
+    {
+      "py": "xuéxí",
+      "pyFont": "20px",
+      "pyVisible": true,
+      "scale": 0.7999995838512074,
+      "th": "เรียนรู้",
+      "thFont": "17.5px",
+      "thVisible": true,
+      "word": "学习"
+    },
+    {
+      "py": "dàxué",
+      "pyFont": "20px",
+      "pyVisible": true,
+      "scale": 0.8000002774325284,
+      "th": "มหาวิทยาลัย",
+      "thFont": "17.5px",
+      "thVisible": true,
+      "word": "大学"
+    },
+    {
+      "py": "tóngxué",
+      "pyFont": "20px",
+      "pyVisible": true,
+      "scale": 0.7999999306418679,
+      "th": "เพื่อนร่วมชั้น",
+      "thFont": "17.5px",
+      "thVisible": true,
+      "word": "同学"
+    },
+    {
+      "py": "shùxué",
+      "pyFont": "20px",
+      "pyVisible": true,
+      "scale": 0.8000002774325284,
+      "th": "คณิตศาสตร์",
+      "thFont": "17.5px",
+      "thVisible": true,
+      "word": "数学"
+    },
+    {
+      "py": "jiàoxué",
+      "pyFont": "20px",
+      "pyVisible": true,
+      "scale": 0.7999999306418679,
+      "th": "การเรียนการสอน",
+      "thFont": "17.5px",
+      "thVisible": true,
+      "word": "教学"
+    },
+    {
+      "py": "shuǐguǒ",
+      "pyFont": "20px",
+      "pyVisible": true,
+      "scale": 0.8000002774325284,
+      "th": "ผลไม้",
+      "thFont": "17.5px",
+      "thVisible": true,
+      "word": "水果"
+    },
+    {
+      "py": "shuǐbēi",
+      "pyFont": "20px",
+      "pyVisible": true,
+      "scale": 0.7999995838512074,
+      "th": "แก้วน้ำ",
+      "thFont": "17.5px",
+      "thVisible": true,
+      "word": "水杯"
+    },
+    {
+      "py": "kāishuǐ",
+      "pyFont": "20px",
+      "pyVisible": true,
+      "scale": 0.8000002774325284,
+      "th": "น้ำต้ม",
+      "thFont": "17.5px",
+      "thVisible": true,
+      "word": "开水"
+    },
+    {
+      "py": "shuǐpíng",
+      "pyFont": "20px",
+      "pyVisible": true,
+      "scale": 0.8000002774325284,
+      "th": "ระดับ",
+      "thFont": "17.5px",
+      "thVisible": true,
+      "word": "水平"
+    },
+    {
+      "py": "shuǐmiàn",
+      "pyFont": "20px",
+      "pyVisible": true,
+      "scale": 0.7999995838512074,
+      "th": "ผิวน้ำ",
+      "thFont": "17.5px",
+      "thVisible": true,
+      "word": "水面"
+    },
+    {
+      "py": "héshuǐ",
+      "pyFont": "20px",
+      "pyVisible": true,
+      "scale": 0.8000002774325284,
+      "th": "น้ำในแม่น้ำ",
+      "thFont": "17.5px",
+      "thVisible": true,
+      "word": "河水"
+    },
+    {
+      "py": "hǎishuǐ",
+      "pyFont": "20px",
+      "pyVisible": true,
+      "scale": 0.7999995838512074,
+      "th": "น้ำทะเล",
+      "thFont": "17.5px",
+      "thVisible": true,
+      "word": "海水"
+    }
+  ],
+  "bundle": "/assets/index-C3W1QxRl.js"
+}

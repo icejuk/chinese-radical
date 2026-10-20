@@ -1,16 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="字根">
-  <defs>
-    <linearGradient id="paperM" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#fdfaf3" />
-      <stop offset="1" stop-color="#ddd0b4" />
-    </linearGradient>
-  </defs>
-  <rect width="512" height="512" fill="url(#paperM)" />
-  <!-- maskable: เนื้อหาอยู่ในวงกลมปลอดภัยกลางภาพ เผื่อระบบครอปเป็นวงกลม -->
-  <g stroke="#b23a2c" stroke-width="24" stroke-linecap="round" fill="none">
-    <path d="M152 204 H360" />
-    <path d="M256 148 V364" />
-    <path d="M256 238 L172 348" />
-    <path d="M256 238 L340 348" />
-  </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192"><rect width="192" height="192" fill="#101624"/><ellipse cx="96" cy="96" rx="64" ry="43" transform="rotate(-32 96 96)" fill="none" stroke="#74638e" stroke-width="3"/><circle cx="96" cy="96" r="45" fill="#2b2642"/><text x="96" y="119" text-anchor="middle" font-family="sans-serif" font-size="65" fill="#e3d7ff">字</text><circle cx="145" cy="57" r="7" fill="#bda7ff"/></svg>

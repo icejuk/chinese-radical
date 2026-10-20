@@ -1,0 +1,104 @@
+[
+  {
+    "id": "TC-E2E-1",
+    "test_name": "ผู้เรียน - เรียนจากแผนที่จนได้ประโยค",
+    "category": "Journey",
+    "priority": "P0",
+    "precondition": "BLOOM production candidate บนมือถือและคอม; seed และเสียงพร้อม",
+    "test_steps": [
+      "เปิดแผนที่",
+      "เลือก 学 → 学生",
+      "ฟังและอ่านไทย",
+      "เปิดประโยคและเปลี่ยนคำ"
+    ],
+    "expected_result": "เรียนคำและใช้ในประโยคได้โดยไม่หลงเมนู",
+    "status": "Passed",
+    "actual_result": "Browser: เปิด 学生 จาก quick start → ประโยค → เปลี่ยน 医生 → map → Back; normal/slow playback accepted",
+    "evidence": "docs/bloom/VERIFICATION.md"
+  },
+  {
+    "id": "TC-E2E-2",
+    "test_name": "ผู้เรียน - สำรวจข้ามชุดคำแล้วกลับ",
+    "category": "Journey",
+    "priority": "P0",
+    "precondition": "BLOOM production candidate บนมือถือและคอม; seed และเสียงพร้อม",
+    "test_steps": [
+      "เปิด 学生",
+      "เลือก 生",
+      "เลือก 生活",
+      "ย้อนหนึ่งขั้นและกลับภาพรวม"
+    ],
+    "expected_result": "คงกิ่งเดิม เปิดกิ่ง 生 ต่อจาก 学生 และย้อนกลับคืนต้นไม้ก่อนหน้าได้",
+    "status": "Not run",
+    "actual_result": "",
+    "evidence": ""
+  },
+  {
+    "id": "TC-E2E-3",
+    "test_name": "ผู้เรียน - ฟัง ทบทวน จบรอบ",
+    "category": "Journey",
+    "priority": "P0",
+    "precondition": "BLOOM production candidate บนมือถือและคอม; seed และเสียงพร้อม",
+    "test_steps": [
+      "เข้าแบบทบทวน",
+      "ตอบถูกและผิดให้ครบ 3 ข้อ",
+      "ดูสรุปแล้วเริ่มใหม่"
+    ],
+    "expected_result": "ผลตรงกับคำตอบจริง ทุกขั้นทำต่อได้",
+    "status": "Not run",
+    "actual_result": "",
+    "evidence": ""
+  },
+  {
+    "id": "TC-E2E-4",
+    "test_name": "ผู้เรียน - ฝึกพูดและฟังเสียงตัวเอง",
+    "category": "Journey",
+    "priority": "P0",
+    "precondition": "BLOOM production candidate บนมือถือและคอม; seed และเสียงพร้อม",
+    "test_steps": [
+      "เลือกเพื่อนใหม่",
+      "ฟังคำถาม",
+      "อนุญาตไมค์และตอบ",
+      "หยุดและฟังเทียบ",
+      "เปลี่ยนหน้า"
+    ],
+    "expected_result": "อัด/ฟังได้และไมค์หยุดหลังออก ไม่มีการอัปโหลด",
+    "status": "Not run",
+    "actual_result": "",
+    "evidence": ""
+  },
+  {
+    "id": "TC-E2E-5",
+    "test_name": "ผู้เรียน - ไมค์ไม่ได้รับสิทธิ์ยังเรียนต่อได้",
+    "category": "Journey",
+    "priority": "P0",
+    "precondition": "BLOOM production candidate บนมือถือและคอม; seed และเสียงพร้อม",
+    "test_steps": [
+      "เข้าฝึกพูด",
+      "ปฏิเสธไมค์",
+      "ดู/ฟังตัวอย่าง",
+      "กลับแผนที่แล้วเปิดเขียน"
+    ],
+    "expected_result": "ผู้เรียนไปต่อได้โดยไม่ถูกบังคับให้อนุญาตสิทธิ์",
+    "status": "Not run",
+    "actual_result": "",
+    "evidence": ""
+  },
+  {
+    "id": "TC-E2E-6",
+    "test_name": "ผู้ใช้เดิม - อัปเดตเป็น BLOOM",
+    "category": "Journey",
+    "priority": "P0",
+    "precondition": "BLOOM production candidate บนมือถือและคอม; seed และเสียงพร้อม",
+    "test_steps": [
+      "เปิด PWA เวอร์ชันเดิม",
+      "อัปเดต build",
+      "เปิดลิงก์เก่าและสำรวจแผนที่",
+      "เปิดลำดับขีด"
+    ],
+    "expected_result": "เข้าใช้งานตาม compatibility ที่ตกลง ไม่มี cache ผสมหรือข้อมูลเดิมถูกลบทิ้ง",
+    "status": "Not run",
+    "actual_result": "",
+    "evidence": ""
+  }
+]

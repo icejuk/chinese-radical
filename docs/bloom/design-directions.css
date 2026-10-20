@@ -1,0 +1,105 @@
+/* Three deliberate visual directions. Shared interaction stays in map-preview.js. */
+body[data-theme]{background:#edf0f4}body[data-theme] header.lab{display:none}body[data-theme] .shell{margin:0 auto;border-radius:0;border:0;box-shadow:none}body[data-theme] .labnote{display:none}
+body[data-theme] .topbar{height:74px}.node{transition:background .15s,border-color .15s,box-shadow .15s}.node:hover{box-shadow:0 5px 20px #203e3218}.shell:not(.phone){width:1200px}
+/* A / ATLAS: editorial map, blue ink, horizontal labels and indexed rail. */
+body[data-theme=atlas]{color:#182c44;background:#f3f5f7;font-family:Thonburi,system-ui,sans-serif}
+[data-theme=atlas] .shell,[data-theme=atlas] .canvas{background:#f8fafc}
+[data-theme=atlas] .topbar{background:#fff;border-bottom:1px solid #cdd6e0;padding:0 30px}
+[data-theme=atlas] .brand{letter-spacing:-1px;color:#193b64;font-size:26px;font-weight:600}
+[data-theme=atlas] .brand b{font:14px system-ui;letter-spacing:3px;border-right:1px solid #b7c6d6;padding-right:14px;margin-right:14px}
+[data-theme=atlas] .brand i{color:#3578db}
+[data-theme=atlas] .search input{border-radius:8px;background:#f1f4f8;border:0}
+[data-theme=atlas] .workspace{grid-template-columns:minmax(0,1fr) 280px}
+[data-theme=atlas] .crumb{font:14px system-ui;border-bottom:1px solid #dae1e9;background:white}
+[data-theme=atlas] .crumb .current{background:#e1edff;color:#1756a3;border-radius:4px}
+[data-theme=atlas] .canvas{background-image:linear-gradient(#dae3ef55 1px,transparent 1px),linear-gradient(90deg,#dae3ef55 1px,transparent 1px);background-size:56px 56px}
+[data-theme=atlas] .node{border-radius:6px;border:0;border-left:3px solid #94b1ce;align-items:flex-start;padding:12px 16px;box-shadow:0 2px 8px #193b6409;text-align:left}
+[data-theme=atlas] .node .han{font-size:31px;color:#172c47}.node .py{letter-spacing:.1px}
+[data-theme=atlas] .node .py,[data-theme=atlas] .node .th{color:#516479}
+[data-theme=atlas] .node.hub{border:1px solid #a3bad3;border-radius:50%;align-items:center;background:#e5edf6}
+[data-theme=atlas] .node.selected{border-left:4px solid #286bcc;background:#e3eeff;box-shadow:0 0 0 3px #286bcc16}
+[data-theme=atlas] .edge{stroke:#adc0d3;stroke-width:1.5}[data-theme=atlas] .edge.active{stroke:#286bcc;stroke-width:3}
+[data-theme=atlas] .detail{background:#fff;border-left:1px solid #ccd7e4;padding:30px 24px}
+[data-theme=atlas] .eyebrow{color:#286bcc;letter-spacing:2px}
+[data-theme=atlas] .detail h1{font-size:62px;color:#193b64;margin-top:30px}
+[data-theme=atlas] .audio button{background:#225fae;border-radius:7px}[data-theme=atlas] .audio button+button{background:#e8eff8;color:#225fae}
+[data-theme=atlas] .chips button{background:#f2f6fc;border-color:#cfdaea;border-radius:7px}
+[data-theme=atlas] .controls>div{border-radius:7px;border-color:#d4dfea}[data-theme=atlas] .controls .chosen{background:#e3edfc}
+[data-theme=atlas] .mapcaption{background:#f8fafceb;color:#64768d}[data-theme=atlas] .mapcaption strong{color:#193b64}
+[data-theme=atlas] .bottom{background:#fff;color:#64768d;border-color:#d4dfea}
+/* B / ORBIT: dark field, luminous paths, floating word labels. */
+body[data-theme=orbit]{background:#101624;color:#e8edf7}
+[data-theme=orbit] .shell{background:#101624;color:#e8edf7}
+[data-theme=orbit] .topbar{background:#121a2b;border-color:#293348}
+[data-theme=orbit] .brand{font:500 24px system-ui;letter-spacing:4px;color:#d9d4ff}
+[data-theme=orbit] .brand b{color:#b8a5ff;font-size:32px}[data-theme=orbit] .brand i{color:#8ee0d4}
+[data-theme=orbit] .tag{color:#8a99b4}[data-theme=orbit] .search input{background:#202a3f;border-color:#354059;color:#e8edf7;border-radius:30px}
+[data-theme=orbit] .search input::placeholder{color:#95a3ba}
+[data-theme=orbit] .workspace{grid-template-columns:minmax(0,1fr) 300px}
+[data-theme=orbit] .crumb{background:#131b2b;border-color:#293348;color:#a8b6cf}[data-theme=orbit] .crumb .current{background:#363051;color:#e1d5ff;border-radius:20px}
+[data-theme=orbit] .canvas{background-color:#101624;background-image:radial-gradient(ellipse at 55% 44%,#25223c 0,transparent 68%),radial-gradient(#7d89a030 1px,transparent 1px);background-size:auto,42px 42px}
+[data-theme=orbit] .node{border:1px solid transparent;background:#192236b8;border-radius:24px;box-shadow:none}
+[data-theme=orbit] .node .han{color:#edf2ff;font-size:32px}[data-theme=orbit] .node .py{color:#a6b8d3}[data-theme=orbit] .node .th{color:#c5d2e6}
+[data-theme=orbit] .node.hub{border:1px solid #706694;border-radius:50%;background:#2b2642;box-shadow:0 0 0 8px #bba9ff06,0 0 34px #ae94ff16}
+[data-theme=orbit] .node.selected{border:1px solid #bda7ff;background:#363052;box-shadow:0 0 0 5px #bda7ff12,0 8px 26px #0003}
+[data-theme=orbit] .edge{stroke:#475574;stroke-width:1.4}[data-theme=orbit] .edge.active{stroke:#baa5ff;stroke-width:2.6}
+[data-theme=orbit] .detail{background:#172033;border-color:#2b354a;border-radius:26px 0 0 26px;padding:30px 25px}
+[data-theme=orbit] .eyebrow{color:#9f94bd}[data-theme=orbit] .detail h1{color:#e9dfff;font-size:60px}
+[data-theme=orbit] .reading,[data-theme=orbit] .note,[data-theme=orbit] .example-py,[data-theme=orbit] .status{color:#a7b6ce}
+[data-theme=orbit] .section{border-color:#35415b}[data-theme=orbit] .audio button{background:#c7b6ff;color:#201b37;border-radius:25px}[data-theme=orbit] .audio button+button{background:#29364b;color:#d8e3f4}
+[data-theme=orbit] .chips button{background:#243249;border-color:#3e4d68;color:#e6edfb;border-radius:16px}
+[data-theme=orbit] .controls>div{background:#1b263bee;border-color:#3b4963;color:#d8e3f4;border-radius:24px}[data-theme=orbit] .controls .chosen{background:#35415c;border-radius:20px}[data-theme=orbit] .controls output{color:#d3dcef}
+[data-theme=orbit] .mapcaption{background:#101624d9;color:#8999b5}[data-theme=orbit] .mapcaption strong{color:#d4dff2}
+[data-theme=orbit] .bottom{background:#131b2b;border-color:#293348;color:#8c9cb8}[data-theme=orbit] .close{background:#29364b;color:#dce3f4}
+/* C / PAPER: learning notebook, warm peach, open branching with underlined words. */
+body[data-theme=paper]{background:#f5eee5;color:#493b32}
+[data-theme=paper] .shell{background:#fffaf1;color:#493b32}
+[data-theme=paper] .topbar{background:#f5eadb;border-bottom:1px solid #e1d1bd}
+[data-theme=paper] .brand{color:#69513d;font-size:28px;letter-spacing:-.8px}
+[data-theme=paper] .brand b{border:1px solid #a26e50;border-radius:6px;color:#a26e50;font-size:27px;padding:1px 5px}
+[data-theme=paper] .brand i{color:#c07a52}[data-theme=paper] .tag{color:#8b7462}
+[data-theme=paper] .search input{background:#fff9ef;border:1px solid #e5d8c4;border-radius:10px;color:#69513d}
+[data-theme=paper] .workspace{grid-template-columns:minmax(0,1fr) 300px}
+[data-theme=paper] .crumb{background:#fffaf1;border-color:#ece0d0;color:#82634b}[data-theme=paper] .crumb .current{background:#f4dac4;border-radius:5px}
+[data-theme=paper] .canvas{background:#fffaf1;background-image:radial-gradient(#b7a08625 .8px,transparent .8px);background-size:32px 32px}
+[data-theme=paper] .node{border:0;border-bottom:2px solid #dcc4a9;background:#fffaf1;border-radius:0;box-shadow:none;padding:10px 8px}
+[data-theme=paper] .node .han{font-family:'Kaiti SC','STKaiti','KaiTi','PingFang SC',serif;color:#694a35;font-size:35px}
+[data-theme=paper] .node .py,[data-theme=paper] .node .th{color:#81664e}
+[data-theme=paper] .node.hub{background:#f1e2cc;border:1px solid #d4b99a;border-radius:43% 57% 49% 51%}
+[data-theme=paper] .node.selected{background:#f8dfc4;border-bottom:3px solid #ae724d;border-radius:12px 12px 3px 3px;box-shadow:0 5px 0 #ead1b54d}
+[data-theme=paper] .edge{stroke:#d0bba2;stroke-width:1.8}[data-theme=paper] .edge.active{stroke:#aa7954;stroke-width:3}
+[data-theme=paper] .detail{margin:18px 18px 18px 0;background:#fffef9;border:1px solid #e5d9c7;border-radius:10px;box-shadow:3px 4px 0 #e6d9c640;padding:25px 24px}
+[data-theme=paper] .detail h1{font-family:'Kaiti SC','STKaiti','KaiTi','PingFang SC',serif;font-size:66px;color:#805437}
+[data-theme=paper] .eyebrow{color:#ac7c52}[data-theme=paper] .reading,[data-theme=paper] .note,[data-theme=paper] .example-py{color:#8b725b}
+[data-theme=paper] .audio button{background:#986b4c;border-radius:10px}[data-theme=paper] .audio button+button{background:#f3e7d8;color:#76563d}
+[data-theme=paper] .chips button{background:#fbf3e6;border-color:#dfc9ac;border-radius:8px}[data-theme=paper] .section{border-color:#e8ddcd}
+[data-theme=paper] .controls>div{background:#fffef9;border-color:#dfcdb5;border-radius:10px}[data-theme=paper] .controls .chosen{background:#f0e2cf}
+[data-theme=paper] .mapcaption{background:#fffaf1eb;color:#9d8269}[data-theme=paper] .mapcaption strong{color:#76563d}
+[data-theme=paper] .bottom{background:#f5eadb;border-color:#e1d1bd;color:#92775e}
+body[data-theme] .phone .detail{margin:0 10px 12px;padding:14px 16px;border-radius:18px}
+body[data-theme] .phone .detail h1{font-size:30px;margin:0 10px 0 0}body[data-theme] .phone .topbar{height:64px;padding:0 16px}
+body[data-theme] .phone .brand{font-size:21px;letter-spacing:0}body[data-theme] .phone .brand b{font-size:22px}
+body[data-theme] .phone .canvas{height:420px}body[data-theme] .phone .eyebrow{display:none}
+/* Different workspace compositions, not only palettes. */
+[data-theme=orbit] .shell:not(.phone) .workspace{grid-template-columns:276px minmax(0,1fr)}
+[data-theme=orbit] .shell:not(.phone) .detail{grid-column:1;grid-row:1;border-left:0;border-right:1px solid #2b354a;border-radius:0 26px 26px 0}
+[data-theme=orbit] .shell:not(.phone) .maparea{grid-column:2;grid-row:1}
+[data-theme=paper] .shell:not(.phone) .workspace{display:flex;flex-direction:column;min-height:0}
+[data-theme=paper] .shell:not(.phone) .canvas{height:540px}
+[data-theme=paper] .shell:not(.phone) .detail{display:flex;align-items:center;gap:22px;margin:0 24px 18px;padding:14px 22px;border-radius:12px;min-height:110px}
+[data-theme=paper] .shell:not(.phone) .detail h1{font-size:45px;margin:0}
+[data-theme=paper] .shell:not(.phone) .detail .meaning{margin:0}
+[data-theme=paper] .shell:not(.phone) .detail .section{border:0;padding:0;margin:0 0 0 auto}
+[data-theme=paper] .shell:not(.phone) .detail .section h2{font-size:11px;margin:0 0 5px}
+[data-theme=paper] .shell:not(.phone) .detail .chips button{min-height:44px;min-width:62px}
+[data-theme=paper] .shell:not(.phone) .detail .eyebrow,[data-theme=paper] .shell:not(.phone) .detail .note,[data-theme=paper] .shell:not(.phone) .detail .example-block{display:none}
+[data-theme=paper] .shell:not(.phone) .detail .status:empty{display:none}
+.orbit-library{position:absolute;inset:0;z-index:3;background:#101624;padding:24px 28px 85px;overflow:auto;cursor:auto;touch-action:pan-y}
+.orbit-library[hidden]{display:none}.orbit-library header small{font:10px system-ui;letter-spacing:2px;color:#9b8fc0}.orbit-library h2{font-size:24px;font-weight:500;margin:7px 0;color:#eee7ff}.orbit-library header p{font-size:13px;color:#a5b3cb;margin:0 0 22px}.orbit-families{display:grid;grid-template-columns:1fr 1fr;gap:14px}.orbit-family{text-align:left;border:1px solid #35415b;border-radius:20px;background:#1a2335;padding:16px;color:#e5eaf5;min-width:0}.orbit-family:hover{background:#242d45;border-color:#b7a4e6}.family-title{display:flex;gap:13px;align-items:center}.family-title strong{font:36px 'PingFang SC',sans-serif;color:#dacbff}.family-title span{font:14px system-ui;color:#c0b3e0}.family-title small{display:block;font:12px Thonburi,sans-serif;color:#aebbd1;margin-top:4px}.family-title em{font:11px Thonburi,sans-serif;margin-left:auto;white-space:nowrap;color:#bba8ef}.family-examples{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:15px;border-top:1px solid #344058;padding-top:12px}.family-examples span{display:flex;flex-direction:column;gap:3px;min-width:0}.family-examples b{font:21px 'PingFang SC',sans-serif;font-weight:400}.family-examples small{font-size:11px;color:#aebbd1;overflow-wrap:anywhere}.orbit-groups{display:flex;gap:6px;padding:9px 16px;background:#141d2e;border-bottom:1px solid #29364c;overflow:auto}.orbit-groups button{min-width:44px;height:40px;border:1px solid #35415b;border-radius:12px;font:23px 'PingFang SC',sans-serif;color:#bfc9dc}.orbit-groups button[aria-pressed=true]{background:#3a3054;color:#eee1ff;border-color:#bba8ef}[data-theme=orbit] .detail .chips:has(.library-word){display:grid;grid-template-columns:1fr;max-height:340px;overflow:auto;gap:8px}[data-theme=orbit] .chips .library-word{display:grid;grid-template-columns:1fr 1fr;min-height:70px;text-align:left;padding:10px 12px}[data-theme=orbit] .library-word span{grid-column:1/-1;font-size:12px;color:#b2bfd3}.phone .orbit-library{padding:18px 14px 85px}.phone .orbit-library h2{font-size:20px}.phone .orbit-families{grid-template-columns:1fr}.phone .orbit-groups{gap:5px;padding:7px 10px}.phone .orbit-groups button{min-width:38px}.phone .detail .chips:has(.library-word){max-height:160px!important}.phone .orbit-library .family-examples small{font-size:12px}[data-theme=orbit] .overview .mapcaption{display:none}[data-theme=orbit] .overview .controls{z-index:5}
+/* Readable overview labels remain in screen space while the graph keeps its geometry. */
+.orbit-markers{position:absolute;inset:0;pointer-events:none;z-index:3}.orbit-markers[hidden]{display:none}.orbit-markers button{position:absolute;transform:translate(-50%,-50%);min-width:86px;min-height:58px;padding:6px 10px;display:flex;align-items:center;gap:8px;border:1px solid #817299;background:#25223df2;border-radius:15px;box-shadow:0 3px 18px #0003;pointer-events:auto;color:#e8dfff}.orbit-markers b{font:28px 'PingFang SC',sans-serif}.orbit-markers span{font:11px system-ui;white-space:nowrap}[data-theme=orbit] .overview .node{opacity:.4}[data-theme=orbit] .overview .controls{z-index:6}[data-theme=orbit] .edge{opacity:.65}[data-theme=orbit] .edge.active{opacity:1}.phone .orbit-markers button{min-width:68px;gap:5px;padding:5px 7px}.phone .orbit-markers b{font-size:23px}.phone .orbit-markers span{font-size:10px}.orbit-groups button:focus-visible,.orbit-markers button:focus-visible{outline:3px solid #d2c2ff;outline-offset:3px}
+[data-theme=orbit] .node .th{white-space:normal;font-size:14px;line-height:1.35;max-width:100%;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden}
+[data-theme=orbit] .node .py{font-size:16px;line-height:1.4;max-width:100%;overflow-wrap:anywhere;white-space:normal}
+[data-theme=orbit] .overview .node .py,[data-theme=orbit] .overview .node .th{visibility:hidden}
+.orbit-markers button:hover{background:#403651;border-color:#e0cdff}
+[data-theme=orbit] .phone .library-word small{display:block;font-size:13px;color:#b9a9dc}[data-theme=orbit] .phone .detail .section:has(.library-word){display:block;margin:12px 0 0}[data-theme=orbit] .phone .detail .section:has(.library-word) h2{display:block;font-size:12px;margin:0 0 8px}[data-theme=orbit] .phone .chips .library-word{min-height:72px;min-width:0}[data-theme=orbit] .phone .detail .chips:has(.library-word){grid-template-columns:1fr 1fr;max-height:170px!important}[data-theme=orbit] .phone .library-word b{font-size:23px}

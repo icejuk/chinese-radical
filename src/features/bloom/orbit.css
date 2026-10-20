@@ -1,0 +1,235 @@
+/* ORBIT production theme. Scoped to the modern experience; legacy pages retain their styles. */
+html[data-ui='bloom']{color-scheme:dark;--bg:#101624;--surface:#192236;--ink:#e8edf7;--seal:#c7b6ff;--jade:#b5a3e5;--line:#35415b}
+html[data-ui='bloom'] body{background:#101624;color:#e8edf7}
+.bloom-app{--bl-bg:#101624;--bl-ink:#e8edf7;--bl-green:#c7b6ff;--bl-muted:#a7b6ce;--bl-line:#35415b;--bl-soft:#2b2642;--bl-peach:#363052;background:#101624;color:#e8edf7;font-size:15px}
+.bloom-app :focus-visible{outline-color:#d2c2ff}
+.bloom-app .bl-rail{inset:0 0 auto;width:100%;height:74px;display:flex;flex-direction:row;align-items:center;justify-content:space-between;padding:0 28px;background:#121a2bf5;border:0;border-bottom:1px solid #293348;backdrop-filter:blur(14px)}
+.bloom-app .bl-brand{font:500 24px/1.2 system-ui;letter-spacing:.3px;white-space:nowrap;color:#e0d7ff;gap:12px;flex:none}
+.bloom-app .bl-brand>.bl-han{font:32px/1 system-ui;color:#b8a5ff}
+.bloom-app .bl-brand-dot{color:#8ee0d4}
+.bloom-app .bl-rail-caption,.bloom-app .bl-group-nav,.bloom-app .bl-rail-footer{display:none}
+.bloom-app .bl-main-nav{display:flex;gap:8px;position:static;width:auto;background:transparent;border:0;padding:0}
+.bloom-app .bl-main-nav>button{min-height:44px;padding:8px 15px;border-radius:24px;color:#a8b6cf;font-size:13px;gap:7px}
+.bloom-app .bl-main-nav>button.is-active{background:#363051;color:#e1d5ff}
+.bloom-app .bl-nav-icon{font-size:20px}
+.bloom-app .bl-body{margin-left:0;padding-top:74px}
+.bloom-app .bl-top{padding:18px 28px;min-height:76px;gap:24px;background:#101624;border-bottom:1px solid #293348}
+.bloom-app .bl-page-label{color:#d7e0f1;min-width:130px}
+.bloom-app .bl-kicker{color:#9f94bd;font-size:11px}
+.bloom-app .bl-search{background:#202a3f;border:1px solid #354059;border-radius:24px;max-width:500px;margin-left:0;height:46px;color:#dbe4f4;flex:1}
+.bloom-app .bl-search input{color:#e8edf7;font-size:14px;background:transparent;min-width:0}
+.bloom-app .bl-search input::placeholder{color:#95a3ba}
+.bloom-app .bl-search svg{stroke:#9daec6}
+.bloom-app .bl-search-results{background:#202a3f;border-color:#46536d;box-shadow:0 12px 35px #0005;color:#e8edf7}
+.bloom-app .bl-search-results button{color:#e8edf7;border-color:#35415b;min-height:64px}
+.bloom-app .bl-search-results button:hover{background:#30344e}
+.bloom-app .bl-search-results small,.bloom-app .bl-search-caption{color:#a7b6ce}
+.bloom-app .bl-help-button,.bloom-app .bl-mobile-help{color:#c9c0e3;border-color:#59607e}
+.bloom-app .bl-main{padding:22px 28px 32px;max-width:1800px;margin:0 auto}
+.bloom-app .bl-unified-intro{margin:0 0 20px}
+.bloom-app .bl-unified-intro h1{font-size:26px;line-height:1.4;color:#e7e1f5;margin:6px 0}
+.bloom-app .bl-unified-intro p{font-size:13px;color:#a7b6ce}
+.bloom-app .bl-focus-layout{grid-template-columns:292px minmax(0,1fr);gap:18px;align-items:start}
+.bloom-app .bl-inline-detail{grid-column:1;grid-row:1;min-width:0;position:sticky;top:90px}
+.bloom-app .bl-focus-card{grid-column:2;grid-row:1;border:1px solid #29364c;border-radius:24px;background:#111a2a;min-width:0}
+.bloom-app .bl-focus-header{padding:18px 22px 10px}
+.bloom-app .bl-focus-header h2{color:#d7e0f1;font-size:16px}
+.bloom-app .bl-focus-header p{color:#a7b6ce;font-size:12px}
+.bloom-app .bl-tree-entrypoints{padding:8px 20px 13px;gap:8px;border-bottom:1px solid #29364c;display:flex;overflow:auto}
+.bloom-app .bl-tree-entrypoints button{background:#1b263b;border:1px solid #35415b;border-radius:13px;color:#b7c4da;min-height:48px;min-width:74px}
+.bloom-app .bl-tree-entrypoints button[aria-pressed=true]{background:#363051;border-color:#9e8ac7;color:#e3d5ff}
+.bloom-app .bl-tree-entrypoints small{color:#b2bfd3}
+.bloom-app .bl-graph{position:relative;padding:0}
+.bloom-app .bl-map-viewport{overflow:clip;min-height:400px;max-height:none;scroll-margin-top:150px;background-color:#101624;background-image:radial-gradient(ellipse at 55% 44%,#25223c 0,transparent 68%),radial-gradient(#7d89a030 1px,transparent 1px);background-size:auto,42px 42px}
+.bloom-app .bl-map-tools{position:absolute;bottom:14px;left:14px;right:14px;z-index:4;padding:0;justify-content:flex-end;pointer-events:none;gap:10px}
+.bloom-app .bl-map-tools>span{display:none}
+.bloom-app .bl-map-tools>div{pointer-events:auto;background:#1b263bf2;border:1px solid #3b4963;color:#d8e3f4;border-radius:24px;box-shadow:0 3px 20px #0003;display:flex;align-items:center;padding:4px;gap:0;flex-wrap:wrap}
+.bloom-app .bl-map-tools button{height:44px;min-height:44px;min-width:44px;padding:4px 12px;border-radius:20px;font-size:20px;width:auto;color:#d8e3f4}
+.bloom-app .bl-map-tools button:nth-last-child(-n+2){font-size:12px;padding:0 12px}
+.bloom-app .bl-map-tools button:hover{background:#35415c}
+.bloom-app .bl-map-tools button:disabled{opacity:.35}
+.bloom-app .bl-map-tools output{font:11px/1.4 system-ui;color:#d3dcef;min-width:30px;width:auto;display:block}
+.bloom-app .bl-map-node{background:#192236f5;border:1px solid #26324a;border-radius:22px;padding:10px;box-shadow:none;gap:3px}
+.bloom-app .bl-map-node:hover{border-color:#b7a4e6;background:#222c43}
+.bloom-app .bl-map-node .bl-han{font-size:30px;line-height:1.2;color:#edf2ff}
+.bloom-app .bl-map-node .bl-pinyin{font:16px/1.4 system-ui;color:#a6b8d3;white-space:normal;overflow-wrap:anywhere}
+.bloom-app .bl-map-node .bl-meaning{font-size:14px;line-height:1.4;color:#c5d2e6;max-width:100%}
+.bloom-app .bl-map-node.is-root{background:#2b2642;border:1px solid #706694;border-radius:48%;box-shadow:0 0 0 6px #bba9ff08}
+.bloom-app .bl-map-node.is-root .bl-han{font-size:38px;color:#e3d7ff}
+.bloom-app .bl-map-node.is-selected{border:1px solid #bda7ff;background:#363052;box-shadow:0 0 0 5px #bda7ff12,0 8px 26px #0003}
+.bloom-app .bl-map-node.is-selected .bl-han{color:#eee5ff}
+.bloom-app .bl-map-node.is-collection{background:#202e3d;border-color:#526479;border-radius:22px;color:#cee4e0}
+.bloom-app .bl-collection-label{font-size:23px;color:#e3ecf6}
+.bloom-app .bl-node-hint{display:none}
+.bloom-app .bl-map-lines path{stroke:#69748f;stroke-width:1.35;opacity:.55;vector-effect:non-scaling-stroke}
+.bloom-app .bl-map-lines path.is-selected{stroke:#baa5ff;stroke-width:2.5;opacity:1}
+.bloom-app .bl-map-lines path.is-grouping{stroke:#70899e;stroke-dasharray:5 7;opacity:.4}
+.bloom-app .bl-focus-note{color:#a7b6ce;padding:14px 20px;font-size:11px}
+.bloom-app .bl-branch-actions{padding:10px 18px;gap:7px;display:flex;flex-wrap:wrap}
+.bloom-app .bl-branch-actions button{background:#202c40;border:1px solid #46516a;color:#c3cce0;border-radius:20px;min-height:38px;padding:6px 12px;font-size:12px}
+.bloom-app .bl-detail,.bloom-app .bl-tree-guide{background:#172033;border:1px solid #2b354a;border-radius:24px;padding:25px;color:#e8edf7}
+.bloom-app .bl-detail-heading .bl-han{color:#e9dfff;font-size:52px}
+.bloom-app .bl-detail-pinyin{color:#b5a8d3;font-size:18px;line-height:1.5}
+.bloom-app .bl-detail h2{color:#e8edf7;font-size:18px;line-height:1.6}
+.bloom-app .bl-detail h3,.bloom-app .bl-tree-guide h2{color:#dcd2ef}
+.bloom-app .bl-detail p,.bloom-app .bl-tree-guide p,.bloom-app .bl-detail-note{color:#a7b6ce}
+.bloom-app .bl-detail-continue,.bloom-app .bl-detail-note,.bloom-app .bl-example{border-color:#35415b}
+.bloom-app .bl-button{background:#29364b;border:1px solid #3e4d68;color:#d8e3f4;border-radius:18px;min-height:44px;font-size:13px}
+.bloom-app .bl-primary,.bloom-app .bl-audio-buttons>.bl-button:first-child{background:#c7b6ff;border-color:#c7b6ff;color:#201b37}
+.bloom-app .bl-audio-buttons{gap:8px;flex-wrap:wrap}
+.bloom-app .bl-audio-status{color:#a7b6ce}
+.bloom-app .bl-detail-actions{flex-wrap:wrap;gap:8px}
+.bloom-app .bl-character-options button,.bloom-app .bl-dock-branches button{background:#243249;border:1px solid #3e4d68;border-radius:14px;color:#e6edfb;min-height:64px}
+.bloom-app .bl-character-options small,.bloom-app .bl-dock-branches small{color:#bcaed9}
+.bloom-app .bl-character-options button:disabled{opacity:.4}
+.bl-related-words{display:grid;gap:8px;max-height:350px;overflow:auto;padding:3px}
+.bloom-app .bl-related-words button{display:grid;grid-template-columns:1fr 1fr;text-align:left;gap:4px 8px;padding:12px;background:#243249;border:1px solid #3e4d68;border-radius:15px;min-height:76px}
+.bl-related-words strong{font-size:25px}.bl-related-words span{font:14px/1.6 system-ui;color:#bcaddd}.bl-related-words small{grid-column:1/-1;color:#b9c5d9;font-size:12px}
+.bloom-app .bl-journey,.bloom-app .bl-selection-status{color:#a7b6ce}.bloom-app .bl-journey button{color:#d5c6ed}.bloom-app .bl-journey button.is-active{background:#363051;color:#eee2ff}
+.bloom-app .bl-mobile-selection{background:#252c45;color:#e8dcff;border-color:#62597c}
+.bloom-app .bl-reading-dock{position:static;inset:auto;max-height:none;margin:0 16px 100px;background:#172033;border:1px solid #3e4d68;border-radius:22px;color:#e8edf7;box-shadow:none}
+.bloom-app .bl-reading-dock>header span,.bloom-app .bl-reading-dock>header small,.bloom-app .bl-character-feedback{color:#b4c1d6}
+.bloom-app .bl-reading-dock>header>button{background:#29364b;color:#dce3f4}
+.bloom-app .bl-reading-dock>footer{border-color:#35415b}
+.bloom-app .bl-reading-dock .bl-detail{border:0;background:transparent}
+.bloom-app .bl-reading-dock .bl-dock-branches>span{color:#b4c1d6}
+.bloom-app .bl-example{background:#202a3f}.bloom-app .bl-example small{color:#b5a8d3}
+/* Learning features use the same surfaces; these controls remain functional, not mock screens. */
+.bloom-app .bl-lesson-card,.bloom-app .bl-answer-example,.bloom-app .bl-review-feedback,.bloom-app .bl-recorder{background:#192236;border-color:#35415b;color:#e8edf7}
+.bloom-app .bl-lesson-intro h1,.bloom-app .bl-lesson-card h2,.bloom-app .bl-lesson-card h3,.bloom-app .bl-lesson-card .bl-sentence-zh,.bloom-app .bl-sentence-th,.bloom-app .bl-speaking-question{color:#e4dcf5}
+.bloom-app .bl-lesson-intro p,.bloom-app .bl-sentence-py,.bloom-app .bl-recorder p,.bloom-app .bl-review-top{color:#a7b6ce}
+.bloom-app .bl-lesson-tabs>button,.bloom-app .bl-word-choices button,.bloom-app .bl-field-label select{background:#243249;border-color:#3e4d68;color:#dbe4f5}
+.bloom-app .bl-lesson-tabs>button.is-active,.bloom-app .bl-word-choices button.is-active{background:#363052;border-color:#a995d0;color:#e4d6ff}
+.bloom-app .bl-help,.bloom-app .bl-writing-dialog{background:#172033;border:1px solid #46516a;color:#e8edf7}
+.bloom-app .bl-help p,.bloom-app .bl-help ol,.bloom-app .bl-writing-hint{color:#b4c1d6}.bloom-app .bl-help-path{background:#29364b;color:#e0d3ff}
+@media(min-width:701px){.bloom-app .bl-mobile-help{display:none}.bloom-app .bl-mobile-selection{display:none}}
+@media(max-width:1000px) and (min-width:701px){.bloom-app .bl-main-nav>button{padding:8px 10px;font-size:12px}.bloom-app .bl-focus-layout{grid-template-columns:240px minmax(0,1fr);gap:12px}.bloom-app .bl-detail{padding:20px}.bloom-app .bl-main{padding:18px}.bloom-app .bl-rail{padding:0 20px}.bloom-app .bl-top{padding:16px 20px}}
+@media(max-width:700px){
+ .bloom-app .bl-rail{height:60px;padding:0 17px}.bloom-app .bl-brand{font-size:22px;gap:8px}.bloom-app .bl-brand>.bl-han{font-size:28px}.bloom-app .bl-body{padding-top:60px;padding-bottom:0}
+ .bloom-app .bl-main-nav{position:fixed;inset:auto 0 0;display:flex;justify-content:space-around;padding:7px 6px calc(7px + env(safe-area-inset-bottom));background:#141d2ef5;border-top:1px solid #35415b;backdrop-filter:blur(14px)}
+ .bloom-app .bl-main-nav>button{display:flex;flex-direction:column;gap:2px;padding:5px 7px;font-size:11px;border-radius:16px;flex:1}.bloom-app .bl-nav-icon{font-size:23px}
+ .bloom-app .bl-mobile-help{display:block;width:40px;height:40px;border:1px solid #59607e;border-radius:50%}
+ .bloom-app .bl-top{min-height:68px;padding:12px 14px;gap:0}.bloom-app .bl-page-label,.bloom-app .bl-help-button{display:none}.bloom-app .bl-search{max-width:none;width:100%;margin:0;height:44px}
+ .bloom-app .bl-main{padding:16px 10px 90px}.bloom-app:has(.bl-reading-dock) .bl-main{padding-bottom:12px}
+ .bloom-app .bl-unified-intro{margin:0 8px 16px}.bloom-app .bl-unified-intro h1{font-size:22px}.bloom-app .bl-unified-intro p{font-size:12px}
+ .bloom-app .bl-focus-layout{display:block}.bloom-app .bl-inline-detail{display:none}.bloom-app .bl-focus-card{border-radius:20px}
+ .bloom-app .bl-focus-header{padding:15px 15px 7px}.bloom-app .bl-focus-header h2{font-size:15px}.bloom-app .bl-focus-header p{font-size:12px}
+ .bloom-app .bl-tree-entrypoints{padding:8px 12px}.bloom-app .bl-tree-entrypoints button{flex:1;min-width:55px;min-height:44px;padding:6px}
+ .bloom-app .bl-map-viewport{min-height:370px;scroll-margin-top:70px}
+ .bloom-app .bl-map-tools{left:8px;right:8px;bottom:10px;justify-content:center}
+ .bloom-app .bl-map-tools>div{justify-content:center;width:auto;max-width:100%;padding:2px;border-radius:16px}
+ .bloom-app .bl-map-tools button{min-width:40px;padding:0 7px}.bloom-app .bl-map-tools button:nth-last-child(-n+2){font-size:11px;padding:0 7px}
+ .bloom-app .bl-map-tools output{font-size:11px;min-width:28px}
+ .bloom-app .bl-map-node .bl-han{font-size:29px}.bloom-app .bl-map-node .bl-pinyin{font-size:16px}.bloom-app .bl-map-node .bl-meaning{font-size:14px}
+ .bloom-app .bl-branch-actions{padding:8px 12px}.bloom-app .bl-focus-note{padding:8px 14px;font-size:11px}
+ .bloom-app .bl-journey{margin:14px 8px}.bloom-app .bl-selection-status{font-size:12px;margin:12px 8px}
+ .bloom-app .bl-reading-dock{display:block;padding:15px;margin:0 10px 92px}.bloom-app .bl-reading-dock.is-expanded{max-height:none}
+ .bloom-app .bl-detail-heading .bl-han{font-size:40px}.bloom-app .bl-reading-dock .bl-detail-actions{display:flex}
+}
+@media(prefers-reduced-motion:reduce){.bloom-app .bl-map-world{transition:none!important}}
+.bloom-app .bl-graph[data-overview=true] .bl-map-node .bl-han{font-size:32px;line-height:1.1}
+.bloom-app .bl-graph[data-overview=true] .bl-map-node .bl-pinyin{font-size:16px;line-height:1.3}
+.bloom-app .bl-graph[data-overview=true] .bl-map-node .bl-meaning{font-size:14px;line-height:1.3}
+.bloom-app .bl-graph[data-overview=true] .bl-collection-label{font-size:22px}
+/* Reset layout rules from the earlier compact BLOOM shell. */
+.bloom-app .bl-body{margin:0;padding-top:74px}
+.bloom-app .bl-unified-intro{position:static;width:auto;height:auto;overflow:visible;clip:auto;clip-path:none;white-space:normal}
+.bloom-app .bl-graph[data-overview=true] .bl-map-viewport{min-height:360px}
+@media(max-width:700px){.bloom-app .bl-rail{backdrop-filter:none}.bloom-app .bl-body{margin:0;padding-top:60px}.bloom-app .bl-main-nav{top:auto;bottom:0}.bloom-app .bl-top{margin:0}.bloom-app .bl-map-viewport{scroll-margin-top:70px}}
+.bloom-app .bl-sheet-header{background:#202a3f;color:#d8e3f4;border-color:#35415b}
+.bloom-app .bl-sheet-header button{background:#29364b;color:#d8e3f4;border-color:#56617a}
+.bloom-app .bl-writing-dialog::backdrop,.bloom-app .bl-help::backdrop{background:#070b16b3}
+.bloom-app .bl-lesson-tabs>button[aria-pressed=true],.bloom-app .bl-word-choices button[aria-pressed=true]{background:#363052;border-color:#a995d0;color:#e4d6ff}
+.bloom-app .bl-sentence-zh mark{background:#423651;color:#eee2ff}
+.bloom-app .bl-audio-status.is-error{color:#ffc1b7}
+@media(max-width:700px){.bloom-app .bl-focus-card .bl-reading-dock{margin:10px 10px 14px;scroll-margin-bottom:85px}.bloom-app:has(.bl-reading-dock) .bl-main{padding-bottom:90px}.bloom-app .bl-focus-card:has(.bl-reading-dock) .bl-mobile-selection{display:none}}
+html[data-ui='bloom']{--surface-2:#202a3f;--surface-3:#2b354a;--ink-2:#c3cde0;--muted:#a7b6ce;--line-strong:#61708b}
+.bloom-app .bl-writing-content h2 small{color:#a7b6ce}
+.bloom-app .pad-btn{background:#29364b;color:#e8edf7;border-color:#61708b}
+.bloom-app .pad-note,.bloom-app .muted{color:#a7b6ce}
+.bloom-app .bl-review-options button{background:#243249;border-color:#3e4d68;color:#e8edf7}
+.bloom-app .bl-review-options button[aria-pressed=true]{background:#363052;border-color:#b8a5ed}
+.bloom-app .bl-review-reading{color:#e4d6ff}
+.bloom-app .bl-text-button{color:#d6c7f0}
+/* Map primitives live only here; obsolete BLOOM map selectors were removed. */
+.bloom-app .bl-graph{width:100%}
+.bloom-app .bl-map-viewport{position:relative;width:100%;touch-action:none;cursor:grab;user-select:none}
+.bloom-app .bl-map-viewport:active{cursor:grabbing}
+.bloom-app .bl-map-world{position:absolute;top:0;left:0;transform-origin:0 0;will-change:transform;isolation:isolate}
+.bloom-app .bl-map-lines{position:absolute;inset:0;overflow:visible;pointer-events:none;z-index:-1}
+.bloom-app .bl-map-lines path{fill:none}
+.bloom-app .bl-map-node{position:absolute;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.bloom-app .bl-map-node .bl-han{white-space:nowrap}
+.bloom-app .bl-map-node .bl-meaning{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bloom-app .bl-map-tools{display:flex;align-items:center}
+.bloom-app .bl-tree-entrypoints button{flex:0 0 auto;min-width:62px;padding:7px 12px;display:flex;align-items:center;gap:7px}
+@media(max-width:700px){.bloom-app .bl-tree-entrypoints button{flex:0 0 auto;min-width:48px;padding:6px 9px}}
+.bloom-app .bl-field-label{color:#a7b6ce}
+@media(max-width:700px){
+ .bloom-app .bl-focus-card:has(.bl-reading-dock) .bl-map-viewport{height:clamp(220px,calc(100dvh - 430px),340px)!important;min-height:220px}
+ .bloom-app .bl-reading-dock .bl-button{padding:7px 12px;font-size:13px}
+}
+@media(max-width:700px){
+ .bloom-app .bl-reading-dock .bl-dock-branches>span{flex-basis:100%}
+ .bloom-app .bl-reading-dock .bl-dock-branches button{min-height:44px;padding:5px 8px}
+ .bloom-app .bl-reading-dock .bl-dock-branches small{font-size:11px}
+}
+@media(max-width:360px){
+ .bloom-app .bl-focus-card:has(.bl-reading-dock) .bl-map-viewport{height:210px!important;min-height:210px}
+ .bloom-app .bl-reading-dock{padding:12px}
+ .bloom-app .bl-reading-dock>header strong{font-size:26px}
+ .bloom-app .bl-reading-dock>header span{font-size:14px}
+}
+@media(max-width:360px){.bloom-app .bl-focus-card:has(.bl-reading-dock) .bl-map-viewport{height:200px!important;min-height:200px}.bloom-app .bl-reading-dock{padding:10px}}
+/* Overview is a map of families. Word text is shown again at a readable zoom. */
+@media(min-width:701px){.bloom-app .bl-map-viewport{height:clamp(380px,calc(100dvh - 180px),620px)!important;scroll-margin-top:84px}}
+/* Every map card always includes Chinese, pinyin and Thai. Text scales naturally with the camera. */
+.bloom-app .bl-map-node{padding:5px;gap:2px}
+.bloom-app .bl-map-node .bl-han{font-size:30px;line-height:1.1}
+.bloom-app .bl-map-node .bl-pinyin,
+.bloom-app .bl-graph[data-overview=true] .bl-map-node .bl-pinyin{display:block;visibility:visible;font-size:16px;line-height:1.15;color:#c3cce0}
+.bloom-app .bl-map-node .bl-meaning,
+.bloom-app .bl-graph[data-overview=true] .bl-map-node .bl-meaning{display:block;visibility:visible;font-size:14px;line-height:1.2;color:#d6dfef}
+/* Entry controls are learning content too: always show all three reading lines. */
+.bloom-app .bl-tree-entrypoints button{display:grid;grid-template-rows:32px 20px 20px;justify-items:center;align-content:center;gap:3px;min-width:88px;min-height:98px;padding:9px 12px}
+.bloom-app .bl-tree-entrypoints .bl-han{font-size:28px;line-height:32px}
+.bloom-app .bl-tree-entrypoints .bl-entry-pinyin{display:block;font:14px/20px system-ui;color:#c4b6e2;white-space:nowrap}
+.bloom-app .bl-tree-entrypoints .bl-entry-meaning{display:block;font-size:13px;line-height:20px;color:#d7e0f0;white-space:nowrap}
+@media(max-width:700px){.bloom-app .bl-tree-entrypoints button{display:grid;min-width:82px;min-height:98px;padding:9px 10px}.bloom-app .bl-tree-entrypoints .bl-entry-pinyin,.bloom-app .bl-tree-entrypoints .bl-entry-meaning{display:block}}
+
+/* Shared vocabulary controls keep all learning sections in the same context. */
+.bloom-app .bl-practice-picker{display:grid;grid-template-columns:1fr 1fr;gap:14px;padding:20px;margin-bottom:24px;border:1px solid #35415b;border-radius:20px;background:#192236}
+.bloom-app .bl-practice-picker label{display:grid;gap:8px;min-width:0;color:#d7e0f1}
+.bloom-app .bl-practice-picker select{width:100%;min-height:48px;max-width:100%;padding:10px;background:#101624;color:#e8edf7;border:1px solid #55607b;border-radius:12px;font:inherit}
+.bloom-app .bl-practice-picker p{grid-column:1/-1;margin:0;color:#a7b6ce;font-size:13px}
+.bloom-app .bl-practice-note{padding:14px;border-left:3px solid #c7b6ff;color:#d7e0f1}
+@media(max-width:700px){.bloom-app .bl-practice-picker{grid-template-columns:1fr;padding:16px;gap:12px}}
+
+.bloom-app .bl-answer-example{background:#202a3f;border-color:#4b5570;color:#e8edf7}
+.bloom-app .bl-answer-example p,.bloom-app .bl-answer-example .bl-han{color:#e8edf7}
+.bloom-app .bl-sentence-th{color:#d7e0f1}
+
+/* Learning: keep the selected word compact and the exercise in view. */
+.bloom-app .bl-lesson-page{max-width:960px;margin-inline:auto;padding-bottom:calc(96px + env(safe-area-inset-bottom))}
+.bloom-app .bl-practice-context{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:12px;padding:12px 16px;margin-bottom:16px;border:1px solid #35415b;border-radius:16px;background:#192236}
+.bloom-app .bl-practice-context>div{display:flex;align-items:baseline;flex-wrap:wrap;gap:8px 12px;min-width:0;color:#a7b6ce}
+.bloom-app .bl-practice-context strong{color:#e8edf7;font-size:24px}
+.bloom-app .bl-practice-context span{font-size:16px;overflow-wrap:anywhere}
+.bloom-app .bl-practice-context button{min-height:44px;white-space:nowrap}
+.bloom-app .bl-practice-picker input{box-sizing:border-box;min-width:0;width:100%;min-height:48px;padding:10px;border:1px solid #55607b;border-radius:12px;background:#101624;color:#e8edf7;font:inherit}
+.bloom-app .bl-lesson-page .bl-lesson-intro{margin-bottom:16px}
+.bloom-app .bl-lesson-page .bl-lesson-intro h1{font-size:clamp(22px,3vw,30px);margin:8px 0}
+.bloom-app .bl-lesson-page .bl-lesson-intro p{margin:8px 0;font-size:14px}
+.bloom-app .bl-lesson-page .bl-lesson-tabs{flex-wrap:wrap;margin-bottom:12px;gap:8px}
+.bloom-app .bl-lesson-page .bl-lesson-card{max-width:720px;margin-inline:auto;padding:24px}
+.bloom-app .bl-lesson-page .bl-speaking-question,.bloom-app .bl-lesson-page .bl-sentence-zh{font-size:clamp(28px,5vw,40px);line-height:1.5;overflow-wrap:anywhere}
+.bloom-app .bl-lesson-page .bl-sentence-py,.bloom-app .bl-lesson-page .bl-sentence-th{font-size:17px;line-height:1.6}
+.bloom-app .bl-lesson-page :focus-visible{outline:2px solid #c7b6ff;outline-offset:3px}
+@media(max-width:700px){
+ .bloom-app .bl-lesson-page .bl-lesson-card{padding:16px}
+ .bloom-app .bl-practice-context{padding:12px;gap:8px}
+ .bloom-app .bl-practice-context strong{font-size:22px}
+ .bloom-app .bl-practice-context .bl-button{padding:10px;font-size:14px}
+ .bloom-app .bl-lesson-page .bl-lesson-intro .bl-kicker{display:none}
+}
+@media(max-width:700px){.bloom-app .bl-top-lesson{display:none}}

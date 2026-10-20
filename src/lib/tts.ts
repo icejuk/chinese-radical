@@ -22,6 +22,7 @@ function rateFor(zh: string): number {
 
 let activeAudio: HTMLAudioElement | null = null
 let onEndCb: (() => void) | null = null
+let soundVersion = 0
 
 function pickVoice(): SpeechSynthesisVoice | null {
   if (!('speechSynthesis' in window)) return null
@@ -46,11 +47,12 @@ export function warmVoices() {
   speechSynthesis.addEventListener?.('voiceschanged', () => speechSynthesis.getVoices())
 }
 
-export function ttsUrl(zh: string) {
-  return `https://translate.googleapis.com/translate_tts?ie=UTF-8&q=${encodeURIComponent(zh)}&tl=zh-CN&client=gtx&ttsspeed=${rateFor(zh)}`
+export function ttsUrl(zh: string, slow = false) {
+  return `https://translate.googleapis.com/translate_tts?ie=UTF-8&q=${encodeURIComponent(zh)}&tl=zh-CN&client=gtx&ttsspeed=${rateFor(zh) * (slow ? .7 : 1)}`
 }
 
 export function stopSound() {
+  soundVersion++
   if (activeAudio) {
     activeAudio.pause()
     activeAudio = null
@@ -65,41 +67,52 @@ export function stopSound() {
  * อ่านออกเสียงข้อความจีน เล่นได้ทีละเสียง (กดใหม่ = ตัดเสียงเก่า)
  * @param onEnd เรียกเมื่อจบ/ถูกตัด — ใช้ปิดสถานะ "กำลังเล่น" ของปุ่ม
  */
-export function playSound(zh: string, onEnd?: () => void) {
+export function playSound(zh: string, onEnd?: () => void, options: { slow?: boolean; onStart?: () => void; onError?: () => void } = {}) {
   stopSound()
+  const version = soundVersion
   if (!zh) {
     onEnd?.()
     return
   }
   onEndCb = onEnd ?? null
+  let finished = false
   const done = () => {
+    if (finished || version !== soundVersion) return
+    finished = true
     if (onEndCb === (onEnd ?? null)) onEndCb = null
     onEnd?.()
   }
 
+  const fail = () => { if (finished || version !== soundVersion) return; options.onError?.(); done() }
+  const started = () => { if (!finished && version === soundVersion) options.onStart?.() }
   const voice = pickVoice()
   if (voice && 'speechSynthesis' in window) {
     const u = new SpeechSynthesisUtterance(zh)
     u.voice = voice
     u.lang = voice.lang || 'zh-CN'
-    u.rate = rateFor(zh)
+    u.rate = rateFor(zh) * (options.slow ? .7 : 1)
     u.pitch = 1
     u.onend = done
-    u.onerror = done
-    speechSynthesis.speak(u)
+    u.onerror = fail
+    u.onstart = started
+    try { speechSynthesis.speak(u) } catch { fail() }
     return
   }
 
-  const audio = new Audio(ttsUrl(zh))
+  const audio = new Audio(ttsUrl(zh, options.slow))
   activeAudio = audio
   audio.onended = () => {
     if (activeAudio === audio) activeAudio = null
     done()
   }
+  audio.onerror = () => {
+    if (activeAudio === audio) activeAudio = null
+    fail()
+  }
   // เล่นไม่ได้ (autoplay policy / ออฟไลน์ครั้งแรก) — ต้องเคลียร์ activeAudio ด้วย
   // ไม่งั้น state ค้างแล้วเสียงถัดไปจะโดน pause() ของก้อนที่ตายแล้ว (บั๊กใน v1)
-  audio.play().catch(() => {
+  audio.play().then(started, () => {
     if (activeAudio === audio) activeAudio = null
-    done()
+    fail()
   })
 }

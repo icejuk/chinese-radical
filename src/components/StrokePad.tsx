@@ -117,6 +117,8 @@ export function StrokePad({
   useEffect(() => {
     if (!has || !box.current) return
     const node = box.current
+    let active = true
+    const abort = new AbortController()
     node.innerHTML = '' // กับดัก #1
     setReady(false)
     setErr(false)
@@ -133,27 +135,31 @@ export function StrokePad({
       delayBetweenStrokes: 500,
       ...colors(),
       charDataLoader: (c, onLoad, onError) => {
-        fetch(strokePath(c))
+        fetch(strokePath(c), { signal: abort.signal })
           .then((r) => (r.ok ? r.json() : Promise.reject(new Error(String(r.status)))))
-          .then(onLoad)
+          .then(data => { if (active) onLoad(data) })
           .catch(onError)
       },
-      onLoadCharDataError: () => setErr(true),
+      onLoadCharDataError: () => { if (active) setErr(true) },
     })
     writer.current = w
 
     w.getCharacterData()
       .then((data) => {
+        if (!active) return
         setTotal(data.strokes.length)
         setReady(true)
         const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
         if (mode === 'animate' && autoStart && !reduceMotion) w.animateCharacter()
       })
-      .catch(() => setErr(true))
+      .catch(() => { if (active) setErr(true) })
 
     return () => {
+      active = false
+      abort.abort()
       cancel.current = true // หยุด async loop ของการเล่นแยกราก
       w.cancelQuiz()
+      void w.pauseAnimation().catch(() => {})
       writer.current = null
       node.innerHTML = ''
     }
